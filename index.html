@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Uki Kooking</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family: Arial, sans-serif;
+
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          #263f68,
+          transparent 40%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          #302450,
+          transparent 40%
+        ),
+        #090e1c;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* HEADER */
+
+    header {
+      padding: 25px 7%;
+
+      background: rgba(8, 13, 27, 0.65);
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(18px);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #79a9ff;
+    }
+
+
+    /* MAIN */
+
+    main {
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 40px 20px;
+    }
+
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+
+      text-align: center;
+    }
+
+
+    .icon {
+      font-size: 65px;
+
+      margin-bottom: 15px;
+
+      animation: float 3s ease-in-out infinite;
+    }
+
+
+    @keyframes float {
+
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+    }
+
+
+    h1 {
+      font-size: 55px;
+
+      margin: 0;
+
+      letter-spacing: -2px;
+    }
+
+
+    h1 span {
+      color: #79a9ff;
+    }
+
+
+    .subtitle {
+      color: #8996ad;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+      margin:
+        18px auto 35px;
+
+      max-width: 500px;
+    }
+
+
+    /* REQUEST CARD */
+
+    .request-card {
+      padding: 30px;
+
+      border-radius: 25px;
+
+      background:
+        rgba(255,255,255,0.055);
+
+      border:
+        1px solid rgba(255,255,255,0.1);
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,0.25);
+
+      backdrop-filter: blur(20px);
+    }
+
+
+    .request-card h2 {
+      margin-top: 0;
+
+      font-size: 24px;
+    }
+
+
+    .request-card p {
+      color: #7f8ba2;
+
+      font-size: 14px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .input-area {
+      display: flex;
+
+      gap: 10px;
+    }
+
+
+    input {
+      flex: 1;
+
+      min-width: 0;
+
+      padding: 17px;
+
+      border-radius: 13px;
+
+      border:
+        1px solid rgba(255,255,255,0.1);
+
+      background:
+        rgba(0,0,0,0.25);
+
+      color: white;
+
+      font-size: 16px;
+
+      outline: none;
+
+      transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+
+    input::placeholder {
+      color: #66738b;
+    }
+
+
+    input:focus {
+      border-color: #79a9ff;
+
+      box-shadow:
+        0 0 0 4px rgba(121,169,255,0.1);
+    }
+
+
+    button {
+      border: none;
+
+      border-radius: 13px;
+
+      padding: 0 25px;
+
+      background: #79a9ff;
+
+      color: #07101d;
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+
+    button:hover {
+      background: #9abfff;
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 25px rgba(121,169,255,0.2);
+    }
+
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+
+    /* POPUP */
+
+    #popup {
+
+      position: fixed;
+
+      left: 50%;
+
+      bottom: 25px;
+
+      transform:
+        translate(-50%, 100px)
+        scale(0.9);
+
+      opacity: 0;
+
+      background:
+        rgba(20,27,45,0.96);
+
+      border:
+        1px solid rgba(255,255,255,0.1);
+
+      padding:
+        16px 22px;
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35);
+
+      transition:
+        all 0.4s cubic-bezier(.2,.8,.2,1);
+
+      z-index: 100;
+
+      min-width: 250px;
+    }
+
+
+    #popup.show {
+
+      transform:
+        translate(-50%, 0)
+        scale(1);
+
+      opacity: 1;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+
+      text-align: center;
+
+      padding: 25px;
+
+      color: #505c73;
+
+      font-size: 13px;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .request-card {
+        padding: 23px 18px;
+      }
+
+      .input-area {
+        flex-direction: column;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        padding: 16px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <div class="logo">
+      🍳 Uki <span>Kooking</span>
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <div class="container">
+
+      <div class="icon">
+        🍽️
+      </div>
+
+
+      <h1>
+        Uki <span>Kooking</span>
+      </h1>
+
+
+      <p class="subtitle">
+        Got something you'd like to see cooked?
+        Send us a request and we'll see what we can make.
+      </p>
+
+
+      <div class="request-card">
+
+        <h2>
+          Request a Food
+        </h2>
+
+        <p>
+          What would you like to see on Uki Kooking?
+        </p>
+
+
+        <div class="input-area">
+
+          <input
+            id="foodInput"
+            type="text"
+            maxlength="100"
+            placeholder="e.g. pancakes"
+          >
+
+
+          <button onclick="requestFood()">
+            Request
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <div id="popup"></div>
+
+
+  <footer>
+    © 2026 Uki Kooking
+  </footer>
+
+
+  <script>
+
+    /*
+      PUT YOUR PHONE NUMBER HERE.
+
+      Example:
+
+      const phoneNumber = "+381604885883";
+
+      Keep your real number in your own copy.
+      Don't send it to me.
+    */
+
+    const phoneNumber =
+      "+38160488588";
+
+
+    function showPopup(text) {
+
+      const popup =
+        document.getElementById("popup");
+
+      popup.textContent = text;
+
+      popup.classList.add("show");
+
+
+      setTimeout(function() {
+
+        popup.classList.remove("show");
+
+      }, 2500);
+
+    }
+
+
+    function requestFood() {
+
+      const input =
+        document.getElementById("foodInput");
+
+      const food =
+        input.value.trim();
+
+
+      if (food === "") {
+
+        showPopup(
+          "Please enter a food first!"
+        );
+
+        return;
+
+      }
+
+
+      const message =
+        "New Uki Kooking request: " +
+        food;
+
+
+      showPopup(
+        "📨 Request ready!"
+      );
+
+
+      /*
+        Opens the visitor's Messages app
+        with your number and the request
+        already filled in.
+      */
+
+      setTimeout(function() {
+
+        window.location.href =
+          "sms:" +
+          phoneNumber +
+          "?body=" +
+          encodeURIComponent(message);
+
+      }, 600);
+
+    }
+
+  </script>
+
+
+</body>
+</html>
