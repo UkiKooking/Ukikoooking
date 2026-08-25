@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Uki Kooking</title>
@@ -49,18 +48,15 @@ header {
 
 main {
   flex: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 30px 15px;
 }
 
 .card {
   width: 100%;
   max-width: 650px;
-
   padding: 45px;
 
   background: rgba(255,255,255,.055);
@@ -71,23 +67,18 @@ main {
 
   backdrop-filter: blur(20px);
 
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.35);
+  box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
 .icon {
   text-align: center;
-
   font-size: 65px;
-
   margin-bottom: 15px;
 }
 
 h1 {
   text-align: center;
-
   font-size: 50px;
-
   margin-bottom: 12px;
 }
 
@@ -97,27 +88,20 @@ h1 span {
 
 .subtitle {
   text-align: center;
-
   color: #9aa8c2;
-
   line-height: 1.6;
-
   margin-bottom: 35px;
 }
 
 form {
   display: flex;
-
   flex-direction: column;
-
   gap: 15px;
 }
 
 label {
   color: #bdc9dd;
-
   font-size: 14px;
-
   margin-top: 5px;
 }
 
@@ -125,19 +109,15 @@ input,
 select,
 textarea {
   width: 100%;
-
   padding: 16px;
 
   border: none;
-
   border-radius: 14px;
 
   background: #12192d;
-
   color: white;
 
   font-size: 16px;
-
   outline: none;
 }
 
@@ -149,8 +129,7 @@ textarea::placeholder {
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow:
-    0 0 0 3px rgba(127,179,255,.25);
+  box-shadow: 0 0 0 3px rgba(127,179,255,.25);
 }
 
 select {
@@ -159,38 +138,30 @@ select {
 
 textarea {
   min-height: 100px;
-
   resize: vertical;
 }
 
 
-/* =========================
-   SURPRISE ME
-========================= */
+/* SURPRISE ME */
 
 .surpriseButton {
-  width: auto;
+  width: fit-content;
 
   align-self: flex-start;
 
   padding: 10px 18px;
 
-  margin-top: 2px;
   margin-left: -5px;
 
-  font-size: 14px;
+  background: rgba(94,162,255,0.35);
 
-  background:
-    rgba(94,162,255,0.35);
-
-  border:
-    1px solid rgba(255,255,255,0.12);
-
-  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.12);
 
   color: white;
 
   border-radius: 12px;
+
+  font-size: 14px;
 
   cursor: pointer;
 
@@ -198,18 +169,35 @@ textarea {
 }
 
 .surpriseButton:hover {
-  transform: translateY(-2px);
-
-  background:
-    rgba(94,162,255,0.5);
+  background: rgba(94,162,255,0.5);
 }
 
 
-/* =========================
-   REQUEST ORDER BUTTON
-========================= */
+/* TIP */
 
-.submitButton {
+.tip-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+/* CUSTOM TIP */
+
+#customAmountContainer {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#customAmountContainer.show {
+  display: flex;
+}
+
+
+/* REQUEST ORDER */
+
+.requestOrderButton {
   width: 100%;
 
   margin-top: 10px;
@@ -238,100 +226,61 @@ textarea {
   transition: .2s;
 }
 
-.submitButton:hover {
+.requestOrderButton:hover {
   transform: translateY(-2px);
 }
 
-.submitButton:disabled {
+.requestOrderButton:disabled {
   opacity: .6;
-
   cursor: not-allowed;
-
   transform: none;
 }
 
 
-/* =========================
-   CUSTOM AMOUNT
-========================= */
-
-#customAmountContainer {
-  display: none;
-}
-
-#customAmountContainer.visible {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 8px;
-}
-
-
-/* =========================
-   SUCCESS
-========================= */
+/* SUCCESS */
 
 #confirmation {
   display: none;
-
   text-align: center;
-
-  margin-top: 5px;
-
-  padding: 10px;
 }
 
 #confirmation h2 {
   color: #8ff0b0;
-
   margin-bottom: 12px;
-
   font-size: 28px;
 }
 
 .requestIDBox {
-  margin-top: 18px;
-
-  padding: 15px;
+  margin-top: 20px;
+  padding: 16px;
 
   border-radius: 14px;
 
-  background:
-    rgba(255,255,255,.06);
+  background: rgba(255,255,255,.06);
 
-  border:
-    1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.08);
 }
 
 .requestIDLabel {
   color: #9aa8c2;
-
   font-size: 14px;
-
   margin-bottom: 6px;
 }
 
 .requestID {
   color: #7fb3ff;
-
   font-size: 26px;
-
   font-weight: bold;
 }
 
 .confirmationText {
   margin-top: 15px;
-
   color: #9aa8c2;
-
   line-height: 1.5;
 }
 
 
-/* =========================
-   ERROR
-========================= */
+/* ERROR */
 
 #errorMessage {
   display: none;
@@ -342,23 +291,15 @@ textarea {
 
   border-radius: 14px;
 
-  background:
-    rgba(255,70,70,.15);
+  background: rgba(255,70,70,.15);
 
-  border:
-    1px solid rgba(255,70,70,.3);
+  border: 1px solid rgba(255,70,70,.3);
 
   color: #ff9a9a;
 
   text-align: center;
-
-  font-weight: bold;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
 
 footer {
   padding: 22px;
@@ -371,10 +312,6 @@ footer {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 600px) {
 
   .card {
@@ -383,10 +320,6 @@ footer {
 
   h1 {
     font-size: 40px;
-  }
-
-  .icon {
-    font-size: 55px;
   }
 
 }
@@ -413,22 +346,17 @@ footer {
 <div class="card">
 
 
-<!-- =========================
-     FORM AREA
-========================= -->
+<!-- FORM -->
 
 <div id="formArea">
-
 
   <div class="icon">
     🍽️
   </div>
 
-
   <h1>
     Uki <span>Kooking</span>
   </h1>
-
 
   <p class="subtitle">
     Request a meal and choose when you'd like it.
@@ -442,12 +370,12 @@ footer {
   >
 
 
-    <!-- REQUEST ID -->
+    <!-- REQUEST NUMBER -->
 
     <input
-      id="hiddenRequestID"
-      name="request_id"
       type="hidden"
+      id="requestID"
+      name="request_id"
     >
 
 
@@ -462,7 +390,6 @@ footer {
       name="name"
       type="text"
       placeholder="Enter your name"
-      autocomplete="name"
       required
     >
 
@@ -478,7 +405,6 @@ footer {
       name="email"
       type="email"
       placeholder="Enter your email"
-      autocomplete="email"
       required
     >
 
@@ -498,7 +424,7 @@ footer {
     >
 
 
-    <!-- SURPRISE ME -->
+    <!-- SURPRISE -->
 
     <button
       type="button"
@@ -569,18 +495,61 @@ footer {
 
     <!-- TIP -->
 
-    <label for="tip">
-      💸 Tip
-    </label>
+    <div class="tip-section">
 
-    <select
-      id="tip"
-      name="tip"
-      onchange="handleTipChange(this)"
-    >
+      <label for="tip">
+        💸 Tip
+      </label>
 
-      <option value="€0">
-        No tip
-      </option>
+      <select
+        id="tip"
+        name="tip"
+      >
 
-      <option
+        <option value="€0">
+          No tip
+        </option>
+
+        <option value="€1">
+          €1
+        </option>
+
+        <option value="€2">
+          €2
+        </option>
+
+        <option value="€5">
+          €5
+        </option>
+
+        <option value="€10">
+          €10
+        </option>
+
+        <option value="€15">
+          €15
+        </option>
+
+        <option value="custom">
+          Custom Amount
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- CUSTOM AMOUNT -->
+
+    <div id="customAmountContainer">
+
+      <label for="customAmount">
+        💰 Custom Amount
+      </label>
+
+      <input
+        id="customAmount"
+        name="custom_amount"
+        type="number"
+        min="0"
+        step="0.01"
