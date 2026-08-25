@@ -2,620 +2,583 @@
 <html lang="en">
 
 <head>
+<meta charset="UTF-8">
 
-  <meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<title>Uki Kooking</title>
 
-  <title>Uki Kooking</title>
+<style>
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <style>
+body {
+  font-family: Arial, sans-serif;
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  background:
+    radial-gradient(
+      circle at top left,
+      #274472,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      #3a2d67,
+      transparent 40%
+    ),
+    #0b1020;
 
+  color: white;
+  min-height: 100vh;
 
-    body {
+  display: flex;
+  flex-direction: column;
+}
 
-      font-family: Arial, sans-serif;
+/* HEADER */
 
-      background:
-        radial-gradient(
-          circle at top left,
-          #274472,
-          transparent 40%
-        ),
+header {
+  padding: 22px 8%;
 
-        radial-gradient(
-          circle at bottom right,
-          #3a2d67,
-          transparent 40%
-        ),
+  background: rgba(8,13,27,0.7);
 
-        #0b1020;
+  backdrop-filter: blur(18px);
 
-      color: white;
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+}
 
-      min-height: 100vh;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-      display: flex;
+.logo span {
+  color: #7fb3ff;
+}
 
-      flex-direction: column;
+/* MAIN */
 
-    }
+main {
+  flex: 1;
 
+  display: flex;
 
-    /* HEADER */
+  align-items: center;
 
-    header {
+  justify-content: center;
 
-      padding: 22px 8%;
+  padding: 30px;
+}
 
-      background:
-        rgba(8, 13, 27, 0.7);
+.card {
+  width: 100%;
+  max-width: 700px;
 
-      backdrop-filter: blur(18px);
+  background:
+    rgba(255,255,255,0.05);
 
-      border-bottom:
-        1px solid rgba(255,255,255,0.08);
+  border:
+    1px solid rgba(255,255,255,0.08);
 
-    }
+  border-radius: 28px;
 
+  padding: 45px;
 
-    .logo {
+  text-align: center;
 
-      font-size: 24px;
+  backdrop-filter: blur(18px);
 
-      font-weight: bold;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.35);
+}
 
-    }
+/* ICON */
 
+.icon {
+  font-size: 70px;
 
-    .logo span {
+  margin-bottom: 18px;
 
-      color: #7fb3ff;
+  animation:
+    float 3s ease-in-out infinite;
+}
 
-    }
+@keyframes float {
 
+  0%, 100% {
+    transform: translateY(0);
+  }
 
-    /* MAIN */
+  50% {
+    transform: translateY(-8px);
+  }
 
-    main {
+}
 
-      flex: 1;
+/* TITLE */
 
-      display: flex;
+h1 {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
 
-      align-items: center;
+h1 span {
+  color: #7fb3ff;
+}
 
-      justify-content: center;
+.subtitle {
+  color: #9aa8c2;
 
-      padding: 30px;
+  line-height: 1.6;
 
-    }
+  margin-bottom: 35px;
+}
 
+/* FORM */
 
-    .card {
+form {
+  display: flex;
 
-      width: 100%;
+  flex-direction: column;
 
-      max-width: 700px;
+  gap: 16px;
+}
 
-      background:
-        rgba(255,255,255,0.05);
+label {
+  text-align: left;
 
-      border:
-        1px solid rgba(255,255,255,0.08);
+  color: #b9c6dd;
 
-      border-radius: 28px;
+  font-size: 14px;
+}
 
-      padding: 45px;
+input {
+  width: 100%;
 
-      text-align: center;
+  padding: 16px;
 
-      backdrop-filter: blur(18px);
+  border: none;
 
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
+  border-radius: 14px;
 
-    }
+  background: #12192d;
 
+  color: white;
 
-    .icon {
+  font-size: 16px;
 
-      font-size: 70px;
+  outline: none;
 
-      margin-bottom: 18px;
+  transition: 0.2s;
+}
 
-      animation:
-        float 3s ease-in-out infinite;
+input:focus {
+  box-shadow:
+    0 0 0 3px
+    rgba(127,179,255,0.3);
+}
 
-    }
+button {
+  padding: 16px;
 
+  border: none;
 
-    @keyframes float {
+  border-radius: 14px;
 
-      0%, 100% {
+  background:
+    linear-gradient(
+      135deg,
+      #5ea2ff,
+      #7a6cff
+    );
 
-        transform:
-          translateY(0);
+  color: white;
 
-      }
+  font-size: 16px;
 
-      50% {
+  font-weight: bold;
 
-        transform:
-          translateY(-8px);
+  cursor: pointer;
 
-      }
+  transition: 0.25s;
+}
 
-    }
+button:hover {
+  transform: translateY(-2px);
 
+  box-shadow:
+    0 10px 25px
+    rgba(94,162,255,0.35);
+}
 
-    h1 {
+button:active {
+  transform: scale(0.97);
+}
 
-      font-size: 52px;
+button:disabled {
+  opacity: 0.6;
 
-      margin-bottom: 12px;
+  cursor: not-allowed;
 
-    }
+  transform: none;
+}
 
+/* RESULT */
 
-    h1 span {
+#result {
+  margin-top: 18px;
 
-      color: #7fb3ff;
+  font-weight: bold;
 
-    }
+  color: #8ee89c;
 
+  min-height: 22px;
+}
 
-    .subtitle {
+/* FOOTER */
 
-      color: #9aa8c2;
+footer {
+  padding: 22px;
 
-      line-height: 1.6;
+  text-align: center;
 
-      margin-bottom: 35px;
+  color: #66738b;
 
-    }
+  font-size: 14px;
+}
 
+/* PHONE */
 
-    /* FORM */
+@media (max-width: 600px) {
 
-    form {
+  .card {
+    padding: 28px 22px;
+  }
 
-      display: flex;
+  h1 {
+    font-size: 40px;
+  }
 
-      flex-direction: column;
+}
 
-      gap: 16px;
-
-    }
-
-
-    label {
-
-      text-align: left;
-
-      color: #b9c6dd;
-
-      font-size: 14px;
-
-    }
-
-
-    input {
-
-      width: 100%;
-
-      padding: 16px;
-
-      border: none;
-
-      border-radius: 14px;
-
-      background: #12192d;
-
-      color: white;
-
-      font-size: 16px;
-
-      outline: none;
-
-      transition: 0.2s;
-
-    }
-
-
-    input:focus {
-
-      box-shadow:
-        0 0 0 3px
-        rgba(127,179,255,0.3);
-
-    }
-
-
-    button {
-
-      padding: 16px;
-
-      border: none;
-
-      border-radius: 14px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #5ea2ff,
-          #7a6cff
-        );
-
-      color: white;
-
-      font-size: 16px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-      transition: 0.25s;
-
-    }
-
-
-    button:hover {
-
-      transform:
-        translateY(-2px);
-
-      box-shadow:
-        0 10px 25px
-        rgba(94,162,255,0.35);
-
-    }
-
-
-    button:active {
-
-      transform:
-        scale(0.97);
-
-    }
-
-
-    button:disabled {
-
-      opacity: 0.6;
-
-      cursor: not-allowed;
-
-      transform: none;
-
-    }
-
-
-    #result {
-
-      margin-top: 18px;
-
-      font-weight: bold;
-
-      color: #8ee89c;
-
-      min-height: 22px;
-
-    }
-
-
-    /* FOOTER */
-
-    footer {
-
-      padding: 22px;
-
-      text-align: center;
-
-      color: #66738b;
-
-      font-size: 14px;
-
-    }
-
-
-    /* PHONE */
-
-    @media (max-width: 600px) {
-
-      .card {
-
-        padding:
-          28px 22px;
-
-      }
-
-
-      h1 {
-
-        font-size: 40px;
-
-      }
-
-    }
-
-  </style>
+</style>
 
 </head>
 
-
 <body>
 
+<header>
 
-  <header>
+  <div class="logo">
 
-    <div class="logo">
+    🍳 Uki <span>Kooking</span>
 
-      🍳 Uki <span>Kooking</span>
+  </div>
 
-    </div>
+</header>
 
-  </header>
 
+<main>
 
-  <main>
+<div class="card">
 
-    <div class="card">
+  <div class="icon">
+    🍽️
+  </div>
 
 
-      <div class="icon">
+  <h1>
+    Uki <span>Kooking</span>
+  </h1>
 
-        🍽️
 
-      </div>
+  <p class="subtitle">
+    Request a meal and choose
+    when you'd like it.
+  </p>
 
 
-      <h1>
+  <form id="foodForm">
 
-        Uki <span>Kooking</span>
 
-      </h1>
+    <label for="name">
+      👤 Your Name
+    </label>
 
 
-      <p class="subtitle">
+    <input
+      id="name"
+      type="text"
+      name="name"
+      placeholder="Enter your name"
+      maxlength="50"
+      required
+    >
 
-        Request a meal and choose
-        when you'd like it.
 
-      </p>
+    <label for="food">
+      🍔 Food
+    </label>
 
 
-      <form id="foodForm">
+    <input
+      id="food"
+      type="text"
+      name="food"
+      placeholder="What would you like?"
+      maxlength="100"
+      required
+    >
 
 
-        <label for="name">
+    <label for="date">
+      📅 Date
+    </label>
 
-          👤 Your Name
 
-        </label>
+    <input
+      id="date"
+      type="date"
+      name="date"
+      required
+    >
 
 
-        <input
-          id="name"
-          type="text"
-          name="name"
-          placeholder="Enter your name"
-          maxlength="50"
-          required
-        >
+    <label for="time">
+      ⏰ Time
+    </label>
 
 
-        <label for="food">
+    <input
+      id="time"
+      type="time"
+      name="time"
+      required
+    >
 
-          🍔 Food
 
-        </label>
+    <button
+      type="submit"
+      id="submitButton"
+    >
 
+      Request Meal
 
-        <input
-          id="food"
-          type="text"
-          name="food"
-          placeholder="What would you like?"
-          maxlength="100"
-          required
-        >
+    </button>
 
 
-        <label for="date">
+  </form>
 
-          📅 Date
 
-        </label>
+  <p id="result"></p>
 
 
-        <input
-          id="date"
-          type="date"
-          name="date"
-          required
-        >
+</div>
 
+</main>
 
-        <label for="time">
 
-          ⏰ Time
+<footer>
 
-        </label>
+  © 2026 Uki Kooking
 
+</footer>
 
-        <input
-          id="time"
-          type="time"
-          name="time"
-          required
-        >
 
+<script>
 
-        <button
-          type="submit"
-          id="submitButton"
-        >
+/*
+========================================
+SUPABASE SETTINGS
+========================================
 
-          Request Meal
+PUT YOUR SUPABASE API URL HERE.
+*/
 
-        </button>
+const SUPABASE_URL =
+  "PUT_YOUR_API_URL_HERE";
 
 
-      </form>
+/*
+PUT YOUR SUPABASE PUBLISHABLE KEY HERE.
 
+DO NOT USE THE SECRET KEY.
+*/
 
-      <p id="result"></p>
+const SUPABASE_KEY =
+  "PUT_YOUR_PUBLISHABLE_KEY_HERE";
 
 
-    </div>
+/*
+========================================
+FORM
+========================================
+*/
 
-  </main>
+const form =
+  document.getElementById("foodForm");
 
 
-  <footer>
+const result =
+  document.getElementById("result");
 
-    © 2026 Uki Kooking
 
-  </footer>
+const submitButton =
+  document.getElementById("submitButton");
 
 
-  <script>
+form.addEventListener(
+  "submit",
+  async function(event) {
 
+    event.preventDefault();
 
-    /*
-    ==========================================
-    SUPABASE SETTINGS
-    ==========================================
 
-    PUT YOUR SUPABASE API URL BELOW.
+    submitButton.disabled = true;
 
-    Example:
-    https://abcdefgh.supabase.co
-    */
+    submitButton.textContent =
+      "Sending...";
 
 
-    const SUPABASE_URL =
-      "https://islozochqsbpgmqdjxtb.supabase.co/rest/v1/";
+    result.textContent = "";
 
 
-    /*
-    PUT YOUR SUPABASE PUBLISHABLE KEY BELOW.
-
-    It usually starts with:
-
-    sb_publishable_...
-
-    DO NOT USE YOUR SECRET KEY.
-    */
-
-
-    const SUPABASE_KEY =
-      "sb_publishable_Y2LgdQmiLOyBaoVRp-TAfA_vzKGUolv";
-
-
-    /*
-    ==========================================
-    FORM
-    ==========================================
-    */
-
-
-    const form =
+    const name =
       document.getElementById(
-        "foodForm"
-      );
+        "name"
+      ).value.trim();
 
 
-    const result =
+    const food =
       document.getElementById(
-        "result"
-      );
+        "food"
+      ).value.trim();
 
 
-    const submitButton =
+    const date =
       document.getElementById(
-        "submitButton"
-      );
+        "date"
+      ).value;
 
 
-    form.addEventListener(
-      "submit",
-      async function(event) {
+    const time =
+      document.getElementById(
+        "time"
+      ).value;
 
 
-        event.preventDefault();
+    const requestData = {
+
+      name: name,
+
+      food: food,
+
+      date: date,
+
+      time: time
+
+    };
 
 
-        submitButton.disabled =
-          true;
+    try {
+
+      const response =
+        await fetch(
+
+          SUPABASE_URL +
+          "/rest/v1/requests",
+
+          {
+
+            method: "POST",
+
+            headers: {
+
+              "Content-Type":
+                "application/json",
+
+              "apikey":
+                SUPABASE_KEY,
+
+              "Authorization":
+                "Bearer " +
+                SUPABASE_KEY,
+
+              "Prefer":
+                "return=minimal"
+
+            },
+
+            body:
+              JSON.stringify(
+                requestData
+              )
+
+          }
+
+        );
 
 
-        submitButton.textContent =
-          "Sending...";
-
+      if (response.ok) {
 
         result.textContent =
-          "";
+          "✅ Request sent!";
+
+        form.reset();
+
+      }
+
+      else {
+
+        const errorText =
+          await response.text();
+
+        console.log(
+          "Supabase error:",
+          errorText
+        );
+
+        result.textContent =
+          "❌ Couldn't send request.";
+
+      }
 
 
-        const name =
-          document.getElementById(
-            "name"
-          ).value.trim();
+    }
+
+    catch (error) {
+
+      console.log(
+        "Connection error:",
+        error
+      );
+
+      result.textContent =
+        "❌ Connection failed.";
+
+    }
 
 
-        const food =
-          document.getElementById(
-            "food"
-          ).value.trim();
+    submitButton.disabled =
+      false;
 
+    submitButton.textContent =
+      "Request Meal";
 
-        const date =
-          document.getElementById(
-            "date"
-          ).value;
+  }
 
+);
 
-        const time =
-          document.getElementById(
-            "time"
-          ).value;
+</script>
 
+</body>
 
-        /*
-        The request starts as
-        "pending".
-
-        Later, your admin
-        page can change it to:
-
-        approved
-
-        or
-
-        denied
-        */
-
-
-        const requestData = {
-
-          name: name,
-
-          food: food,
-
-          date: date,
-
-          time: time,
-
-          status: "pending"
+</html>
