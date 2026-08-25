@@ -1,373 +1,2268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uki Kooking</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Uki Kooking — Royal Flavours, Straight to Your Door</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --royal:#3a1f5d;
+    --royal-deep:#1f0f3d;
+    --gold:#f5c542;
+    --gold-soft:#e8b730;
+    --cream:#fdf6e3;
+    --ink:#1a0f33;
+  }
 
-body{
-font-family:Arial,sans-serif;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-background:
-radial-gradient(circle at 10% 10%,#294d7a,transparent 35%),
-radial-gradient(circle at 90% 90%,#44366e,transparent 35%),
-#0b1020;
-color:white;
-}
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
 
-header{
-padding:22px 8%;
-background:rgba(8,13,27,.75);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.08);
-}
+  html,body{
+    height:100%;
+  }
 
-.logo{font-size:24px;font-weight:bold;}
-.logo span{color:#7fb3ff;}
+  body{
+    font-family:'Georgia','Times New Roman',serif;
+    background:linear-gradient(135deg,#fdf6e3 0%,#f5e8c7 50%,#ede0b3 100%);
+    color:var(--ink);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
 
-main{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:30px 15px;
-}
+  /* ================= CROWN INTRO ================= */
 
-.card{
-width:100%;
-max-width:650px;
-padding:40px;
-background:rgba(255,255,255,.055);
-border:1px solid rgba(255,255,255,.09);
-border-radius:30px;
-backdrop-filter:blur(20px);
-box-shadow:0 25px 70px rgba(0,0,0,.35);
-}
+  #crownSplash{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:radial-gradient(
+      ellipse at center,
+      #3a1f5d 0%,
+      #1f0f3d 70%,
+      #0a0520 100%
+    );
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:opacity .9s ease,transform .9s ease;
+  }
 
-.icon{
-text-align:center;
-font-size:60px;
-margin-bottom:15px;
-}
+  #crownSplash.hide{
+    opacity:0;
+    pointer-events:none;
+    transform:scale(1.05);
+  }
 
-h1{
-text-align:center;
-font-size:48px;
-margin-bottom:10px;
-}
+  #crownSplash .sparkle{
+    position:absolute;
+    color:var(--gold);
+    font-size:24px;
+    opacity:0;
+    animation:sparkleFloat 3s ease-in-out infinite;
+    pointer-events:none;
+  }
 
-h1 span{color:#7fb3ff;}
+  @keyframes sparkleFloat{
+    0%,100%{
+      opacity:0;
+      transform:translateY(0) scale(.5);
+    }
+    50%{
+      opacity:1;
+      transform:translateY(-30px) scale(1);
+    }
+  }
 
-.subtitle{
-text-align:center;
-color:#9aa8c2;
-margin-bottom:30px;
-}
+  #crownSplash .crown-wrap{
+    position:relative;
+    animation:
+      crownDrop 1.4s cubic-bezier(.34,1.56,.64,1) both,
+      crownPulse 2.5s ease-in-out 1.4s infinite;
+  }
 
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
+  @keyframes crownDrop{
+    0%{
+      transform:translateY(-120vh) rotate(-180deg) scale(.3);
+      opacity:0;
+    }
+    60%{
+      transform:translateY(0) rotate(20deg) scale(1.15);
+      opacity:1;
+    }
+    80%{
+      transform:rotate(-8deg) scale(1);
+    }
+    100%{
+      transform:rotate(0) scale(1);
+      opacity:1;
+    }
+  }
 
-label{
-color:#bdc9dd;
-font-size:14px;
-}
+  @keyframes crownPulse{
+    0%,100%{
+      transform:scale(1);
+      filter:drop-shadow(0 0 20px rgba(245,197,66,.6));
+    }
+    50%{
+      transform:scale(1.05);
+      filter:drop-shadow(0 0 40px rgba(245,197,66,1));
+    }
+  }
 
-input,select,textarea{
-width:100%;
-padding:15px;
-border:none;
-border-radius:14px;
-background:#12192d;
-color:white;
-font-size:16px;
-}
+  #crownSplash .crown{
+    font-size:180px;
+    filter:drop-shadow(0 0 30px rgba(245,197,66,.8));
+    display:inline-block;
+  }
 
-input:focus,
-select:focus,
-textarea:focus{
-outline:none;
-box-shadow:0 0 0 3px rgba(127,179,255,.25);
-}
+  #crownSplash .glow-ring{
+    position:absolute;
+    inset:-40px;
+    border:3px solid var(--gold);
+    border-radius:50%;
+    opacity:0;
+    animation:ringPulse 2s ease-out 1.4s infinite;
+  }
 
-textarea{
-min-height:90px;
-resize:vertical;
-}
+  @keyframes ringPulse{
+    0%{
+      opacity:.8;
+      transform:scale(.8);
+    }
+    100%{
+      opacity:0;
+      transform:scale(1.6);
+    }
+  }
 
-#customTip{
-display:none;
-flex-direction:column;
-gap:8px;
-}
+  #crownSplash h1{
+    margin-top:30px;
+    font-size:54px;
+    color:var(--gold);
+    letter-spacing:4px;
+    text-align:center;
+    opacity:0;
+    animation:fadeUp .8s ease 1.2s forwards;
+    text-shadow:0 0 20px rgba(245,197,66,.5);
+  }
 
-#requestBtn{
-padding:18px;
-border:none;
-border-radius:15px;
-background:linear-gradient(135deg,#5ea2ff,#7a6cff);
-color:white;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-transition:.2s;
-}
+  #crownSplash .tagline{
+    margin-top:14px;
+    font-size:20px;
+    color:#e8d9b0;
+    font-style:italic;
+    text-align:center;
+    opacity:0;
+    animation:fadeUp .8s ease 1.5s forwards;
+  }
 
-#requestBtn:hover{
-transform:translateY(-2px);
-}
+  #crownSplash .skip{
+    position:absolute;
+    bottom:30px;
+    color:#e8d9b0;
+    font-size:13px;
+    opacity:0;
+    animation:fadeUp .8s ease 1.8s forwards;
+    letter-spacing:2px;
+  }
 
-#requestBtn:disabled{
-opacity:.6;
-cursor:not-allowed;
-}
+  @keyframes fadeUp{
+    from{
+      opacity:0;
+      transform:translateY(20px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
 
-#error{
-display:none;
-margin-top:15px;
-padding:12px;
-background:rgba(255,70,70,.15);
-border-radius:12px;
-text-align:center;
-color:#ffb3b3;
-}
+  /* ================= HEADER ================= */
 
-#success{
-display:none;
-text-align:center;
-}
+  header{
+    background:linear-gradient(
+      135deg,
+      var(--royal) 0%,
+      var(--royal-deep) 100%
+    );
+    color:var(--gold);
+    padding:18px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
 
-.requestBox{
-margin-top:18px;
-padding:16px;
-background:rgba(255,255,255,.06);
-border-radius:14px;
-}
+  header .brand{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+  }
 
-.requestID{
-font-size:28px;
-font-weight:bold;
-color:#7fb3ff;
-margin-top:6px;
-}
+  header .cart{
+    background:rgba(245,197,66,.15);
+    padding:8px 18px;
+    border-radius:30px;
+    border:2px solid var(--gold);
+    font-size:14px;
+    cursor:pointer;
+    transition:all .3s;
+  }
 
-.newOrderBtn{
-margin-top:20px;
-width:100%;
-padding:16px;
-border:none;
-border-radius:15px;
-background:linear-gradient(135deg,#5ea2ff,#7a6cff);
-color:white;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-}
+  header .cart:hover{
+    background:rgba(245,197,66,.3);
+    transform:scale(1.05);
+  }
 
-footer{
-padding:20px;
-text-align:center;
-color:#66738b;
-}
+  /* ================= HERO ================= */
 
-@media(max-width:600px){
-.card{padding:28px 22px;}
-h1{font-size:38px;}
-}
+  .hero{
+    text-align:center;
+    padding:60px 20px 40px;
+    background:linear-gradient(
+      180deg,
+      rgba(58,31,93,.05),
+      transparent
+    );
+  }
+
+  .hero .big-crown{
+    font-size:80px;
+    animation:float 3s ease-in-out infinite;
+    display:inline-block;
+  }
+
+  @keyframes float{
+    0%,100%{
+      transform:translateY(0);
+    }
+    50%{
+      transform:translateY(-10px);
+    }
+  }
+
+  .hero h2{
+    font-size:42px;
+    color:var(--royal);
+    margin:20px 0 10px;
+    font-style:italic;
+    letter-spacing:1px;
+  }
+
+  .hero p{
+    font-size:18px;
+    color:#5a4a3a;
+    max-width:600px;
+    margin:0 auto 30px;
+  }
+
+  .features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  .feature{
+    background:rgba(255,255,255,.6);
+    padding:20px;
+    border-radius:16px;
+    border:2px solid rgba(245,197,66,.4);
+    text-align:center;
+    transition:all .3s;
+    backdrop-filter:blur(10px);
+  }
+
+  .feature:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(58,31,93,.2);
+  }
+
+  .feature .icon{
+    font-size:36px;
+    margin-bottom:10px;
+  }
+
+  .feature .label{
+    color:var(--royal);
+    font-weight:bold;
+    font-size:15px;
+  }
+
+  /* ================= STEPS ================= */
+
+  .steps{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding:40px 20px 20px;
+    flex-wrap:wrap;
+  }
+
+  .step{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:#8a7a6a;
+    font-size:13px;
+    transition:all .3s;
+  }
+
+  .step .num{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#e8d9b0;
+    color:#8a7a6a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:16px;
+    margin-bottom:6px;
+    border:2px solid transparent;
+    transition:all .3s;
+  }
+
+  .step.active .num{
+    background:var(--gold);
+    color:var(--royal);
+    border-color:var(--royal);
+    transform:scale(1.1);
+  }
+
+  .step.done .num{
+    background:var(--royal);
+    color:var(--gold);
+  }
+
+  /* ================= ORDER SECTIONS ================= */
+
+  .order-section{
+    max-width:720px;
+    margin:20px auto;
+    background:rgba(255,255,255,.85);
+    border-radius:24px;
+    padding:40px 30px;
+    box-shadow:0 10px 40px rgba(58,31,93,.15);
+    border:2px solid rgba(245,197,66,.3);
+    display:none;
+  }
+
+  .order-section.show{
+    display:block;
+    animation:sectionIn .5s ease;
+  }
+
+  @keyframes sectionIn{
+    from{
+      opacity:0;
+      transform:translateY(20px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+
+  .order-section .ornament{
+    text-align:center;
+    color:var(--gold);
+    font-size:18px;
+    letter-spacing:12px;
+    margin-bottom:14px;
+  }
+
+  .order-section h3{
+    text-align:center;
+    color:var(--royal);
+    font-size:28px;
+    margin-bottom:10px;
+    font-style:italic;
+  }
+
+  .order-section .sub{
+    text-align:center;
+    color:#6a5a4a;
+    font-size:15px;
+    margin-bottom:30px;
+  }
+
+  /* ================= INPUTS ================= */
+
+  .quick-add{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .quick-add button{
+    background:#fff;
+    border:2px solid var(--gold-soft);
+    color:var(--royal);
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
+    transition:all .2s;
+    font-family:inherit;
+  }
+
+  .quick-add button:hover{
+    background:var(--gold);
+    color:var(--royal);
+    transform:scale(1.05);
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea{
+    width:100%;
+    padding:14px 18px;
+    border:2px solid rgba(58,31,93,.2);
+    border-radius:12px;
+    background:#fff;
+    font-size:15px;
+    font-family:inherit;
+    transition:all .3s;
+    color:var(--ink);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(245,197,66,.2);
+  }
+
+  textarea{
+    min-height:90px;
+    resize:vertical;
+  }
+
+  label{
+    display:block;
+    color:var(--royal);
+    font-weight:bold;
+    margin:14px 0 6px;
+    font-size:14px;
+  }
+
+  /* ================= PREP TAGS ================= */
+
+  .prep-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:10px 0 20px;
+  }
+
+  .prep-tags .tag{
+    background:rgba(245,197,66,.15);
+    border:2px solid var(--gold-soft);
+    color:var(--royal);
+    padding:6px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
+    transition:all .2s;
+    user-select:none;
+  }
+
+  .prep-tags .tag.active{
+    background:var(--gold);
+    color:var(--royal);
+    font-weight:bold;
+  }
+
+  /* ================= FORM ================= */
+
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+
+  @media(max-width:600px){
+    .form-row{
+      grid-template-columns:1fr;
+    }
+  }
+
+  /* ================= TIP ================= */
+
+  .tip-section{
+    background:linear-gradient(
+      135deg,
+      rgba(58,31,93,.08),
+      rgba(245,197,66,.08)
+    );
+    padding:20px;
+    border-radius:16px;
+    margin-top:24px;
+    border:2px dashed var(--gold);
+  }
+
+  .tip-section .chef{
+    text-align:center;
+    font-size:18px;
+    color:var(--royal);
+    margin-bottom:8px;
+  }
+
+  .tip-section .chef-note{
+    text-align:center;
+    font-size:13px;
+    color:#6a5a4a;
+    margin-bottom:14px;
+  }
+
+  .tip-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+  }
+
+  .tip-options button{
+    background:#fff;
+    border:2px solid var(--gold-soft);
+    color:var(--royal);
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:all .2s;
+    font-family:inherit;
+  }
+
+  .tip-options button.active{
+    background:var(--royal);
+    color:var(--gold);
+    transform:scale(1.05);
+  }
+
+  .tip-options button.crown{
+    background:var(--gold);
+    color:var(--royal);
+  }
+
+  /* ================= PROMO ================= */
+
+  .promo-row{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+  }
+
+  .promo-row input{
+    flex:1;
+  }
+
+  .promo-row button{
+    background:var(--royal);
+    color:var(--gold);
+    border:none;
+    padding:0 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:all .2s;
+    font-family:inherit;
+  }
+
+  .promo-row button:hover{
+    background:var(--royal-deep);
+    transform:scale(1.03);
+  }
+
+  /* ================= BUTTONS ================= */
+
+  .btn-row{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    gap:10px;
+  }
+
+  .btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all .3s;
+    font-family:inherit;
+  }
+
+  .btn-back{
+    background:#e8d9b0;
+    color:var(--royal);
+  }
+
+  .btn-back:hover{
+    background:#d8c9a0;
+  }
+
+  .btn-next{
+    background:linear-gradient(
+      135deg,
+      var(--royal) 0%,
+      var(--royal-deep) 100%
+    );
+    color:var(--gold);
+    box-shadow:0 4px 15px rgba(58,31,93,.4);
+  }
+
+  .btn-next:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(58,31,93,.5);
+  }
+
+  .btn-place{
+    background:linear-gradient(
+      135deg,
+      var(--gold) 0%,
+      var(--gold-soft) 100%
+    );
+    color:var(--royal);
+    font-size:17px;
+    padding:16px 36px;
+    box-shadow:0 4px 20px rgba(245,197,66,.5);
+  }
+
+  .btn-place:hover{
+    transform:translateY(-2px) scale(1.03);
+    box-shadow:0 8px 30px rgba(245,197,66,.7);
+  }
+
+  .btn-place:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
+  }
+
+  /* ================= TOAST ================= */
+
+  #toast{
+    position:fixed;
+    top:30px;
+    right:30px;
+    z-index:99999;
+    background:linear-gradient(
+      135deg,
+      var(--royal) 0%,
+      var(--royal-deep) 100%
+    );
+    color:var(--gold);
+    padding:16px 24px;
+    border-radius:14px;
+    border:2px solid var(--gold);
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+    font-weight:bold;
+    font-size:14px;
+    opacity:0;
+    transform:translateX(120%);
+    transition:all .5s cubic-bezier(.34,1.56,.64,1);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    max-width:340px;
+  }
+
+  #toast.show{
+    opacity:1;
+    transform:translateX(0);
+  }
+
+  #toast .t-icon{
+    font-size:22px;
+  }
+
+  /* ================= CONFIRMATION ================= */
+
+  .confirmation{
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+  }
+
+  .confirmation.show{
+    display:block;
+    animation:sectionIn .6s ease;
+  }
+
+  .confirmation .trio{
+    font-size:60px;
+    letter-spacing:20px;
+    color:var(--gold);
+    margin-bottom:20px;
+  }
+
+  .confirmation .sparkle-big{
+    font-size:50px;
+    animation:spin 4s linear infinite;
+    display:inline-block;
+    color:var(--gold);
+  }
+
+  @keyframes spin{
+    from{
+      transform:rotate(0);
+    }
+    to{
+      transform:rotate(360deg);
+    }
+  }
+
+  .confirmation h2{
+    font-size:36px;
+    color:var(--royal);
+    margin:14px 0;
+    font-style:italic;
+  }
+
+  .confirmation .order-id{
+    background:var(--royal);
+    color:var(--gold);
+    display:inline-block;
+    padding:8px 20px;
+    border-radius:20px;
+    font-weight:bold;
+    margin:14px 0;
+    letter-spacing:2px;
+  }
+
+  .confirmation .timeline{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:40px 0;
+    flex-wrap:wrap;
+  }
+
+  .confirmation .timeline .step{
+    color:var(--royal);
+    font-size:14px;
+  }
+
+  .confirmation .timeline .step .icon{
+    font-size:36px;
+    margin-bottom:6px;
+  }
+
+  .confirmation .timeline .step.active .icon{
+    animation:pulse 1.5s infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{
+      transform:scale(1);
+    }
+    50%{
+      transform:scale(1.15);
+    }
+  }
+
+  .confirmation .eta{
+    background:rgba(245,197,66,.2);
+    padding:12px 24px;
+    border-radius:20px;
+    display:inline-block;
+    color:var(--royal);
+    font-weight:bold;
+    margin:10px 0;
+  }
+
+  .confirmation .reorder{
+    background:var(--royal);
+    color:var(--gold);
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+    transition:all .3s;
+    font-family:inherit;
+  }
+
+  .confirmation .reorder:hover{
+    background:var(--royal-deep);
+    transform:translateY(-2px);
+  }
+
+  /* ================= FOOTER ================= */
+
+  footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#8a7a6a;
+    font-size:13px;
+    border-top:1px solid rgba(245,197,66,.3);
+    margin-top:40px;
+  }
+
+  /* ================= MOBILE ================= */
+
+  @media(max-width:600px){
+
+    #crownSplash .crown{
+      font-size:120px;
+    }
+
+    #crownSplash h1{
+      font-size:38px;
+    }
+
+    #crownSplash .tagline{
+      font-size:16px;
+      padding:0 20px;
+    }
+
+    header{
+      padding:15px 18px;
+    }
+
+    header .brand{
+      font-size:21px;
+    }
+
+    .hero{
+      padding-top:40px;
+    }
+
+    .hero h2{
+      font-size:30px;
+    }
+
+    .order-section{
+      margin:15px;
+      padding:30px 20px;
+    }
+
+    .btn-row{
+      flex-direction:column;
+    }
+
+    .btn{
+      width:100%;
+    }
+
+    .promo-row{
+      flex-direction:column;
+    }
+
+    .promo-row button{
+      height:48px;
+    }
+
+    #toast{
+      top:15px;
+      right:15px;
+      left:15px;
+      max-width:none;
+    }
+  }
 </style>
 </head>
 
 <body>
 
+<!-- ================= CROWN SPLASH ================= -->
+
+<div id="crownSplash">
+
+  <span class="sparkle" style="top:15%;left:20%;animation-delay:0s">✨</span>
+  <span class="sparkle" style="top:25%;left:75%;animation-delay:.5s">✨</span>
+  <span class="sparkle" style="top:60%;left:15%;animation-delay:1s">✨</span>
+  <span class="sparkle" style="top:70%;left:80%;animation-delay:1.5s">✨</span>
+  <span class="sparkle" style="top:40%;left:50%;animation-delay:.8s">✨</span>
+  <span class="sparkle" style="top:80%;left:35%;animation-delay:1.2s">✨</span>
+  <span class="sparkle" style="top:20%;left:45%;animation-delay:.3s">✨</span>
+  <span class="sparkle" style="top:55%;left:65%;animation-delay:1.8s">✨</span>
+
+  <div class="crown-wrap">
+    <span class="glow-ring"></span>
+    <span class="crown">👑</span>
+  </div>
+
+  <h1>Uki Kooking</h1>
+
+  <div class="tagline">
+    Royal Flavours, Straight to Your Door
+  </div>
+
+  <div class="skip">
+    tap anywhere to enter
+  </div>
+
+</div>
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast">
+  <span class="t-icon">✨</span>
+  <span id="toastMsg">Chef notified!</span>
+</div>
+
+<!-- ================= HEADER ================= -->
+
 <header>
-<div class="logo">🍳 Uki <span>Kooking</span></div>
+  <div class="brand">👑 Uki Kooking</div>
+  <div class="cart" id="cartBtn">👑 0 items</div>
 </header>
 
-<main>
+<!-- ================= HERO ================= -->
 
-<div class="card">
+<section class="hero">
 
-<div id="formArea">
+  <div class="big-crown">👑</div>
 
-<div class="icon">🍽️</div>
+  <h2>
+    Royal Flavours, Straight to Your Door
+  </h2>
 
-<h1>Uki <span>Kooking</span></h1>
+  <p>
+    Tell us what you'd like — we prepare it and bring it right to you.
+  </p>
 
-<p class="subtitle">Request a meal and choose when you'd like it.</p>
+  <div class="features">
 
-<form id="foodForm" action="https://formspree.io/f/xvkpjaly" method="POST">
+    <div class="feature">
+      <div class="icon">👑</div>
+      <div class="label">Royal quality</div>
+    </div>
 
-<input type="hidden" id="requestID" name="request_id">
+    <div class="feature">
+      <div class="icon">🏠</div>
+      <div class="label">Door to door</div>
+    </div>
 
-<label>👤 Your Name</label>
-<input name="name" type="text" placeholder="Enter your name" required>
+    <div class="feature">
+      <div class="icon">✨</div>
+      <div class="label">Made fresh</div>
+    </div>
 
-<label>📧 Your Email</label>
-<input name="email" type="email" placeholder="Enter your email" required>
+    <div class="feature">
+      <div class="icon">🚫</div>
+      <div class="label">No extra fees</div>
+    </div>
 
-<label>🍔 Food</label>
-<input name="food" type="text" placeholder="What would you like?" required>
+  </div>
 
-<label>🔢 Quantity</label>
-<input name="quantity" type="number" value="1" min="1" required>
+</section>
 
-<label>📝 Food Description</label>
-<textarea name="description" placeholder="Extra cheese, no onions, special requests..."></textarea>
+<!-- ================= STEPS ================= -->
 
-<label>📅 Date</label>
-<input name="date" type="date" required>
+<div class="steps" id="stepBar">
 
-<label>⏰ Time</label>
-<input name="time" type="time" required>
+  <div class="step active" data-step="2">
+    <div class="num">2</div>
+    Quantity
+  </div>
 
-<label>💸 Tip</label>
+  <div class="step active" data-step="3">
+    <div class="num">3</div>
+    Time
+  </div>
 
-<select id="tip" name="tip">
-<option value="€0">No tip</option>
-<option value="€1">€1</option>
-<option value="€2">€2</option>
-<option value="€5">€5</option>
-<option value="€10">€10</option>
-<option value="€15">€15</option>
-<option value="custom">Custom Amount</option>
-</select>
+  <div class="step active" data-step="4">
+    <div class="num">4</div>
+    Details
+  </div>
 
-<div id="customTip">
-
-<label>💰 Custom Amount</label>
-
-<input
-id="customAmount"
-name="custom_amount"
-type="number"
-min="0"
-step="0.01"
-placeholder="Enter amount in €">
-
-</div>
-
-<button id="requestBtn" type="submit">🍽️ Request Order</button>
-
-</form>
-
-<div id="error">
-Couldn't send your request.
-</div>
+  <div class="step active" data-step="5">
+    <div class="num">5</div>
+    Confirm
+  </div>
 
 </div>
 
-<div id="success">
+<!-- ================= STEP 2 ================= -->
 
-<div class="icon">✅</div>
+<section class="order-section show" id="stepDish">
 
-<h2>Request Sent!</h2>
+  <div class="ornament">✦ ✦ ✦</div>
 
-<div class="requestBox">
-<div>Your Request Number</div>
-<div id="showID" class="requestID"></div>
-</div>
+  <h3>👑 What shall we prepare?</h3>
 
-<button class="newOrderBtn" id="newOrderBtn">
-Make Another Order
-</button>
+  <p class="sub">
+    Type any dish you'd like — our kitchen handles everything else.
+  </p>
 
-</div>
+  <div class="ornament">✦ ✦ ✦</div>
 
-</div>
+  <input
+    type="text"
+    id="dishName"
+    placeholder="Dish name or description"
+  />
 
-</main>
+  <div class="quick-add">
 
-<footer>© 2026 Uki Kooking</footer>
+    <span style="color:var(--royal);font-weight:bold;margin-right:6px">
+      Quick add →
+    </span>
+
+    <button onclick="addDish('Grilled Chicken')">
+      Grilled Chicken
+    </button>
+
+    <button onclick="addDish('Butter Pasta')">
+      Butter Pasta
+    </button>
+
+    <button onclick="addDish('Beef Steak')">
+      Beef Steak
+    </button>
+
+    <button onclick="addDish('Lamb Curry')">
+      Lamb Curry
+    </button>
+
+    <button onclick="addDish('Salmon Fillet')">
+      Salmon Fillet
+    </button>
+
+    <button onclick="addDish('Veggie Bowl')">
+      Veggie Bowl
+    </button>
+
+    <button onclick="addDish('Chocolate Cake')">
+      Chocolate Cake
+    </button>
+
+  </div>
+
+  <label>Quantity</label>
+
+  <input
+    type="number"
+    id="quantity"
+    min="1"
+    value="1"
+  />
+
+  <div class="btn-row">
+
+    <div></div>
+
+    <button
+      class="btn btn-next"
+      onclick="goToStep('prep')"
+    >
+      + Add to Order
+    </button>
+
+  </div>
+
+  <p style="
+    text-align:center;
+    margin-top:14px;
+    color:var(--royal);
+    font-style:italic;
+  ">
+    Next: Preparation →
+  </p>
+
+</section>
+
+<!-- ================= STEP 3 ================= -->
+
+<section class="order-section" id="stepPrep">
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <h3>👑 How should we prepare it?</h3>
+
+  <p class="sub">
+    Choose any special preparation requests.
+  </p>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <label>
+    Special preparation
+  </label>
+
+  <div class="prep-tags">
+
+    <span class="tag" onclick="toggleTag(this)">
+      Extra spicy 🌶
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      No onions
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Gluten-free
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Extra sauce
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Less salt
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Dairy-free
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Well done
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Halal
+    </span>
+
+    <span class="tag" onclick="toggleTag(this)">
+      Vegan
+    </span>
+
+  </div>
+
+  <label>
+    Additional notes
+  </label>
+
+  <textarea
+    id="prepNotes"
+    placeholder="Anything else the chef should know?"
+  ></textarea>
+
+  <div class="btn-row">
+
+    <button
+      class="btn btn-back"
+      onclick="goToStep('dish')"
+    >
+      ← Back
+    </button>
+
+    <button
+      class="btn btn-next"
+      onclick="goToStep('time')"
+    >
+      Next: Choose Time →
+    </button>
+
+  </div>
+
+</section>
+
+<!-- ================= STEP 4 ================= -->
+
+<section class="order-section" id="stepTime">
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <h3>👑 When shall it arrive?</h3>
+
+  <p class="sub">
+    Pick a date and time — we'll be at your door.
+  </p>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <label>
+    Select date
+  </label>
+
+  <input
+    type="date"
+    id="deliveryDate"
+  />
+
+  <label>
+    Select time
+  </label>
+
+  <input
+    type="time"
+    id="deliveryTime"
+  />
+
+  <div class="btn-row">
+
+    <button
+      class="btn btn-back"
+      onclick="goToStep('prep')"
+    >
+      ← Back
+    </button>
+
+    <button
+      class="btn btn-next"
+      onclick="goToStep('details')"
+    >
+      Next: Your Details →
+    </button>
+
+  </div>
+
+</section>
+
+<!-- ================= STEP 5 ================= -->
+
+<section class="order-section" id="stepDetails">
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <h3>👑 Your Royal Details</h3>
+
+  <p class="sub">
+    Where shall we send your feast?
+  </p>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <div style="
+    background:rgba(245,197,66,.15);
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:18px;
+    font-size:14px;
+    color:var(--royal);
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  ">
+
+    <span style="font-size:22px">🏠</span>
+
+    <span>
+      Your order comes straight to your door — just give us your
+      address below and we handle everything.
+    </span>
+
+  </div>
+
+  <div class="form-row">
+
+    <div>
+      <label>First name</label>
+      <input type="text" id="firstName" />
+    </div>
+
+    <div>
+      <label>Last name</label>
+      <input type="text" id="lastName" />
+    </div>
+
+  </div>
+
+  <label>
+    Phone
+  </label>
+
+  <input
+    type="tel"
+    id="phone"
+  />
+
+  <label>
+    Email
+  </label>
+
+  <input
+    type="email"
+    id="email"
+  />
+
+  <label>
+    Delivery address
+  </label>
+
+  <input
+    type="text"
+    id="address"
+  />
+
+  <div class="form-row">
+
+    <div>
+      <label>City</label>
+      <input type="text" id="city" />
+    </div>
+
+    <div>
+      <label>ZIP / Postcode</label>
+      <input type="text" id="zip" />
+    </div>
+
+  </div>
+
+  <label>
+    Gate code / entry notes (optional)
+  </label>
+
+  <textarea id="gate"></textarea>
+
+  <label>
+    Payment
+  </label>
+
+  <select id="payment">
+
+    <option>
+      Choose payment…
+    </option>
+
+    <option>
+      💳 Credit / Debit card
+    </option>
+
+    <option>
+      📱 Apple Pay
+    </option>
+
+    <option>
+      📱 Google Pay
+    </option>
+
+    <option>
+      💵 Cash on delivery
+    </option>
+
+    <option>
+      🅿 PayPal
+    </option>
+
+  </select>
+
+  <!-- ================= TIP ================= -->
+
+  <div class="tip-section">
+
+    <div class="chef">
+      👑 Crown your chef
+    </div>
+
+    <div class="chef-note">
+      100% goes directly to the person who cooked
+      and delivered your meal.
+    </div>
+
+    <div class="tip-options">
+
+      <button onclick="setTip(this,0)">
+        No tip
+      </button>
+
+      <button onclick="setTip(this,1)">
+        $1
+      </button>
+
+      <button onclick="setTip(this,2)">
+        $2
+      </button>
+
+      <button onclick="setTip(this,3)">
+        $3
+      </button>
+
+      <button onclick="setTip(this,5)">
+        $5
+      </button>
+
+      <button
+        class="crown"
+        onclick="setTip(this,10)"
+      >
+        $10 👑
+      </button>
+
+    </div>
+
+    <label style="margin-top:14px">
+      Custom:
+    </label>
+
+    <input
+      type="number"
+      id="customTip"
+      placeholder="Other amount"
+      min="0"
+    />
+
+  </div>
+
+  <!-- ================= PROMO ================= -->
+
+  <div class="promo-row">
+
+    <input
+      type="text"
+      id="promo"
+      placeholder="Promo code 👑"
+    />
+
+    <button onclick="applyPromo()">
+      Apply
+    </button>
+
+  </div>
+
+  <!-- ================= PLACE ORDER ================= -->
+
+  <div class="btn-row">
+
+    <button
+      class="btn btn-back"
+      onclick="goToStep('time')"
+    >
+      ← Back
+    </button>
+
+    <button
+      class="btn btn-place"
+      id="placeOrderBtn"
+      onclick="placeOrder()"
+    >
+      👑 Place Royal Order
+    </button>
+
+  </div>
+
+</section>
+
+<!-- ================= CONFIRMATION ================= -->
+
+<section class="confirmation" id="confirmation">
+
+  <div class="trio">
+    👑 👑 👑
+  </div>
+
+  <div class="sparkle-big">
+    ✨
+  </div>
+
+  <h2>
+    Order Received!
+  </h2>
+
+  <p style="
+    font-size:18px;
+    color:#5a4a3a;
+    margin:10px 0;
+  ">
+    Your royal feast is being prepared
+    and will arrive at your door.
+  </p>
+
+  <div class="order-id" id="orderId">
+    #UK-000000
+  </div>
+
+  <div class="timeline">
+
+    <div class="step active">
+      <div class="icon">👑</div>
+      Confirmed
+    </div>
+
+    <div class="step">
+      <div class="icon">👨‍🍳</div>
+      Preparing
+    </div>
+
+    <div class="step">
+      <div class="icon">🚗</div>
+      On the way
+    </div>
+
+    <div class="step">
+      <div class="icon">🏠</div>
+      At your door
+    </div>
+
+  </div>
+
+  <div class="eta">
+    ~30 min
+  </div>
+
+  <p>
+    Arriving at your door
+  </p>
+
+  <button
+    class="reorder"
+    onclick="location.reload()"
+  >
+    👑 Place Another Order
+  </button>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+  👑 Uki Kooking — Royal Flavours, Straight to Your Door 👑
+</footer>
 
 <script>
-const tip=document.getElementById("tip");
-const customTip=document.getElementById("customTip");
-const customAmount=document.getElementById("customAmount");
 
-tip.addEventListener("change",function(){
+/* =========================================================
+   FORMSPREE CONFIGURATION
+   =========================================================
 
-if(this.value==="custom"){
-customTip.style.display="flex";
-customAmount.required=true;
-}else{
-customTip.style.display="none";
-customAmount.required=false;
-customAmount.value="";
+   1. Create a form at https://formspree.io/
+   2. Copy your Formspree endpoint.
+   3. It should look like:
+      https://formspree.io/f/xxxxxxxx
+
+   4. Replace YOUR_FORMSPREE_FORM_ID below.
+
+   ========================================================= */
+
+const FORMSPREE_ENDPOINT =
+  'https://formspree.io/f/https://formspree.io/f/xvkpjaly';
+
+
+/* =========================================================
+   CROWN SPLASH
+   ========================================================= */
+
+const splash =
+  document.getElementById('crownSplash');
+
+let splashDismissed = false;
+
+function dismissSplash(){
+
+  if(splashDismissed) return;
+
+  splashDismissed = true;
+
+  splash.classList.add('hide');
+
+  setTimeout(() => {
+    splash.style.display = 'none';
+  },900);
 }
 
-});
+splash.addEventListener(
+  'click',
+  dismissSplash
+);
 
-function requestNumber(){
-return "#"+Math.floor(100000+Math.random()*900000);
-}
+setTimeout(
+  dismissSplash,
+  3800
+);
 
-const form=document.getElementById("foodForm");
-const formArea=document.getElementById("formArea");
-const success=document.getElementById("success");
-const showID=document.getElementById("showID");
-const hiddenID=document.getElementById("requestID");
-const requestBtn=document.getElementById("requestBtn");
-const error=document.getElementById("error");
-const newOrderBtn=document.getElementById("newOrderBtn");
 
-form.addEventListener("submit",async function(e){
+/* =========================================================
+   ORDER STATE
+   ========================================================= */
 
-e.preventDefault();
+let currentTip = 0;
 
-error.style.display="none";
+const orderState = {};
 
-const id=requestNumber();
-hiddenID.value=id;
 
-requestBtn.disabled=true;
-requestBtn.textContent="Sending...";
+/* =========================================================
+   DISH
+   ========================================================= */
 
-try{
+function addDish(name){
 
-const res=await fetch(form.action,{
-method:"POST",
-body:new FormData(form),
-headers:{Accept:"application/json"}
-});
-
-if(!res.ok) throw new Error();
-
-showID.textContent=id;
-
-formArea.style.display="none";
-success.style.display="block";
-
-}catch{
-
-error.style.display="block";
-requestBtn.disabled=false;
-requestBtn.textContent="🍽️ Request Order";
+  document.getElementById(
+    'dishName'
+  ).value = name;
 
 }
 
-});
 
-newOrderBtn.addEventListener("click",function(){
+/* =========================================================
+   PREPARATION TAGS
+   ========================================================= */
 
-success.style.display="none";
-formArea.style.display="block";
-form.reset();
+function toggleTag(el){
 
-customTip.style.display="none";
-customAmount.required=false;
+  el.classList.toggle('active');
 
-requestBtn.disabled=false;
-requestBtn.textContent="🍽️ Request Order";
+}
 
-});
+
+/* =========================================================
+   TIPS
+   ========================================================= */
+
+function setTip(btn,amount){
+
+  document
+    .querySelectorAll('.tip-options button')
+    .forEach(b =>
+      b.classList.remove('active')
+    );
+
+  btn.classList.add('active');
+
+  currentTip = amount;
+
+  document.getElementById(
+    'customTip'
+  ).value = '';
+
+}
+
+
+/* =========================================================
+   CUSTOM TIP
+   ========================================================= */
+
+document
+  .getElementById('customTip')
+  .addEventListener(
+    'input',
+    function(){
+
+      if(this.value){
+
+        document
+          .querySelectorAll('.tip-options button')
+          .forEach(b =>
+            b.classList.remove('active')
+          );
+
+        currentTip =
+          parseFloat(this.value) || 0;
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   PROMO
+   ========================================================= */
+
+function applyPromo(){
+
+  const code =
+    document.getElementById(
+      'promo'
+    ).value.trim();
+
+  if(code){
+
+    alert(
+      '👑 Promo "' +
+      code +
+      '" applied!'
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   STEP NAVIGATION
+   ========================================================= */
+
+function goToStep(step){
+
+  const dish =
+    document.getElementById('dishName')
+      .value.trim();
+
+  if(step === 'prep' && !dish){
+
+    showToast(
+      '👑 Please choose a dish first.'
+    );
+
+    document
+      .getElementById('dishName')
+      .focus();
+
+    return;
+  }
+
+  document
+    .querySelectorAll('.order-section')
+    .forEach(section =>
+      section.classList.remove('show')
+    );
+
+  const map = {
+
+    dish:'stepDish',
+    prep:'stepPrep',
+    time:'stepTime',
+    details:'stepDetails'
+
+  };
+
+  const target =
+    document.getElementById(
+      map[step]
+    );
+
+  target.classList.add('show');
+
+  window.scrollTo({
+
+    top:
+      target.offsetTop - 80,
+
+    behavior:'smooth'
+
+  });
+
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function showToast(msg){
+
+  const toast =
+    document.getElementById('toast');
+
+  document.getElementById(
+    'toastMsg'
+  ).textContent = msg;
+
+  toast.classList.add('show');
+
+  setTimeout(
+    () => toast.classList.remove('show'),
+    3500
+  );
+
+}
+
+
+/* =========================================================
+   FORMSPREE EMAIL
+   ========================================================= */
+
+function sendEmail(orderText){
+
+  if(
+    FORMSPREE_ENDPOINT.includes(
+      'https://formspree.io/f/xvkpjaly'
+    )
+  ){
+
+    console.error(
+      'Formspree endpoint has not been configured.'
+    );
+
+    return Promise.resolve(false);
+  }
+
+  return fetch(
+    FORMSPREE_ENDPOINT,
+    {
+
+      method:'POST',
+
+      headers:{
+        'Content-Type':
+          'application/json',
+
+        'Accept':
+          'application/json'
+      },
+
+      body:JSON.stringify({
+
+        subject:
+          '👑 New Royal Order — Uki Kooking',
+
+        message:
+          orderText
+
+      })
+
+    }
+  )
+
+  .then(async response => {
+
+    const data =
+      await response
+        .json()
+        .catch(() => ({}));
+
+    if(!response.ok){
+
+      console.error(
+        'Formspree failed:',
+        data
+      );
+
+      return false;
+    }
+
+    console.log(
+      'Formspree order sent:',
+      data
+    );
+
+    return true;
+
+  })
+
+  .catch(error => {
+
+    console.error(
+      'Formspree error:',
+      error
+    );
+
+    return false;
+
+  });
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+   ========================================================= */
+
+function placeOrder(){
+
+  const button =
+    document.getElementById(
+      'placeOrderBtn'
+    );
+
+  /* Prevent double clicking */
+
+  if(button.disabled){
+    return;
+  }
+
+  /* ================= GET VALUES ================= */
+
+  const prepTags =
+    [
+      ...document.querySelectorAll(
+        '.prep-tags .tag.active'
+      )
+    ]
+    .map(
+      tag => tag.textContent.trim()
+    )
+    .join(', ') || 'None';
+
+  const prepNotes =
+    document
+      .getElementById('prepNotes')
+      .value
+      .trim() || 'None';
+
+  const tip =
+    currentTip ||
+    (
+      parseFloat(
+        document.getElementById(
+          'customTip'
+        ).value
+      ) || 0
+    );
+
+  const dish =
+    document
+      .getElementById('dishName')
+      .value
+      .trim();
+
+  const quantity =
+    parseInt(
+      document.getElementById(
+        'quantity'
+      ).value
+    ) || 1;
+
+  const date =
+    document
+      .getElementById('deliveryDate')
+      .value || 'ASAP';
+
+  const time =
+    document
+      .getElementById('deliveryTime')
+      .value || 'ASAP';
+
+  const first =
+    document
+      .getElementById('firstName')
+      .value
+      .trim();
+
+  const last =
+    document
+      .getElementById('lastName')
+      .value
+      .trim();
+
+  const phone =
+    document
+      .getElementById('phone')
+      .value
+      .trim();
+
+  const email =
+    document
+      .getElementById('email')
+      .value
+      .trim();
+
+  const address =
+    document
+      .getElementById('address')
+      .value
+      .trim();
+
+  const city =
+    document
+      .getElementById('city')
+      .value
+      .trim();
+
+  const zip =
+    document
+      .getElementById('zip')
+      .value
+      .trim();
+
+  const gate =
+    document
+      .getElementById('gate')
+      .value
+      .trim() || '—';
+
+  const payment =
+    document
+      .getElementById('payment')
+      .value;
+
+  /* ================= VALIDATION ================= */
+
+  if(!dish){
+
+    showToast(
+      '👑 Please choose a dish.'
+    );
+
+    return;
+  }
+
+  if(!first){
+
+    showToast(
+      '👑 Please enter your first name.'
+    );
+
+    return;
+  }
+
+  if(!phone){
+
+    showToast(
+      '👑 Please enter your phone number.'
+    );
+
+    return;
+  }
+
+  if(!address){
+
+    showToast(
+      '👑 Please enter your delivery address.'
+    );
+
+    return;
+  }
+
+  if(
+    payment === 'Choose payment…'
+  ){
+
+    showToast(
+      '👑 Please choose a payment method.'
+    );
+
+    return;
+  }
+
+  /* ================= ORDER ID ================= */
+
+  const orderId =
+    '#UK-' +
+    Date.now()
+      .toString()
+      .slice(-6);
+
+  const customerName =
+    (
+      first +
+      ' ' +
+      last
+    ).trim() || 'Guest';
+
+  const fullAddress =
+    [
+      address,
+      city,
+      zip
+    ]
+    .filter(Boolean)
+    .join(', ') || '—';
+
+
+  /* ================= SAVE STATE ================= */
+
+  Object.assign(
+    orderState,
+    {
+
+      id:orderId,
+
+      first,
+      last,
+
+      phone,
+      email,
+
+      address,
+      city,
+      zip,
+
+      gate,
+
+      payment,
+
+      dish,
+      quantity,
+
+      prepTags,
+      prepNotes,
+
+      date,
+      time,
+
+      tip,
+
+      customerName,
+
+      fullAddress
+
+    }
+  );
+
+
+  /* ================= EMAIL CONTENT ================= */
+
+  const orderText =
+`👑 NEW ROYAL ORDER ${orderId}
+
+━━━━━━━━━━━━━━━━━━━━
+
+📞 CUSTOMER
+
+Name: ${customerName}
+Phone: ${phone || '—'}
+Email: ${email || '—'}
+
+🏠 DELIVER TO
+
+${fullAddress}
+
+Gate / Entry:
+${gate}
+
+━━━━━━━━━━━━━━━━━━━━
+
+🍳 ORDER
+
+Dish:
+${dish}
+
+Quantity:
+${quantity}
+
+Preparation:
+${prepTags}
+
+Additional notes:
+${prepNotes}
+
+━━━━━━━━━━━━━━━━━━━━
+
+⏰ ARRIVAL
+
+Date:
+${date}
+
+Time:
+${time}
+
+━━━━━━━━━━━━━━━━━━━━
+
+💳 PAYMENT
+
+Method:
+${payment}
+
+━━━━━━━━━━━━━━━━━━━━
+
+👑 TIP FOR CHEF
+
+$${tip.toFixed(2)}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Cook it well, your majesty. 👑`;
+
+
+  /* ================= DISABLE BUTTON ================= */
+
+  button.disabled = true;
+
+  button.textContent =
+    '👑 Sending Order...';
+
+
+  showToast(
+    '✨ Sending your royal order...'
+  );
+
+
+  /* ================= SEND TO FORMSPREE ================= */
+
+  sendEmail(orderText)
+
+    .then(success => {
+
+      if(!success){
+
+        button.disabled = false;
+
+        button.textContent =
+          '👑 Place Royal Order';
+
+        showToast(
+          '❌ Could not send order. Please try again.'
+        );
+
+        return;
+      }
+
+
+      /* ================= SUCCESS ================= */
+
+      document
+        .querySelectorAll('.order-section')
+        .forEach(section =>
+          section.classList.remove('show')
+        );
+
+      document
+        .getElementById('confirmation')
+        .classList.add('show');
+
+      document
+        .getElementById('orderId')
+        .textContent = orderId;
+
+      document
+        .getElementById('cartBtn')
+        .textContent =
+          '👑 1 item';
+
+
+      window.scrollTo({
+
+        top:
+          document
+            .getElementById('confirmation')
+            .offsetTop - 60,
+
+        behavior:'smooth'
+
+      });
+
+
+      showToast(
+        '✨ Order sent to the kitchen!'
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   DEFAULT DATE
+   ========================================================= */
+
+(function setDefaultDate(){
+
+  const dateInput =
+    document.getElementById(
+      'deliveryDate'
+    );
+
+  const today =
+    new Date();
+
+  const year =
+    today.getFullYear();
+
+  const month =
+    String(
+      today.getMonth() + 1
+    ).padStart(2,'0');
+
+  const day =
+    String(
+      today.getDate()
+    ).padStart(2,'0');
+
+  dateInput.value =
+    `${year}-${month}-${day}`;
+
+})();
+
 </script>
 
 </body>
 </html>
+
