@@ -12,12 +12,7 @@
 
 <title>Uki Kooking</title>
 
-
 <style>
-
-/* =========================
-   BASIC
-========================= */
 
 * {
   box-sizing: border-box;
@@ -25,85 +20,41 @@
   padding: 0;
 }
 
-
 body {
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
-
   color: white;
 
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      #294d7a,
-      transparent 35%
-    ),
-
-    radial-gradient(
-      circle at 90% 90%,
-      #44366e,
-      transparent 35%
-    ),
-
+    radial-gradient(circle at 10% 10%, #294d7a, transparent 35%),
+    radial-gradient(circle at 90% 90%, #44366e, transparent 35%),
     #0b1020;
 
   display: flex;
-
   flex-direction: column;
-
 }
-
-
-/* =========================
-   HEADER
-========================= */
 
 header {
-
   padding: 22px 8%;
 
-  background:
-    rgba(8, 13, 27, 0.75);
+  background: rgba(8, 13, 27, 0.75);
 
-  backdrop-filter:
-    blur(18px);
+  backdrop-filter: blur(18px);
 
   border-bottom:
-    1px solid
-    rgba(255,255,255,0.08);
-
+    1px solid rgba(255,255,255,0.08);
 }
-
 
 .logo {
-
   font-size: 24px;
-
   font-weight: bold;
-
-  letter-spacing: 0.5px;
-
 }
-
 
 .logo span {
-
   color: #7fb3ff;
-
 }
 
-
-/* =========================
-   MAIN
-========================= */
-
 main {
-
   flex: 1;
 
   display: flex;
@@ -113,14 +64,10 @@ main {
   align-items: center;
 
   padding: 35px 20px;
-
 }
 
-
 .card {
-
   width: 100%;
-
   max-width: 650px;
 
   padding: 45px;
@@ -131,79 +78,46 @@ main {
     rgba(255,255,255,0.055);
 
   border:
-    1px solid
-    rgba(255,255,255,0.09);
+    1px solid rgba(255,255,255,0.09);
 
   border-radius: 30px;
 
-  backdrop-filter:
-    blur(20px);
+  backdrop-filter: blur(20px);
 
   box-shadow:
-    0 25px 70px
-    rgba(0,0,0,0.35);
-
+    0 25px 70px rgba(0,0,0,0.35);
 }
 
-
-/* =========================
-   ICON
-========================= */
-
 .icon {
-
   font-size: 70px;
-
   margin-bottom: 15px;
 
   animation:
     floating 3s ease-in-out infinite;
-
 }
-
 
 @keyframes floating {
 
-  0%,
-  100% {
-
-    transform:
-      translateY(0);
-
+  0%, 100% {
+    transform: translateY(0);
   }
 
   50% {
-
-    transform:
-      translateY(-8px);
-
+    transform: translateY(-8px);
   }
 
 }
 
-
-/* =========================
-   TITLE
-========================= */
-
 h1 {
-
   font-size: 52px;
-
   margin-bottom: 12px;
-
 }
-
 
 h1 span {
-
   color: #7fb3ff;
-
 }
 
-
 .subtitle {
-
   color: #9aa8c2;
 
   font-size: 16px;
@@ -211,27 +125,17 @@ h1 span {
   line-height: 1.6;
 
   margin-bottom: 35px;
-
 }
 
-
-/* =========================
-   FORM
-========================= */
-
 form {
-
   display: flex;
 
   flex-direction: column;
 
   gap: 15px;
-
 }
 
-
 label {
-
   text-align: left;
 
   color: #bdc9dd;
@@ -239,13 +143,10 @@ label {
   font-size: 14px;
 
   margin-top: 5px;
-
 }
-
 
 input,
 select {
-
   width: 100%;
 
   padding: 16px;
@@ -254,8 +155,7 @@ select {
 
   border-radius: 14px;
 
-  background:
-    #12192d;
+  background: #12192d;
 
   color: white;
 
@@ -263,58 +163,45 @@ select {
 
   outline: none;
 
-  transition:
-    0.2s ease;
-
+  transition: 0.2s ease;
 }
-
 
 input::placeholder {
-
   color: #66738b;
-
 }
-
 
 input:focus,
 select:focus {
-
-  background:
-    #151e35;
+  background: #151e35;
 
   box-shadow:
     0 0 0 3px
     rgba(127,179,255,0.25);
-
 }
-
 
 select {
-
   cursor: pointer;
-
 }
 
-
-/* =========================
-   CUSTOM TIP
-========================= */
+/* CUSTOM TIP BOX */
 
 #customTipBox {
-
   display: none;
 
   width: 100%;
-
 }
 
+#customTipBox.show {
+  display: block;
+}
 
-/* =========================
-   BUTTON
-========================= */
+#customTip {
+  width: 100%;
+}
+
+/* BUTTON */
 
 button {
-
   margin-top: 10px;
 
   padding: 17px;
@@ -338,38 +225,22 @@ button {
 
   cursor: pointer;
 
-  transition:
-    0.25s ease;
-
+  transition: 0.25s ease;
 }
 
-
 button:hover {
-
-  transform:
-    translateY(-2px);
+  transform: translateY(-2px);
 
   box-shadow:
     0 12px 30px
     rgba(94,162,255,0.3);
-
 }
-
 
 button:active {
-
-  transform:
-    scale(0.98);
-
+  transform: scale(0.98);
 }
 
-
-/* =========================
-   FOOTER
-========================= */
-
 footer {
-
   padding: 22px;
 
   text-align: center;
@@ -377,48 +248,26 @@ footer {
   color: #66738b;
 
   font-size: 14px;
-
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 600px) {
 
   main {
-
-    padding:
-      20px 15px;
-
+    padding: 20px 15px;
   }
-
 
   .card {
+    padding: 30px 22px;
 
-    padding:
-      30px 22px;
-
-    border-radius:
-      24px;
-
+    border-radius: 24px;
   }
-
 
   h1 {
-
-    font-size:
-      40px;
-
+    font-size: 40px;
   }
 
-
   .icon {
-
-    font-size:
-      60px;
-
+    font-size: 60px;
   }
 
 }
@@ -430,228 +279,158 @@ footer {
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
   <div class="logo">
 
-    🍳 Uki
-    <span>Kooking</span>
+    🍳 Uki <span>Kooking</span>
 
   </div>
 
 </header>
 
 
-
-<!-- =========================
-     MAIN
-========================= -->
-
 <main>
 
-  <div class="card">
+<div class="card">
+
+  <div class="icon">
+    🍽️
+  </div>
+
+  <h1>
+    Uki <span>Kooking</span>
+  </h1>
+
+  <p class="subtitle">
+    Request a meal and choose
+    when you'd like it.
+  </p>
 
 
-    <div class="icon">
+  <form
+    action="http://formspree.io/f/xvkpjaly"
+    method="POST"
+  >
 
-      🍽️
+
+    <label for="name">
+      👤 Your Name
+    </label>
+
+    <input
+      id="name"
+      type="text"
+      name="name"
+      placeholder="Enter your name"
+      maxlength="50"
+      required
+    >
+
+
+    <label for="food">
+      🍔 Food
+    </label>
+
+    <input
+      id="food"
+      type="text"
+      name="food"
+      placeholder="What would you like?"
+      maxlength="100"
+      required
+    >
+
+
+    <label for="date">
+      📅 Date
+    </label>
+
+    <input
+      id="date"
+      type="date"
+      name="date"
+      required
+    >
+
+
+    <label for="time">
+      ⏰ Time
+    </label>
+
+    <input
+      id="time"
+      type="time"
+      name="time"
+      required
+    >
+
+
+    <label for="tip">
+      💸 Tip
+    </label>
+
+    <select
+      id="tip"
+      name="tip"
+    >
+
+      <option value="€0">
+        No tip
+      </option>
+
+      <option value="€1">
+        €1
+      </option>
+
+      <option value="€2">
+        €2
+      </option>
+
+      <option value="€5">
+        €5
+      </option>
+
+      <option value="€10">
+        €10
+      </option>
+
+      <option value="€15">
+        €15
+      </option>
+
+      <option value="custom">
+        Custom Amount
+      </option>
+
+    </select>
+
+
+    <div id="customTipBox">
+
+      <input
+        id="customTip"
+        type="number"
+        name="custom_tip"
+        placeholder="Enter custom amount (€)"
+        min="0"
+        step="0.01"
+      >
 
     </div>
 
 
-    <h1>
+    <button type="submit">
+      Request Meal
+    </button>
 
-      Uki
-      <span>Kooking</span>
 
-    </h1>
+  </form>
 
-
-    <p class="subtitle">
-
-      Request a meal and choose
-      when you'd like it.
-
-    </p>
-
-
-
-    <!-- =========================
-         FORM
-    ========================= -->
-
-    <form
-      action="http://formspree.io/f/xvkpjaly"
-      method="POST"
-    >
-
-
-      <!-- NAME -->
-
-      <label for="name">
-
-        👤 Your Name
-
-      </label>
-
-
-      <input
-        id="name"
-        type="text"
-        name="name"
-        placeholder="Enter your name"
-        maxlength="50"
-        required
-      >
-
-
-
-      <!-- FOOD -->
-
-      <label for="food">
-
-        🍔 Food
-
-      </label>
-
-
-      <input
-        id="food"
-        type="text"
-        name="food"
-        placeholder="What would you like?"
-        maxlength="100"
-        required
-      >
-
-
-
-      <!-- DATE -->
-
-      <label for="date">
-
-        📅 Date
-
-      </label>
-
-
-      <input
-        id="date"
-        type="date"
-        name="date"
-        required
-      >
-
-
-
-      <!-- TIME -->
-
-      <label for="time">
-
-        ⏰ Time
-
-      </label>
-
-
-      <input
-        id="time"
-        type="time"
-        name="time"
-        required
-      >
-
-
-
-      <!-- TIP -->
-
-      <label for="tip">
-
-        💸 Tip
-
-      </label>
-
-
-      <select
-        id="tip"
-        name="tip"
-        onchange="showCustomTip()"
-      >
-
-        <option value="€0">
-          No tip
-        </option>
-
-        <option value="€1">
-          €1
-        </option>
-
-        <option value="€2">
-          €2
-        </option>
-
-        <option value="€5">
-          €5
-        </option>
-
-        <option value="€10">
-          €10
-        </option>
-
-        <option value="€15">
-          €15
-        </option>
-
-        <option value="custom">
-          Custom Amount
-        </option>
-
-      </select>
-
-
-
-      <!-- CUSTOM TIP -->
-
-      <div id="customTipBox">
-
-        <input
-          id="customTip"
-          type="number"
-          name="custom_tip"
-          placeholder="Enter custom amount (€)"
-          min="0"
-          step="0.01"
-        >
-
-      </div>
-
-
-
-      <!-- BUTTON -->
-
-      <button type="submit">
-
-        Request Meal
-
-      </button>
-
-
-    </form>
-
-
-  </div>
+</div>
 
 </main>
 
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -660,38 +439,49 @@ footer {
 </footer>
 
 
-
 <script>
 
-/* =========================
-   CUSTOM TIP FUNCTION
-========================= */
+const tip =
+  document.getElementById("tip");
 
-function showCustomTip() {
+const customBox =
+  document.getElementById("customTipBox");
 
-  const tip =
-    document.getElementById("tip");
-
-  const box =
-    document.getElementById("customTipBox");
-
-  const custom =
-    document.getElementById("customTip");
+const customInput =
+  document.getElementById("customTip");
 
 
-  if (tip.value === "custom") {
+tip.addEventListener("change", function() {
 
-    box.style.display =
-      "block";
+  if (this.value === "custom") {
 
-    custom.required =
-      true;
+    customBox.classList.add("show");
+
+    customInput.required = true;
+
+    setTimeout(function() {
+
+      customInput.focus();
+
+    }, 100);
 
   }
 
   else {
 
-    box.style.display =
-      "none";
+    customBox.classList.remove("show");
 
-    custom.required =
+    customInput.required = false;
+
+    customInput.value = "";
+
+  }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
