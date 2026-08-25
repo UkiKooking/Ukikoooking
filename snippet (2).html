@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uki Kooking — Order</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --card: #121212;
+    --card2: #181818;
+    --border: #252525;
+    --gold: #d4af37;
+    --gold2: #f0d060;
+    --gold3: #a07820;
+    --text: #f0ead6;
+    --muted: #7a7060;
+    --muted2: #4a4438;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-layer {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 10%, rgba(212,175,55,.08), transparent),
+      radial-gradient(ellipse 50% 50% at 85% 80%, rgba(212,175,55,.05), transparent);
+  }
+
+  .crowns-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .crown-particle {
+    position: absolute; font-size: 1.1rem; opacity: 0;
+    animation: crownFall linear infinite;
+  }
+  @keyframes crownFall {
+    0%   { opacity: 0; transform: translateY(-30px) rotate(0deg); }
+    10%  { opacity: .15; }
+    90%  { opacity: .08; }
+    100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 22px; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,175,55,.12);
+    padding: 14px 0;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.4rem; font-weight: 700; letter-spacing: .03em; color: var(--gold);
+    text-shadow: 0 0 30px rgba(212,175,55,.35);
+  }
+  .crown-logo { font-size: 1.55rem; animation: crownBob 3s ease-in-out infinite; display: inline-block; }
+  @keyframes crownBob { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-5px) rotate(5deg)} }
+
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-badge {
+    background: rgba(212,175,55,.08); border: 1px solid rgba(212,175,55,.2);
+    color: var(--gold3); padding: 7px 16px; border-radius: 8px;
+    font-size: .82rem; font-family: inherit; letter-spacing: .04em;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .order-count-btn {
+    background: rgba(212,175,55,.1); border: 1px solid rgba(212,175,55,.25);
+    color: var(--gold); padding: 8px 18px; border-radius: 8px;
+    font-size: .88rem; font-family: inherit; font-weight: 600; cursor: pointer;
+    transition: background .2s, transform .2s; display: none; align-items: center; gap: 6px;
+  }
+  .order-count-btn:hover { background: rgba(212,175,55,.18); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { padding: 72px 0 52px; text-align: center; }
+  .hero-crown { font-size: 3.8rem; display: block; margin-bottom: 12px; animation: crownBob 3s ease-in-out infinite; }
+  .hero h1 {
+    font-size: clamp(2rem, 5.5vw, 3.8rem); font-weight: 700;
+    color: var(--gold); letter-spacing: .04em;
+    text-shadow: 0 0 60px rgba(212,175,55,.25);
+    animation: fadeUp .7s ease both;
+  }
+  .hero h1 .thin { font-weight: 400; color: var(--text); }
+  .hero-ornament {
+    display: flex; align-items: center; justify-content: center; gap: 16px; margin: 16px 0;
+  }
+  .hero-ornament::before,.hero-ornament::after {
+    content:''; flex:1; max-width:130px; height:1px;
+    background: linear-gradient(90deg,transparent,var(--gold3));
+  }
+  .hero-ornament::after { background: linear-gradient(90deg,var(--gold3),transparent); }
+  .hero-ornament span { color: var(--muted); font-size: .88rem; letter-spacing: .1em; font-style: italic; }
+  .hero p { color: var(--muted); font-size: .98rem; font-style: italic; animation: fadeUp .7s .15s ease both; }
+
+  /* PROMISE STRIP */
+  .promise-strip {
+    display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+    margin: 36px 0 0; animation: fadeUp .7s .3s ease both;
+  }
+  .promise-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 24px; border: 1px solid rgba(212,175,55,.1);
+    background: rgba(212,175,55,.04);
+    font-size: .82rem; color: var(--muted); letter-spacing: .04em;
+  }
+  .promise-item:first-child { border-radius: 10px 0 0 10px; }
+  .promise-item:last-child  { border-radius: 0 10px 10px 0; }
+  .promise-item .pi { font-size: 1rem; }
+
+  /* STEPS */
+  .progress-bar {
+    display: flex; align-items: center; justify-content: center;
+    margin: 50px 0 42px; animation: fadeUp .6s .2s ease both;
+  }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
+  .step-circle {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 2px solid var(--border); background: var(--card);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .88rem; font-weight: 700; color: var(--muted);
+    transition: all .35s;
+  }
+  .step.active .step-circle { border-color: var(--gold); background: rgba(212,175,55,.1); color: var(--gold); box-shadow: 0 0 22px rgba(212,175,55,.3); }
+  .step.done   .step-circle { border-color: var(--gold); background: var(--gold); color: #0a0a0a; }
+  .step-label { font-size: .7rem; color: var(--muted); white-space: nowrap; letter-spacing: .06em; text-transform: uppercase; }
+  .step.active .step-label { color: var(--gold); }
+  .step.done   .step-label { color: var(--gold3); }
+  .step-line { width: 70px; height: 1px; background: var(--border); margin-bottom: 24px; transition: background .35s; }
+  .step-line.done { background: var(--gold3); }
+
+  /* SECTIONS */
+  .section { display: none; animation: fadeUp .4s ease both; }
+  .section.active { display: block; }
+
+  .sec-head { margin-bottom: 28px; text-align: center; }
+  .sec-head h2 { font-size: 1.55rem; font-weight: 700; color: var(--gold); letter-spacing: .03em; }
+  .sec-head p  { color: var(--muted); font-size: .88rem; margin-top: 7px; font-style: italic; }
+  .ornament {
+    display: flex; align-items: center; gap: 12px; justify-content: center; margin-bottom: 30px;
+  }
+  .ornament::before,.ornament::after {
+    content:''; flex:1; max-width:150px; height:1px;
+    background: linear-gradient(90deg,transparent,rgba(212,175,55,.25));
+  }
+  .ornament::after { background: linear-gradient(90deg,rgba(212,175,55,.25),transparent); }
+  .ornament span { font-size: .85rem; color: var(--muted2); }
+
+  /* STEP 1 */
+  .food-wrap { max-width: 620px; margin: 0 auto; }
+
+  .added-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+  .added-item {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--card); border: 1px solid rgba(212,175,55,.14);
+    border-radius: 10px; padding: 14px 18px;
+    animation: fadeUp .3s ease both;
+  }
+  .added-item .iname { font-size: .95rem; font-weight: 600; }
+  .rm-btn { background: none; border: none; color: var(--muted2); font-size: 1rem; cursor: pointer; padding: 4px 8px; transition: color .2s; }
+  .rm-btn:hover { color: #b05555; }
+
+  .input-card {
+    background: var(--card); border: 1px solid rgba(212,175,55,.18);
+    border-radius: 16px; padding: 28px; margin-bottom: 16px;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .input-card:focus-within { border-color: rgba(212,175,55,.42); box-shadow: 0 0 40px rgba(212,175,55,.07); }
+  .input-card label { display: block; font-size: .75rem; color: var(--gold3); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+  .input-card textarea {
+    width: 100%; background: transparent; border: none; color: var(--text);
+    font-family: 'Georgia', serif; font-size: 1.02rem; resize: none;
+    outline: none; line-height: 1.75; min-height: 90px;
+  }
+  .input-card textarea::placeholder { color: var(--muted2); font-style: italic; }
+
+  .quick-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--border);
+    align-items: center;
+  }
+  .quick-label { font-size: .72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: .08em; }
+  .qtag {
+    padding: 5px 13px; border-radius: 6px; border: 1px solid var(--border);
+    background: transparent; color: var(--muted); font-size: .8rem;
+    cursor: pointer; transition: all .2s; font-family: inherit;
+  }
+  .qtag:hover { border-color: rgba(212,175,55,.35); color: var(--gold2); }
+
+  .add-btn-wide {
+    width: 100%; background: rgba(212,175,55,.07); border: 1px dashed rgba(212,175,55,.22);
+    color: var(--gold3); padding: 13px; border-radius: 10px; font-size: .9rem;
+    font-family: inherit; cursor: pointer; transition: all .2s; letter-spacing: .04em;
+  }
+  .add-btn-wide:hover { background: rgba(212,175,55,.12); border-color: rgba(212,175,55,.4); color: var(--gold); }
+
+  /* STEP 2 */
+  .qty-list { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 13px; }
+  .qty-row {
+    background: var(--card); border: 1px solid rgba(212,175,55,.12);
+    border-radius: 13px; padding: 18px 22px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .qty-crown { font-size: 1.3rem; }
+  .qty-info  { flex: 1; }
+  .qty-info .nm { font-weight: 600; font-size: .96rem; }
+  .qty-controls { display: flex; align-items: center; gap: 14px; }
+  .qbtn {
+    width: 36px; height: 36px; border-radius: 8px;
+    border: 1px solid rgba(212,175,55,.2); background: transparent;
+    color: var(--gold); font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, transform .15s; font-family: inherit;
+  }
+  .qbtn:hover { background: rgba(212,175,55,.12); transform: scale(1.08); }
+  .qnum { font-size: 1.1rem; font-weight: 700; min-width: 26px; text-align: center; color: var(--gold2); }
+  .qsub { font-size: .82rem; color: var(--muted); font-style: italic; min-width: 70px; text-align: right; }
+
+  .spec-block { max-width: 620px; margin: 26px auto 0; }
+  .sub-label  { font-size: .75rem; color: var(--gold3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 11px; display: block; }
+  .chips      { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    padding: 7px 14px; border-radius: 7px; border: 1px solid var(--border);
+    background: var(--card); font-size: .81rem; color: var(--muted);
+    cursor: pointer; transition: all .2s; font-family: inherit;
+  }
+  .chip:hover  { border-color: rgba(212,175,55,.3); color: var(--text); }
+  .chip.active { background: rgba(212,175,55,.09); border-color: rgba(212,175,55,.38); color: var(--gold2); }
+
+  /* STEP 3 */
+  .time-wrap { max-width: 680px; margin: 0 auto; }
+  .date-row  { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 26px; }
+  .date-chip {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 18px; cursor: pointer; transition: all .2s; text-align: center; min-width: 72px;
+  }
+  .date-chip .dy  { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .date-chip .dn  { font-size: 1.1rem; font-weight: 700; margin-top: 3px; }
+  .date-chip:hover { border-color: rgba(212,175,55,.3); }
+  .date-chip.active { background: rgba(212,175,55,.09); border-color: rgba(212,175,55,.42); color: var(--gold); }
+  .date-chip.active .dy { color: rgba(212,175,55,.55); }
+
+  .time-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px,1fr)); gap: 9px; }
+  .time-chip {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; transition: all .2s;
+  }
+  .time-chip .tt { font-size: .96rem; font-weight: 700; }
+  .time-chip .ta { font-size: .7rem; color: var(--muted); margin-top: 3px; }
+  .time-chip:hover:not(.sold) { border-color: rgba(212,175,55,.32); }
+  .time-chip.active { background: rgba(212,175,55,.09); border-color: rgba(212,175,55,.42); color: var(--gold); }
+  .time-chip.sold   { opacity: .38; pointer-events: none; }
+  .sold-t { color: #a05555; }
+
+  /* STEP 4 */
+  .details-wrap { max-width: 680px; margin: 0 auto; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .fg { display: flex; flex-direction: column; gap: 7px; }
+  .fg.full { grid-column: 1/-1; }
+  .fg label { font-size: .74rem; color: var(--gold3); letter-spacing: .1em; text-transform: uppercase; }
+  .fg input, .fg textarea, .fg select {
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    padding: 11px 15px; border-radius: 10px; font-size: .94rem;
+    font-family: 'Georgia', serif; outline: none; transition: border-color .2s;
+  }
+  .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: rgba(212,175,55,.42); }
+  .fg input::placeholder, .fg textarea::placeholder { color: var(--muted2); font-style: italic; }
+  .fg textarea { resize: vertical; min-height: 78px; }
+  .fg select option { background: #181818; }
+
+  /* ADDRESS NOTE */
+  .addr-note {
+    background: rgba(212,175,55,.05); border: 1px solid rgba(212,175,55,.12);
+    border-radius: 10px; padding: 13px 16px; margin-bottom: 22px;
+    display: flex; align-items: flex-start; gap: 10px; font-size: .85rem; color: var(--muted);
+    font-style: italic;
+  }
+  .addr-note .icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* TIP */
+  .tip-box { margin-top: 28px; }
+  .tip-box h3 { font-size: .75rem; color: var(--gold3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+  .tip-box p  { color: var(--muted); font-size: .84rem; margin-bottom: 13px; font-style: italic; }
+  .tip-row { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 13px; }
+  .tip-opt {
+    padding: 9px 20px; border-radius: 9px; border: 1px solid var(--border);
+    background: var(--card); color: var(--muted); font-size: .88rem; font-weight: 600;
+    cursor: pointer; transition: all .2s; font-family: inherit;
+  }
+  .tip-opt:hover  { border-color: rgba(212,175,55,.28); color: var(--text); }
+  .tip-opt.active { background: rgba(212,175,55,.09); border-color: rgba(212,175,55,.42); color: var(--gold2); }
+  .tip-custom { display: flex; align-items: center; gap: 10px; }
+  .tip-custom span { color: var(--muted); font-size: .88rem; }
+  .tip-custom input {
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    padding: 9px 13px; border-radius: 9px; font-size: .93rem; width: 100px;
+    outline: none; font-family: inherit; transition: border-color .2s;
+  }
+  .tip-custom input:focus { border-color: rgba(212,175,55,.42); }
+
+  /* PROMO */
+  .promo-box { margin-top: 22px; }
+  .promo-row { display: flex; gap: 9px; }
+  .promo-row input {
+    flex: 1; background: var(--card); border: 1px solid var(--border); color: var(--text);
+    padding: 11px 15px; border-radius: 10px; font-size: .93rem;
+    font-family: inherit; outline: none; transition: border-color .2s;
+  }
+  .promo-row input:focus { border-color: rgba(212,175,55,.42); }
+  .promo-row input::placeholder { color: var(--muted2); font-style: italic; }
+  .promo-btn {
+    background: rgba(212,175,55,.07); border: 1px solid rgba(212,175,55,.2);
+    color: var(--gold3); padding: 11px 20px; border-radius: 10px;
+    font-size: .88rem; font-family: inherit; font-weight: 600; cursor: pointer; transition: all .2s;
+  }
+  .promo-btn:hover { background: rgba(212,175,55,.14); color: var(--gold); }
+  .promo-msg { font-size: .8rem; margin-top: 8px; font-style: italic; }
+  .promo-msg.ok  { color: #7fb87f; }
+  .promo-msg.err { color: #b07070; }
+
+  /* SUMMARY */
+  .det-grid { display: grid; grid-template-columns: 1fr 290px; gap: 26px; align-items: start; }
+  .summary-card {
+    background: var(--card); border: 1px solid rgba(212,175,55,.14);
+    border-radius: 15px; padding: 22px; position: sticky; top: 82px;
+  }
+  .summary-card h3 { font-size: .72rem; color: var(--gold3); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; }
+  .si { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: .86rem; }
+  .si:last-of-type { border-bottom: none; }
+  .si .l { color: var(--muted); font-style: italic; }
+  .si .v { font-weight: 600; }
+  .stot { display: flex; justify-content: space-between; padding: 14px 0 0; border-top: 1px solid rgba(212,175,55,.18); margin-top: 6px; }
+  .stot .l { font-weight: 700; font-size: .95rem; color: var(--gold3); }
+  .stot .v { font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+
+  /* BUTTONS */
+  .btn-row { display: flex; gap: 11px; margin-top: 34px; justify-content: flex-end; flex-wrap: wrap; }
+  .btn-back {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    padding: 12px 26px; border-radius: 10px; font-size: .9rem;
+    font-family: inherit; font-weight: 600; cursor: pointer; transition: all .2s;
+  }
+  .btn-back:hover { border-color: rgba(212,175,55,.28); color: var(--text); }
+  .btn-next {
+    background: linear-gradient(135deg, var(--gold3), var(--gold));
+    color: #0a0a0a; border: none; padding: 12px 32px; border-radius: 10px;
+    font-size: .92rem; font-family: inherit; font-weight: 700; cursor: pointer;
+    transition: transform .2s, box-shadow .2s; letter-spacing: .04em;
+    box-shadow: 0 6px 28px rgba(212,175,55,.22);
+  }
+  .btn-next:hover { transform: translateY(-2px); box-shadow: 0 10px 38px rgba(212,175,55,.38); }
+
+  /* CONFIRM */
+  .confirm-box { text-align: center; padding: 56px 0; }
+  .confirm-crowns { font-size: 2.8rem; letter-spacing: .25em; animation: fadeDown .5s ease both; }
+  .confirm-icon { font-size: 4.5rem; display: block; margin: 14px 0; animation: popIn .55s cubic-bezier(.36,1.8,.4,1) both; }
+  @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
+  .confirm-box h2 { font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 10px; letter-spacing: .04em; }
+  .confirm-box p  { color: var(--muted); font-size: .96rem; font-style: italic; }
+  .order-id {
+    background: var(--card); border: 1px solid rgba(212,175,55,.22); border-radius: 10px;
+    display: inline-block; padding: 10px 30px; margin: 18px 0;
+    font-weight: 700; font-size: 1.02rem; letter-spacing: .1em; color: var(--gold2);
+  }
+  .track-bar { display: flex; justify-content: center; margin: 32px 0; flex-wrap: wrap; }
+  .track-step { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .track-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--card2); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .track-step.done .track-icon { background: rgba(212,175,55,.1); border-color: var(--gold3); }
+  .track-label { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .track-line { width: 55px; height: 1px; background: var(--border); margin-bottom: 26px; }
+  .track-line.done { background: var(--gold3); }
+  .eta-box {
+    background: rgba(212,175,55,.05); border: 1px solid rgba(212,175,55,.18);
+    border-radius: 13px; padding: 18px 38px; display: inline-block; margin-top: 8px;
+  }
+  .eta-time  { font-size: 2rem; font-weight: 700; color: var(--gold); }
+  .eta-label { color: var(--muted); font-size: .83rem; margin-top: 3px; font-style: italic; }
+
+  .divider { height: 1px; background: var(--border); margin: 22px 0; }
+  .empty-state { text-align: center; padding: 38px 0; color: var(--muted); font-style: italic; }
+  .empty-state .ec { font-size: 2.2rem; display: block; margin-bottom: 10px; opacity: .35; }
+
+  @keyframes fadeUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:translateY(0)} }
+  .fade-in { opacity:0; transform:translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:780px) {
+    .det-grid { grid-template-columns: 1fr; }
+    .summary-card { position: static; }
+    .form-grid { grid-template-columns: 1fr; }
+    .step-line { width: 34px; }
+    .promise-item:not(:first-child):not(:last-child) { display: none; }
+  }
+  @media(max-width:480px) {
+    .step-label { display: none; }
+    .step-line  { width: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="crowns-bg" id="crownsBg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <div class="logo">
+      <span class="crown-logo">👑</span>
+      Uki Kooking
+    </div>
+    <div class="nav-right">
+      <div class="nav-badge"><span>🏠</span> Straight to your door</div>
+      <div class="order-count-btn" id="orderBtn" onclick="goToStep(2)">
+        👑 <span id="orderBtnText">0 items</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-crown">👑</span>
+    <h1>Uki <span class="thin">Kooking</span></h1>
+    <div class="hero-ornament"><span>Royal Flavours, Straight to Your Door</span></div>
+    <p>Tell us what you'd like — we prepare it and bring it right to you.</p>
+    <div class="promise-strip">
+      <div class="promise-item"><span class="pi">👑</span> Royal quality</div>
+      <div class="promise-item"><span class="pi">🏠</span> Door to door</div>
+      <div class="promise-item"><span class="pi">✨</span> Made fresh</div>
+      <div class="promise-item"><span class="pi">🚫</span> No extra fees</div>
+    </div>
+  </section>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar">
+    <div class="step active" id="si1" onclick="goToStep(1)">
+      <div class="step-circle">👑</div>
+      <div class="step-label">Your Food</div>
+    </div>
+    <div class="step-line" id="line1"></div>
+    <div class="step" id="si2" onclick="goToStep(2)">
+      <div class="step-circle">2</div>
+      <div class="step-label">Quantity</div>
+    </div>
+    <div class="step-line" id="line2"></div>
+    <div class="step" id="si3" onclick="goToStep(3)">
+      <div class="step-circle">3</div>
+      <div class="step-label">Time</div>
+    </div>
+    <div class="step-line" id="line3"></div>
+    <div class="step" id="si4">
+      <div class="step-circle">4</div>
+      <div class="step-label">Details</div>
+    </div>
+    <div class="step-line" id="line4"></div>
+    <div class="step" id="si5">
+      <div class="step-circle">5</div>
+      <div class="step-label">Confirm</div>
+    </div>
+  </div>
+
+  <!-- ── STEP 1 ── -->
+  <div class="section active" id="sec1">
+    <div class="sec-head fade-in">
+      <h2>👑 What shall we prepare?</h2>
+      <p>Type any dish you'd like — our kitchen handles everything else.</p>
+    </div>
+    <div class="ornament fade-in"><span>✦ ✦ ✦</span></div>
+
+    <div class="food-wrap">
+      <div class="added-items" id="addedItems"></div>
+
+      <div class="input-card fade-in">
+        <label>Dish name or description</label>
+        <textarea id="foodInput" rows="3" placeholder="e.g. Slow-cooked beef short rib with mash… or just Grilled salmon…"></textarea>
+        <div class="quick-row">
+          <span class="quick-label">Quick add →</span>
+          <button class="qtag" onclick="quickAdd('Grilled Chicken')">Grilled Chicken</button>
+          <button class="qtag" onclick="quickAdd('Butter Pasta')">Butter Pasta</button>
+          <button class="qtag" onclick="quickAdd('Beef Steak')">Beef Steak</button>
+          <button class="qtag" onclick="quickAdd('Lamb Curry')">Lamb Curry</button>
+          <button class="qtag" onclick="quickAdd('Salmon Fillet')">Salmon Fillet</button>
+          <button class="qtag" onclick="quickAdd('Veggie Bowl')">Veggie Bowl</button>
+          <button class="qtag" onclick="quickAdd('Chocolate Cake')">Chocolate Cake</button>
+        </div>
+      </div>
+
+      <button class="add-btn-wide fade-in" onclick="addItem()">+ Add to Order</button>
+
+      <div class="btn-row">
+        <button class="btn-next" onclick="goToStep(2)">Next: Quantities →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2 ── -->
+  <div class="section" id="sec2">
+    <div class="sec-head">
+      <h2>👑 How many of each?</h2>
+      <p>Set your portions and any special prep notes.</p>
+    </div>
+    <div class="ornament"><span>✦ ✦ ✦</span></div>
+
+    <div class="qty-list" id="qtyList"></div>
+
+    <div class="spec-block">
+      <span class="sub-label">Special preparation</span>
+      <div class="chips">
+        <div class="chip" onclick="this.classList.toggle('active')">Extra spicy 🌶</div>
+        <div class="chip" onclick="this.classList.toggle('active')">No onions</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Gluten-free</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Extra sauce</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Less salt</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Dairy-free</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Well done</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Halal</div>
+        <div class="chip" onclick="this.classList.toggle('active')">Vegan</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+      <button class="btn-next" onclick="goToStep(3)">Next: Choose Time →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3 ── -->
+  <div class="section" id="sec3">
+    <div class="sec-head">
+      <h2>👑 When shall it arrive?</h2>
+      <p>Pick a date and time — we'll be at your door.</p>
+    </div>
+    <div class="ornament"><span>✦ ✦ ✦</span></div>
+
+    <div class="time-wrap">
+      <span class="sub-label">Select date</span>
+      <div class="date-row" id="dateRow"></div>
+      <span class="sub-label">Select time</span>
+      <div class="time-grid" id="timeGrid"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+      <button class="btn-next" onclick="goToStep(4)">Next: Your Details →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4 ── -->
+  <div class="section" id="sec4">
+    <div class="sec-head">
+      <h2>👑 Your Royal Details</h2>
+      <p>Where shall we send your feast?</p>
+    </div>
+    <div class="ornament"><span>✦ ✦ ✦</span></div>
+
+    <div class="det-grid">
+      <div class="details-wrap">
+
+        <div class="addr-note">
+          <span class="icon">🏠</span>
+          Your order comes straight to your door — just give us your address below and we handle everything.
+        </div>
+
+        <div class="form-grid">
+          <div class="fg">
+            <label>First name</label>
+            <input type="text" id="fname" placeholder="Your name…">
+          </div>
+          <div class="fg">
+            <label>Last name</label>
+            <input type="text" id="lname" placeholder="Your surname…">
+          </div>
+          <div class="fg">
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="+1 555 0000">
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="your@email.com">
+          </div>
+          <div class="fg full">
+            <label>Delivery address</label>
+            <input type="text" id="address" placeholder="123 Royal Street…">
+          </div>
+          <div class="fg">
+            <label>City</label>
+            <input type="text" id="city" placeholder="City…">
+          </div>
+          <div class="fg">
+            <label>ZIP / Postcode</label>
+            <input type="text" id="zip" placeholder="10001">
+          </div>
+          <div class="fg full">
+            <label>Gate code / entry notes (optional)</label>
+            <textarea id="notes" placeholder="Buzz apartment 4, leave at door, call on arrival…"></textarea>
+          </div>
+          <div class="fg full">
+            <label>Payment</label>
+            <select id="payment">
+              <option value="">Choose payment…</option>
+              <option>💳 Credit / Debit card</option>
+              <option>📱 Apple Pay</option>
+              <option>📱 Google Pay</option>
+              <option>💵 Cash on delivery</option>
+              <option>🅿 PayPal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- TIP -->
+        <div class="tip-box">
+          <h3>Crown your chef 👑</h3>
+          <p>100% goes directly to the person who cooked and delivered your meal.</p>
+          <div class="tip-row">
+            <div class="tip-opt" onclick="setTip(0,this)">No tip</div>
+            <div class="tip-opt" onclick="setTip(1,this)">$1</div>
+            <div class="tip-opt active" onclick="setTip(2,this)">$2</div>
+            <div class="tip-opt" onclick="setTip(3,this)">$3</div>
+            <div class="tip-opt" onclick="setTip(5,this)">$5</div>
+            <div class="tip-opt" onclick="setTip(10,this)">$10 👑</div>
+          </div>
+          <div class="tip-custom">
+            <span>Custom:</span>
+            <input type="number" id="customTip" placeholder="$0.00" min="0" step="0.50" oninput="setCustomTip(this.value)">
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- PROMO -->
+        <div class="promo-box">
+          <span class="sub-label">Promo code 👑</span>
+          <div class="promo-row">
+            <input type="text" id="promoInput" placeholder="Enter your royal code…">
+            <button class="promo-btn" onclick="applyPromo()">Apply</button>
+          </div>
+          <div class="promo-msg" id="promoMsg"></div>
+        </div>
+
+      </div>
+
+      <!-- SUMMARY SIDEBAR -->
+      <div>
+        <div class="summary-card" id="summaryCard"></div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goToStep(3)">← Back</button>
+      <button class="btn-next" onclick="placeOrder()">👑 Place Royal Order</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 5 ── -->
+  <div class="section" id="sec5">
+    <div class="confirm-box">
+      <div class="confirm-crowns">👑 👑 👑</div>
+      <span class="confirm-icon">✨</span>
+      <h2>Order Received!</h2>
+      <p>Your royal feast is being prepared and will arrive at your door.</p>
+      <div class="order-id" id="orderIdBox">#UK-000000</div>
+
+      <div class="track-bar">
+        <div class="track-step done">
+          <div class="track-icon">👑</div>
+          <div class="track-label">Confirmed</div>
+        </div>
+        <div class="track-line done"></div>
+        <div class="track-step done">
+          <div class="track-icon">👨‍🍳</div>
+          <div class="track-label">Preparing</div>
+        </div>
+        <div class="track-line"></div>
+        <div class="track-step">
+          <div class="track-icon">🚗</div>
+          <div class="track-label">On the way</div>
+        </div>
+        <div class="track-line"></div>
+        <div class="track-step">
+          <div class="track-icon">🏠</div>
+          <div class="track-label">At your door</div>
+        </div>
+      </div>
+
+      <div class="eta-box">
+        <div class="eta-time" id="etaTime">~30 min</div>
+        <div class="eta-label">Arriving at your door</div>
+      </div>
+
+      <div style="margin-top:38px">
+        <button class="btn-next" onclick="resetOrder()">👑 Place Another Order</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── CROWNS ────────────────────────────────────────
+(function(){
+  const c = document.getElementById('crownsBg');
+  for(let i=0;i<20;i++){
+    const el = document.createElement('div');
+    el.className = 'crown-particle';
+    el.textContent = '👑';
+    el.style.left   = Math.random()*100+'vw';
+    el.style.top    = Math.random()*100+'vh';
+    el.style.fontSize = (.55+Math.random()*.85)+'rem';
+    el.style.animationDuration = (14+Math.random()*16)+'s';
+    el.style.animationDelay   = (-Math.random()*22)+'s';
+    c.appendChild(el);
+  }
+})();
+
+// ── STATE ─────────────────────────────────────────
+let items      = [];
+let quantities = {};
+let selDate    = null;
+let selTime    = null;
+let tipAmt     = 2;
+let discount   = 0;
+const PROMOS   = { 'ROYAL10':10, 'UKI20':20, 'CROWN15':15 };
+
+// ── STEP 1 ────────────────────────────────────────
+function addItem(){
+  const inp = document.getElementById('foodInput');
+  const v   = inp.value.trim();
+  if(!v){ inp.focus(); return; }
+  items.push(v);
+  inp.value = '';
+  renderAdded();
+  updateNav();
+}
+
+function quickAdd(name){
+  items.push(name);
+  renderAdded();
+  updateNav();
+}
+
+function removeItem(i){
+  items.splice(i,1);
+  const nq={};
+  Object.keys(quantities).forEach(k=>{
+    const ki=+k;
+    if(ki<i) nq[ki]=quantities[ki];
+    else if(ki>i) nq[ki-1]=quantities[ki];
+  });
+  quantities=nq;
+  renderAdded();
+  updateNav();
+}
+
+function renderAdded(){
+  const el=document.getElementById('addedItems');
+  el.innerHTML = items.map((name,i)=>`
+    <div class="added-item">
+      <div class="iname">👑 ${name}</div>
+      <button class="rm-btn" onclick="removeItem(${i})">✕</button>
+    </div>`).join('');
+}
+
+function updateNav(){
+  const btn = document.getElementById('orderBtn');
+  const txt = document.getElementById('orderBtnText');
+  const n   = items.length;
+  txt.textContent = n + (n===1?' item':' items');
+  btn.style.display = n>0 ? 'flex' : 'none';
+}
+
+// ── STEP 2 ────────────────────────────────────────
+function renderQty(){
+  const list = document.getElementById('qtyList');
+  if(!items.length){
+    list.innerHTML=`<div class="empty-state"><span class="ec">👑</span>Nothing added yet. <a href="#" onclick="goToStep(1);return false" style="color:var(--gold)">Go back and add your dishes.</a></div>`;
+    return;
+  }
+  items.forEach((_,i)=>{ if(!quantities[i]) quantities[i]=1; });
+  list.innerHTML = items.map((name,i)=>`
+    <div class="qty-row">
+      <div class="qty-crown">👑</div>
+      <div class="qty-info"><div class="nm">${name}</div></div>
+      <div class="qty-controls">
+        <button class="qbtn" onclick="changeQty(${i},-1)">−</button>
+        <div class="qnum" id="qn${i}">${quantities[i]}</div>
+        <button class="qbtn" onclick="changeQty(${i},1)">+</button>
+      </div>
+      <div class="qsub" id="qs${i}">${quantities[i]} portion${quantities[i]>1?'s':''}</div>
+    </div>`).join('');
+}
+
+function changeQty(i,d){
+  quantities[i] = Math.max(1,(quantities[i]||1)+d);
+  document.getElementById('qn'+i).textContent = quantities[i];
+  document.getElementById('qs'+i).textContent = quantities[i]+' portion'+(quantities[i]>1?'s':'');
+}
+
+// ── STEP 3 ────────────────────────────────────────
+function renderDates(){
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const now=new Date();
+  document.getElementById('dateRow').innerHTML=Array.from({length:7},(_,i)=>{
+    const d=new Date(now); d.setDate(now.getDate()+i);
+    const key=d.toDateString();
+    const lbl=i===0?'Today':i===1?'Tomorrow':DAYS[d.getDay()];
+    return `<div class="date-chip ${selDate===key?'active':''}" onclick="setDate('${key}',this)">
+      <div class="dy">${lbl}</div><div class="dn">${d.getDate()}</div>
+    </div>`;
+  }).join('');
+}
+
+function setDate(key,el){
+  selDate=key;
+  document.querySelectorAll('.date-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function renderTimes(){
+  const TIMES=['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','14:00','15:00','16:00','17:00','18:00','18:30','19:00','19:30','20:00'];
+  const SOLD=['10:30','12:00','18:30'];
+  document.getElementById('timeGrid').innerHTML=TIMES.map(t=>{
+    const s=SOLD.includes(t);
+    return `<div class="time-chip ${s?'sold':''} ${selTime===t?'active':''}" onclick="${s?'':'setTime(\''+t+'\')'}">
+      <div class="tt">${t}</div>
+      <div class="ta">${s?'<span class="sold-t">Full</span>':'✓ Free'}</div>
+    </div>`;
+  }).join('');
+}
+
+function setTime(t){ selTime=t; renderTimes(); }
+
+// ── TIP / PROMO ───────────────────────────────────
+function setTip(amt,el){
+  tipAmt=amt;
+  document.querySelectorAll('.tip-opt').forEach(o=>o.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('customTip').value='';
+  renderSummary();
+}
+function setCustomTip(v){
+  tipAmt=parseFloat(v)||0;
+  document.querySelectorAll('.tip-opt').forEach(o=>o.classList.remove('active'));
+  renderSummary();
+}
+function applyPromo(){
+  const code=document.getElementById('promoInput').value.trim().toUpperCase();
+  const msg=document.getElementById('promoMsg');
+  if(PROMOS[code]){
+    discount=PROMOS[code];
+    msg.className='promo-msg ok';
+    msg.textContent=`✓ "${code}" applied — ${discount}% off!`;
+  } else {
+    discount=0;
+    msg.className='promo-msg err';
+    msg.textContent='✗ Invalid code. Try ROYAL10, CROWN15 or UKI20.';
+  }
+  renderSummary();
+}
+
+// ── SUMMARY ───────────────────────────────────────
+function renderSummary(){
+  const totalP=Object.values(quantities).reduce((a,b)=>a+b,0)||items.length;
+  const discNote=discount?`<div class="si"><span class="l">Discount (${discount}%)</span><span class="v" style="color:#7fb87f">Applied ✓</span></div>`:'';
+  const rows=items.map((name,i)=>`
+    <div class="si"><span class="l">👑 ${name}</span><span class="v">${quantities[i]||1}×</span></div>`).join('')
+    ||`<div style="color:var(--muted2);font-size:.82rem;font-style:italic">No items yet</div>`;
+
+  document.getElementById('summaryCard').innerHTML=`
+    <h3>👑 Your Order</h3>
+    ${rows}
+    <div style="height:1px;background:var(--border);margin:10px 0"></div>
+    <div class="si"><span class="l">Total portions</span><span class="v">${totalP}</span></div>
+    ${discNote}
+    <div class="si"><span class="l">Delivery</span><span class="v" style="color:#7fb87f">FREE 🏠</span></div>
+    <div class="si"><span class="l">Chef tip 👑</span><span class="v">$${tipAmt.toFixed(2)}</span></div>
+    ${selDate?`<div class="si"><span class="l">Date</span><span class="v">${selDate}</span></div>`:''}
+    ${selTime?`<div class="si"><span class="l">Time</span><span class="v">${selTime}</span></div>`:''}
+    <div class="stot"><span class="l">Delivery fee</span><span class="v" style="color:#7fb87f">$0.00</span></div>
+    <div style="font-size:.71rem;color:var(--muted2);margin-top:10px;text-align:center;font-style:italic">Final price confirmed by kitchen 👑</div>
+  `;
+}
+
+// ── STEPS ─────────────────────────────────────────
+function goToStep(n){
+  if(n===2) renderQty();
+  if(n===3){ renderDates(); renderTimes(); }
+  if(n===4) renderSummary();
+  for(let i=1;i<=5;i++){
+    document.getElementById('sec'+i)?.classList.toggle('active',i===n);
+    const si=document.getElementById('si'+i); if(!si) continue;
+    si.classList.remove('active','done');
+    if(i<n) si.classList.add('done');
+    if(i===n) si.classList.add('active');
+    const circle=si.querySelector('.step-circle');
+    circle.textContent=i<n?'✓':i===1?'👑':String(i);
+    const line=document.getElementById('line'+i);
+    if(line) line.classList.toggle('done',i<n);
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+  observeFadeIns();
+}
+
+function placeOrder(){
+  const id='UK-'+Math.random().toString(36).substr(2,6).toUpperCase();
+  document.getElementById('orderIdBox').textContent='#'+id;
+  document.getElementById('etaTime').textContent='~'+(25+Math.floor(Math.random()*15))+' min';
+  goToStep(5);
+}
+
+function resetOrder(){
+  items=[]; quantities={}; selDate=null; selTime=null;
+  tipAmt=2; discount=0;
+  document.getElementById('addedItems').innerHTML='';
+  document.getElementById('promoMsg').textContent='';
+  document.getElementById('promoInput').value='';
+  updateNav();
+  goToStep(1);
+}
+
+// ── OBSERVER ─────────────────────────────────────
+function observeFadeIns(){
+  const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>{ if(x.isIntersecting) x.target.classList.add('visible'); });
+  },{threshold:.08});
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>obs.observe(el));
+}
+observeFadeIns();
+</script>
+</body>
+</html>
