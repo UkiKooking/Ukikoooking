@@ -27,7 +27,12 @@
 
   body{
     font-family:'Georgia','Times New Roman',serif;
-    background:linear-gradient(135deg,#fdf6e3 0%,#f5e8c7 50%,#ede0b3 100%);
+    background:linear-gradient(
+      135deg,
+      #fdf6e3 0%,
+      #f5e8c7 50%,
+      #ede0b3 100%
+    );
     color:var(--ink);
     min-height:100vh;
     overflow-x:hidden;
@@ -73,6 +78,7 @@
       opacity:0;
       transform:translateY(0) scale(.5);
     }
+
     50%{
       opacity:1;
       transform:translateY(-30px) scale(1);
@@ -91,13 +97,16 @@
       transform:translateY(-120vh) rotate(-180deg) scale(.3);
       opacity:0;
     }
+
     60%{
       transform:translateY(0) rotate(20deg) scale(1.15);
       opacity:1;
     }
+
     80%{
       transform:rotate(-8deg) scale(1);
     }
+
     100%{
       transform:rotate(0) scale(1);
       opacity:1;
@@ -107,17 +116,24 @@
   @keyframes crownPulse{
     0%,100%{
       transform:scale(1);
-      filter:drop-shadow(0 0 20px rgba(245,197,66,.6));
+      filter:drop-shadow(
+        0 0 20px rgba(245,197,66,.6)
+      );
     }
+
     50%{
       transform:scale(1.05);
-      filter:drop-shadow(0 0 40px rgba(245,197,66,1));
+      filter:drop-shadow(
+        0 0 40px rgba(245,197,66,1)
+      );
     }
   }
 
   #crownSplash .crown{
     font-size:180px;
-    filter:drop-shadow(0 0 30px rgba(245,197,66,.8));
+    filter:drop-shadow(
+      0 0 30px rgba(245,197,66,.8)
+    );
     display:inline-block;
   }
 
@@ -135,6 +151,7 @@
       opacity:.8;
       transform:scale(.8);
     }
+
     100%{
       opacity:0;
       transform:scale(1.6);
@@ -149,7 +166,8 @@
     text-align:center;
     opacity:0;
     animation:fadeUp .8s ease 1.2s forwards;
-    text-shadow:0 0 20px rgba(245,197,66,.5);
+    text-shadow:
+      0 0 20px rgba(245,197,66,.5);
   }
 
   #crownSplash .tagline{
@@ -177,6 +195,7 @@
       opacity:0;
       transform:translateY(20px);
     }
+
     to{
       opacity:1;
       transform:translateY(0);
@@ -191,12 +210,16 @@
       var(--royal) 0%,
       var(--royal-deep) 100%
     );
+
     color:var(--gold);
     padding:18px 30px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    box-shadow:0 4px 20px rgba(0,0,0,.3);
+
+    box-shadow:
+      0 4px 20px rgba(0,0,0,.3);
+
     position:sticky;
     top:0;
     z-index:100;
@@ -228,11 +251,12 @@
   .hero{
     text-align:center;
     padding:60px 20px 40px;
-    background:linear-gradient(
-      180deg,
-      rgba(58,31,93,.05),
-      transparent
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgba(58,31,93,.05),
+        transparent
+      );
   }
 
   .hero .big-crown{
@@ -245,6 +269,7 @@
     0%,100%{
       transform:translateY(0);
     }
+
     50%{
       transform:translateY(-10px);
     }
@@ -267,7 +292,8 @@
 
   .features{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:
+      repeat(auto-fit,minmax(180px,1fr));
     gap:20px;
     max-width:900px;
     margin:0 auto;
@@ -286,7 +312,8 @@
 
   .feature:hover{
     transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(58,31,93,.2);
+    box-shadow:
+      0 10px 30px rgba(58,31,93,.2);
   }
 
   .feature .icon{
@@ -347,7 +374,7 @@
     color:var(--gold);
   }
 
-  /* ================= ORDER SECTIONS ================= */
+  /* ================= FORM ================= */
 
   .order-section{
     max-width:720px;
@@ -355,7 +382,10 @@
     background:rgba(255,255,255,.85);
     border-radius:24px;
     padding:40px 30px;
-    box-shadow:0 10px 40px rgba(58,31,93,.15);
+
+    box-shadow:
+      0 10px 40px rgba(58,31,93,.15);
+
     border:2px solid rgba(245,197,66,.3);
     display:none;
   }
@@ -370,6 +400,7 @@
       opacity:0;
       transform:translateY(20px);
     }
+
     to{
       opacity:1;
       transform:translateY(0);
@@ -398,8 +429,6 @@
     font-size:15px;
     margin-bottom:30px;
   }
-
-  /* ================= INPUTS ================= */
 
   .quick-add{
     display:flex;
@@ -450,7 +479,8 @@
   textarea:focus{
     outline:none;
     border-color:var(--gold);
-    box-shadow:0 0 0 4px rgba(245,197,66,.2);
+    box-shadow:
+      0 0 0 4px rgba(245,197,66,.2);
   }
 
   textarea{
@@ -465,8 +495,6 @@
     margin:14px 0 6px;
     font-size:14px;
   }
-
-  /* ================= PREP TAGS ================= */
 
   .prep-tags{
     display:flex;
@@ -493,8 +521,6 @@
     font-weight:bold;
   }
 
-  /* ================= FORM ================= */
-
   .form-row{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -505,16 +531,30 @@
     .form-row{
       grid-template-columns:1fr;
     }
+
+    .hero h2{
+      font-size:30px;
+    }
+
+    #crownSplash .crown{
+      font-size:120px;
+    }
+
+    #crownSplash h1{
+      font-size:40px;
+    }
   }
 
   /* ================= TIP ================= */
 
   .tip-section{
-    background:linear-gradient(
-      135deg,
-      rgba(58,31,93,.08),
-      rgba(245,197,66,.08)
-    );
+    background:
+      linear-gradient(
+        135deg,
+        rgba(58,31,93,.08),
+        rgba(245,197,66,.08)
+      );
+
     padding:20px;
     border-radius:16px;
     margin-top:24px;
@@ -624,35 +664,46 @@
   }
 
   .btn-next{
-    background:linear-gradient(
-      135deg,
-      var(--royal) 0%,
-      var(--royal-deep) 100%
-    );
+    background:
+      linear-gradient(
+        135deg,
+        var(--royal) 0%,
+        var(--royal-deep) 100%
+      );
+
     color:var(--gold);
-    box-shadow:0 4px 15px rgba(58,31,93,.4);
+
+    box-shadow:
+      0 4px 15px rgba(58,31,93,.4);
   }
 
   .btn-next:hover{
     transform:translateY(-2px);
-    box-shadow:0 6px 20px rgba(58,31,93,.5);
+    box-shadow:
+      0 6px 20px rgba(58,31,93,.5);
   }
 
   .btn-place{
-    background:linear-gradient(
-      135deg,
-      var(--gold) 0%,
-      var(--gold-soft) 100%
-    );
+    background:
+      linear-gradient(
+        135deg,
+        var(--gold) 0%,
+        var(--gold-soft) 100%
+      );
+
     color:var(--royal);
     font-size:17px;
     padding:16px 36px;
-    box-shadow:0 4px 20px rgba(245,197,66,.5);
+
+    box-shadow:
+      0 4px 20px rgba(245,197,66,.5);
   }
 
   .btn-place:hover{
     transform:translateY(-2px) scale(1.03);
-    box-shadow:0 8px 30px rgba(245,197,66,.7);
+
+    box-shadow:
+      0 8px 30px rgba(245,197,66,.7);
   }
 
   .btn-place:disabled{
@@ -668,21 +719,31 @@
     top:30px;
     right:30px;
     z-index:99999;
-    background:linear-gradient(
-      135deg,
-      var(--royal) 0%,
-      var(--royal-deep) 100%
-    );
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--royal) 0%,
+        var(--royal-deep) 100%
+      );
+
     color:var(--gold);
     padding:16px 24px;
     border-radius:14px;
     border:2px solid var(--gold);
-    box-shadow:0 8px 30px rgba(0,0,0,.4);
+
+    box-shadow:
+      0 8px 30px rgba(0,0,0,.4);
+
     font-weight:bold;
     font-size:14px;
+
     opacity:0;
     transform:translateX(120%);
-    transition:all .5s cubic-bezier(.34,1.56,.64,1);
+
+    transition:
+      all .5s cubic-bezier(.34,1.56,.64,1);
+
     display:flex;
     align-items:center;
     gap:10px;
@@ -696,6 +757,32 @@
 
   #toast .t-icon{
     font-size:22px;
+  }
+
+  /* ================= FORMSPREE MESSAGES ================= */
+
+  [data-fs-success]{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    border-radius:12px;
+    background:#e8f7e8;
+    color:#176b17;
+    text-align:center;
+    font-weight:bold;
+  }
+
+  [data-fs-error]{
+    color:#b00020;
+  }
+
+  [data-fs-error=""]{
+    margin-top:15px;
+    padding:12px;
+    border-radius:12px;
+    background:#fff0f0;
+    text-align:center;
+    font-weight:bold;
   }
 
   /* ================= CONFIRMATION ================= */
@@ -729,6 +816,7 @@
     from{
       transform:rotate(0);
     }
+
     to{
       transform:rotate(360deg);
     }
@@ -778,6 +866,7 @@
     0%,100%{
       transform:scale(1);
     }
+
     50%{
       transform:scale(1.15);
     }
@@ -812,8 +901,6 @@
     transform:translateY(-2px);
   }
 
-  /* ================= FOOTER ================= */
-
   footer{
     text-align:center;
     padding:30px 20px;
@@ -821,68 +908,6 @@
     font-size:13px;
     border-top:1px solid rgba(245,197,66,.3);
     margin-top:40px;
-  }
-
-  /* ================= MOBILE ================= */
-
-  @media(max-width:600px){
-
-    #crownSplash .crown{
-      font-size:120px;
-    }
-
-    #crownSplash h1{
-      font-size:38px;
-    }
-
-    #crownSplash .tagline{
-      font-size:16px;
-      padding:0 20px;
-    }
-
-    header{
-      padding:15px 18px;
-    }
-
-    header .brand{
-      font-size:21px;
-    }
-
-    .hero{
-      padding-top:40px;
-    }
-
-    .hero h2{
-      font-size:30px;
-    }
-
-    .order-section{
-      margin:15px;
-      padding:30px 20px;
-    }
-
-    .btn-row{
-      flex-direction:column;
-    }
-
-    .btn{
-      width:100%;
-    }
-
-    .promo-row{
-      flex-direction:column;
-    }
-
-    .promo-row button{
-      height:48px;
-    }
-
-    #toast{
-      top:15px;
-      right:15px;
-      left:15px;
-      max-width:none;
-    }
   }
 </style>
 </head>
@@ -893,14 +918,45 @@
 
 <div id="crownSplash">
 
-  <span class="sparkle" style="top:15%;left:20%;animation-delay:0s">✨</span>
-  <span class="sparkle" style="top:25%;left:75%;animation-delay:.5s">✨</span>
-  <span class="sparkle" style="top:60%;left:15%;animation-delay:1s">✨</span>
-  <span class="sparkle" style="top:70%;left:80%;animation-delay:1.5s">✨</span>
-  <span class="sparkle" style="top:40%;left:50%;animation-delay:.8s">✨</span>
-  <span class="sparkle" style="top:80%;left:35%;animation-delay:1.2s">✨</span>
-  <span class="sparkle" style="top:20%;left:45%;animation-delay:.3s">✨</span>
-  <span class="sparkle" style="top:55%;left:65%;animation-delay:1.8s">✨</span>
+  <span class="sparkle"
+        style="top:15%;left:20%;animation-delay:0s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:25%;left:75%;animation-delay:.5s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:60%;left:15%;animation-delay:1s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:70%;left:80%;animation-delay:1.5s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:40%;left:50%;animation-delay:.8s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:80%;left:35%;animation-delay:1.2s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:20%;left:45%;animation-delay:.3s">
+    ✨
+  </span>
+
+  <span class="sparkle"
+        style="top:55%;left:65%;animation-delay:1.8s">
+    ✨
+  </span>
 
   <div class="crown-wrap">
     <span class="glow-ring"></span>
@@ -929,22 +985,32 @@
 <!-- ================= HEADER ================= -->
 
 <header>
-  <div class="brand">👑 Uki Kooking</div>
-  <div class="cart" id="cartBtn">👑 0 items</div>
+
+  <div class="brand">
+    👑 Uki Kooking
+  </div>
+
+  <div class="cart" id="cartBtn">
+    👑 0 items
+  </div>
+
 </header>
 
 <!-- ================= HERO ================= -->
 
 <section class="hero">
 
-  <div class="big-crown">👑</div>
+  <div class="big-crown">
+    👑
+  </div>
 
   <h2>
     Royal Flavours, Straight to Your Door
   </h2>
 
   <p>
-    Tell us what you'd like — we prepare it and bring it right to you.
+    Tell us what you'd like — we prepare it
+    and bring it right to you.
   </p>
 
   <div class="features">
@@ -978,40 +1044,50 @@
 <div class="steps" id="stepBar">
 
   <div class="step active" data-step="2">
-    <div class="num">2</div>
-    Quantity
+    <div class="num">1</div>
+    Dish
   </div>
 
   <div class="step active" data-step="3">
+    <div class="num">2</div>
+    Preparation
+  </div>
+
+  <div class="step active" data-step="4">
     <div class="num">3</div>
     Time
   </div>
 
-  <div class="step active" data-step="4">
+  <div class="step active" data-step="5">
     <div class="num">4</div>
     Details
   </div>
 
-  <div class="step active" data-step="5">
-    <div class="num">5</div>
-    Confirm
-  </div>
-
 </div>
 
-<!-- ================= STEP 2 ================= -->
+<!-- ================= STEP 1: DISH ================= -->
 
-<section class="order-section show" id="stepDish">
+<section
+  class="order-section show"
+  id="stepDish"
+>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
-  <h3>👑 What shall we prepare?</h3>
+  <h3>
+    👑 What shall we prepare?
+  </h3>
 
   <p class="sub">
-    Type any dish you'd like — our kitchen handles everything else.
+    Type any dish you'd like —
+    our kitchen handles everything else.
   </p>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
   <input
     type="text"
@@ -1021,7 +1097,13 @@
 
   <div class="quick-add">
 
-    <span style="color:var(--royal);font-weight:bold;margin-right:6px">
+    <span
+      style="
+        color:var(--royal);
+        font-weight:bold;
+        margin-right:6px
+      "
+    >
       Quick add →
     </span>
 
@@ -1055,21 +1137,13 @@
 
   </div>
 
-  <label>Quantity</label>
-
-  <input
-    type="number"
-    id="quantity"
-    min="1"
-    value="1"
-  />
-
   <div class="btn-row">
 
     <div></div>
 
     <button
       class="btn btn-next"
+      type="button"
       onclick="goToStep('prep')"
     >
       + Add to Order
@@ -1077,30 +1151,41 @@
 
   </div>
 
-  <p style="
-    text-align:center;
-    margin-top:14px;
-    color:var(--royal);
-    font-style:italic;
-  ">
+  <p
+    style="
+      text-align:center;
+      margin-top:14px;
+      color:var(--royal);
+      font-style:italic
+    "
+  >
     Next: Preparation →
   </p>
 
 </section>
 
-<!-- ================= STEP 3 ================= -->
+<!-- ================= STEP 2: PREP ================= -->
 
-<section class="order-section" id="stepPrep">
+<section
+  class="order-section"
+  id="stepPrep"
+>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
-  <h3>👑 How should we prepare it?</h3>
+  <h3>
+    👑 How should we prepare it?
+  </h3>
 
   <p class="sub">
     Choose any special preparation requests.
   </p>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
   <label>
     Special preparation
@@ -1147,11 +1232,22 @@
   </div>
 
   <label>
+    Quantity
+  </label>
+
+  <input
+    type="number"
+    id="quantity"
+    min="1"
+    value="1"
+  />
+
+  <label>
     Additional notes
   </label>
 
   <textarea
-    id="prepNotes"
+    id="specialNotes"
     placeholder="Anything else the chef should know?"
   ></textarea>
 
@@ -1159,6 +1255,7 @@
 
     <button
       class="btn btn-back"
+      type="button"
       onclick="goToStep('dish')"
     >
       ← Back
@@ -1166,6 +1263,7 @@
 
     <button
       class="btn btn-next"
+      type="button"
       onclick="goToStep('time')"
     >
       Next: Choose Time →
@@ -1175,19 +1273,28 @@
 
 </section>
 
-<!-- ================= STEP 4 ================= -->
+<!-- ================= STEP 3: TIME ================= -->
 
-<section class="order-section" id="stepTime">
+<section
+  class="order-section"
+  id="stepTime"
+>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
-  <h3>👑 When shall it arrive?</h3>
+  <h3>
+    👑 When shall it arrive?
+  </h3>
 
   <p class="sub">
     Pick a date and time — we'll be at your door.
   </p>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
   <label>
     Select date
@@ -1211,6 +1318,7 @@
 
     <button
       class="btn btn-back"
+      type="button"
       onclick="goToStep('prep')"
     >
       ← Back
@@ -1218,6 +1326,7 @@
 
     <button
       class="btn btn-next"
+      type="button"
       onclick="goToStep('details')"
     >
       Next: Your Details →
@@ -1227,37 +1336,122 @@
 
 </section>
 
-<!-- ================= STEP 5 ================= -->
+<!-- ================= STEP 4: DETAILS ================= -->
 
-<section class="order-section" id="stepDetails">
+<form
+  class="order-section"
+  id="order-form"
+  novalidate
+>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
-  <h3>👑 Your Royal Details</h3>
+  <h3>
+    👑 Your Royal Details
+  </h3>
 
   <p class="sub">
     Where shall we send your feast?
   </p>
 
-  <div class="ornament">✦ ✦ ✦</div>
+  <div class="ornament">
+    ✦ ✦ ✦
+  </div>
 
-  <div style="
-    background:rgba(245,197,66,.15);
-    padding:14px;
-    border-radius:12px;
-    margin-bottom:18px;
-    font-size:14px;
-    color:var(--royal);
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-  ">
+  <!-- IMPORTANT:
+       These hidden fields are what Formspree will receive.
+  -->
 
-    <span style="font-size:22px">🏠</span>
+  <input
+    type="hidden"
+    name="order_id"
+    id="fsOrderId"
+  />
+
+  <input
+    type="hidden"
+    name="dish"
+    id="fsDish"
+  />
+
+  <input
+    type="hidden"
+    name="quantity"
+    id="fsQuantity"
+  />
+
+  <input
+    type="hidden"
+    name="preparation"
+    id="fsPrep"
+  />
+
+  <input
+    type="hidden"
+    name="special_notes"
+    id="fsNotes"
+  />
+
+  <input
+    type="hidden"
+    name="delivery_date"
+    id="fsDate"
+  />
+
+  <input
+    type="hidden"
+    name="delivery_time"
+    id="fsTime"
+  />
+
+  <input
+    type="hidden"
+    name="full_address"
+    id="fsFullAddress"
+  />
+
+  <input
+    type="hidden"
+    name="payment_method"
+    id="fsPayment"
+  />
+
+  <input
+    type="hidden"
+    name="tip"
+    id="fsTip"
+  />
+
+  <input
+    type="hidden"
+    name="order_summary"
+    id="fsSummary"
+  />
+
+  <div
+    style="
+      background:rgba(245,197,66,.15);
+      padding:14px;
+      border-radius:12px;
+      margin-bottom:18px;
+      font-size:14px;
+      color:var(--royal);
+      display:flex;
+      gap:10px;
+      align-items:flex-start
+    "
+  >
+
+    <span style="font-size:22px">
+      🏠
+    </span>
 
     <span>
-      Your order comes straight to your door — just give us your
-      address below and we handle everything.
+      Your order comes straight to your door —
+      just give us your address below and we
+      handle everything.
     </span>
 
   </div>
@@ -1265,13 +1459,35 @@
   <div class="form-row">
 
     <div>
-      <label>First name</label>
-      <input type="text" id="firstName" />
+
+      <label>
+        First name
+      </label>
+
+      <input
+        type="text"
+        id="firstName"
+        name="first_name"
+        data-fs-field
+        required
+      />
+
     </div>
 
     <div>
-      <label>Last name</label>
-      <input type="text" id="lastName" />
+
+      <label>
+        Last name
+      </label>
+
+      <input
+        type="text"
+        id="lastName"
+        name="last_name"
+        data-fs-field
+        required
+      />
+
     </div>
 
   </div>
@@ -1283,6 +1499,9 @@
   <input
     type="tel"
     id="phone"
+    name="phone"
+    data-fs-field
+    required
   />
 
   <label>
@@ -1292,6 +1511,9 @@
   <input
     type="email"
     id="email"
+    name="email"
+    data-fs-field
+    required
   />
 
   <label>
@@ -1301,18 +1523,43 @@
   <input
     type="text"
     id="address"
+    name="address"
+    data-fs-field
+    required
   />
 
   <div class="form-row">
 
     <div>
-      <label>City</label>
-      <input type="text" id="city" />
+
+      <label>
+        City
+      </label>
+
+      <input
+        type="text"
+        id="city"
+        name="city"
+        data-fs-field
+        required
+      />
+
     </div>
 
     <div>
-      <label>ZIP / Postcode</label>
-      <input type="text" id="zip" />
+
+      <label>
+        ZIP / Postcode
+      </label>
+
+      <input
+        type="text"
+        id="zip"
+        name="zip"
+        data-fs-field
+        required
+      />
+
     </div>
 
   </div>
@@ -1321,15 +1568,23 @@
     Gate code / entry notes (optional)
   </label>
 
-  <textarea id="gate"></textarea>
+  <textarea
+    id="gate"
+    name="gate_code"
+  ></textarea>
 
   <label>
     Payment
   </label>
 
-  <select id="payment">
+  <select
+    id="payment"
+    name="payment"
+    data-fs-field
+    required
+  >
 
-    <option>
+    <option value="">
       Choose payment…
     </option>
 
@@ -1364,34 +1619,50 @@
     </div>
 
     <div class="chef-note">
-      100% goes directly to the person who cooked
-      and delivered your meal.
+      100% goes directly to the person
+      who cooked and delivered your meal.
     </div>
 
     <div class="tip-options">
 
-      <button onclick="setTip(this,0)">
+      <button
+        type="button"
+        onclick="setTip(this,0)"
+      >
         No tip
       </button>
 
-      <button onclick="setTip(this,1)">
+      <button
+        type="button"
+        onclick="setTip(this,1)"
+      >
         $1
       </button>
 
-      <button onclick="setTip(this,2)">
+      <button
+        type="button"
+        onclick="setTip(this,2)"
+      >
         $2
       </button>
 
-      <button onclick="setTip(this,3)">
+      <button
+        type="button"
+        onclick="setTip(this,3)"
+      >
         $3
       </button>
 
-      <button onclick="setTip(this,5)">
+      <button
+        type="button"
+        onclick="setTip(this,5)"
+      >
         $5
       </button>
 
       <button
         class="crown"
+        type="button"
         onclick="setTip(this,10)"
       >
         $10 👑
@@ -1399,7 +1670,7 @@
 
     </div>
 
-    <label style="margin-top:14px">
+    <label>
       Custom:
     </label>
 
@@ -1408,6 +1679,7 @@
       id="customTip"
       placeholder="Other amount"
       min="0"
+      step="0.01"
     />
 
   </div>
@@ -1422,18 +1694,34 @@
       placeholder="Promo code 👑"
     />
 
-    <button onclick="applyPromo()">
+    <button
+      type="button"
+      onclick="applyPromo()"
+    >
       Apply
     </button>
 
   </div>
 
-  <!-- ================= PLACE ORDER ================= -->
+  <!-- ================= FORMSPREE STATUS ================= -->
+
+  <div
+    data-fs-success
+  >
+    👑 Order successfully sent!
+  </div>
+
+  <div
+    data-fs-error
+  ></div>
+
+  <!-- ================= BUTTONS ================= -->
 
   <div class="btn-row">
 
     <button
       class="btn btn-back"
+      type="button"
       onclick="goToStep('time')"
     >
       ← Back
@@ -1441,19 +1729,23 @@
 
     <button
       class="btn btn-place"
+      type="submit"
+      data-fs-submit-btn
       id="placeOrderBtn"
-      onclick="placeOrder()"
     >
       👑 Place Royal Order
     </button>
 
   </div>
 
-</section>
+</form>
 
 <!-- ================= CONFIRMATION ================= -->
 
-<section class="confirmation" id="confirmation">
+<section
+  class="confirmation"
+  id="confirmation"
+>
 
   <div class="trio">
     👑 👑 👑
@@ -1467,39 +1759,64 @@
     Order Received!
   </h2>
 
-  <p style="
-    font-size:18px;
-    color:#5a4a3a;
-    margin:10px 0;
-  ">
+  <p
+    style="
+      font-size:18px;
+      color:#5a4a3a;
+      margin:10px 0
+    "
+  >
     Your royal feast is being prepared
     and will arrive at your door.
   </p>
 
-  <div class="order-id" id="orderId">
+  <div
+    class="order-id"
+    id="orderId"
+  >
     #UK-000000
   </div>
 
   <div class="timeline">
 
     <div class="step active">
-      <div class="icon">👑</div>
+
+      <div class="icon">
+        👑
+      </div>
+
       Confirmed
+
     </div>
 
     <div class="step">
-      <div class="icon">👨‍🍳</div>
+
+      <div class="icon">
+        👨‍🍳
+      </div>
+
       Preparing
+
     </div>
 
     <div class="step">
-      <div class="icon">🚗</div>
+
+      <div class="icon">
+        🚗
+      </div>
+
       On the way
+
     </div>
 
     <div class="step">
-      <div class="icon">🏠</div>
+
+      <div class="icon">
+        🏠
+      </div>
+
       At your door
+
     </div>
 
   </div>
@@ -1514,6 +1831,7 @@
 
   <button
     class="reorder"
+    type="button"
     onclick="location.reload()"
   >
     👑 Place Another Order
@@ -1521,659 +1839,112 @@
 
 </section>
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
-  👑 Uki Kooking — Royal Flavours, Straight to Your Door 👑
+  👑 Uki Kooking — Royal Flavours,
+  Straight to Your Door 👑
 </footer>
+
+<!-- =========================================================
+     FORMSPREE AJAX
+     ========================================================= -->
 
 <script>
 
-/* =========================================================
-   FORMSPREE CONFIGURATION
-   =========================================================
+  /*
+   ===========================================================
+   IMPORTANT
+   ===========================================================
 
-   1. Create a form at https://formspree.io/
-   2. Copy your Formspree endpoint.
-   3. It should look like:
-      https://formspree.io/f/xxxxxxxx
+   REPLACE THIS:
 
-   4. Replace YOUR_FORMSPREE_FORM_ID below.
+   YOUR_FORM_ID
 
-   ========================================================= */
+   with the ID from your Formspree URL.
 
-const FORMSPREE_ENDPOINT =
-  'https://formspree.io/f/https://formspree.io/f/xvkpjaly';
+   Example:
 
+   https://formspree.io/f/xabcd123
 
-/* =========================================================
-   CROWN SPLASH
-   ========================================================= */
+   becomes:
 
-const splash =
-  document.getElementById('crownSplash');
+   const https://formspree.io/f/xvkpjaly = 'xabcd123';
 
-let splashDismissed = false;
+   ===========================================================
+  */
 
-function dismissSplash(){
+  const FORMSPREE_FORM_ID =
+    'https://formspree.io/f/xvkpjaly';
 
-  if(splashDismissed) return;
-
-  splashDismissed = true;
-
-  splash.classList.add('hide');
-
-  setTimeout(() => {
-    splash.style.display = 'none';
-  },900);
-}
-
-splash.addEventListener(
-  'click',
-  dismissSplash
-);
-
-setTimeout(
-  dismissSplash,
-  3800
-);
-
-
-/* =========================================================
-   ORDER STATE
-   ========================================================= */
-
-let currentTip = 0;
-
-const orderState = {};
-
-
-/* =========================================================
-   DISH
-   ========================================================= */
-
-function addDish(name){
-
-  document.getElementById(
-    'dishName'
-  ).value = name;
-
-}
-
-
-/* =========================================================
-   PREPARATION TAGS
-   ========================================================= */
-
-function toggleTag(el){
-
-  el.classList.toggle('active');
-
-}
-
-
-/* =========================================================
-   TIPS
-   ========================================================= */
-
-function setTip(btn,amount){
-
-  document
-    .querySelectorAll('.tip-options button')
-    .forEach(b =>
-      b.classList.remove('active')
-    );
-
-  btn.classList.add('active');
-
-  currentTip = amount;
-
-  document.getElementById(
-    'customTip'
-  ).value = '';
-
-}
-
-
-/* =========================================================
-   CUSTOM TIP
-   ========================================================= */
-
-document
-  .getElementById('customTip')
-  .addEventListener(
-    'input',
+  window.formspree =
+    window.formspree ||
     function(){
+      (formspree.q = formspree.q || [])
+        .push(arguments);
+    };
 
-      if(this.value){
+  formspree(
+    'initForm',
+    {
+      formElement:'#order-form',
+      formId:https://formspree.io/f/xvkpjaly,
 
-        document
-          .querySelectorAll('.tip-options button')
-          .forEach(b =>
-            b.classList.remove('active')
+      onSubmit:(context)=>{
+        console.log(
+          '👑 Sending royal order...'
+        );
+
+        const button =
+          document.getElementById(
+            'placeOrderBtn'
           );
 
-        currentTip =
-          parseFloat(this.value) || 0;
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   PROMO
-   ========================================================= */
-
-function applyPromo(){
-
-  const code =
-    document.getElementById(
-      'promo'
-    ).value.trim();
-
-  if(code){
-
-    alert(
-      '👑 Promo "' +
-      code +
-      '" applied!'
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   STEP NAVIGATION
-   ========================================================= */
-
-function goToStep(step){
-
-  const dish =
-    document.getElementById('dishName')
-      .value.trim();
-
-  if(step === 'prep' && !dish){
-
-    showToast(
-      '👑 Please choose a dish first.'
-    );
-
-    document
-      .getElementById('dishName')
-      .focus();
-
-    return;
-  }
-
-  document
-    .querySelectorAll('.order-section')
-    .forEach(section =>
-      section.classList.remove('show')
-    );
-
-  const map = {
-
-    dish:'stepDish',
-    prep:'stepPrep',
-    time:'stepTime',
-    details:'stepDetails'
-
-  };
-
-  const target =
-    document.getElementById(
-      map[step]
-    );
-
-  target.classList.add('show');
-
-  window.scrollTo({
-
-    top:
-      target.offsetTop - 80,
-
-    behavior:'smooth'
-
-  });
-
-}
-
-
-/* =========================================================
-   TOAST
-   ========================================================= */
-
-function showToast(msg){
-
-  const toast =
-    document.getElementById('toast');
-
-  document.getElementById(
-    'toastMsg'
-  ).textContent = msg;
-
-  toast.classList.add('show');
-
-  setTimeout(
-    () => toast.classList.remove('show'),
-    3500
-  );
-
-}
-
-
-/* =========================================================
-   FORMSPREE EMAIL
-   ========================================================= */
-
-function sendEmail(orderText){
-
-  if(
-    FORMSPREE_ENDPOINT.includes(
-      'https://formspree.io/f/xvkpjaly'
-    )
-  ){
-
-    console.error(
-      'Formspree endpoint has not been configured.'
-    );
-
-    return Promise.resolve(false);
-  }
-
-  return fetch(
-    FORMSPREE_ENDPOINT,
-    {
-
-      method:'POST',
-
-      headers:{
-        'Content-Type':
-          'application/json',
-
-        'Accept':
-          'application/json'
+        button.textContent =
+          '👑 Sending Order...';
       },
 
-      body:JSON.stringify({
+      onSuccess:(context,result)=>{
 
-        subject:
-          '👑 New Royal Order — Uki Kooking',
+        console.log(
+          '👑 Formspree order sent:',
+          result
+        );
 
-        message:
-          orderText
+        finishOrder();
 
-      })
+      },
 
-    }
-  )
+      onError:(context,error)=>{
 
-  .then(async response => {
+        console.error(
+          '❌ Formspree validation error:',
+          error
+        );
 
-    const data =
-      await response
-        .json()
-        .catch(() => ({}));
+        const button =
+          document.getElementById(
+            'placeOrderBtn'
+          );
 
-    if(!response.ok){
+        button.textContent =
+          '👑 Place Royal Order';
 
-      console.error(
-        'Formspree failed:',
-        data
-      );
+        showToast(
+          '❌ Please check the form.'
+        );
 
-      return false;
-    }
+      },
 
-    console.log(
-      'Formspree order sent:',
-      data
-    );
+      onFailure:(context,error)=>{
 
-    return true;
+        console.error(
+          '❌ Formspree submission failed:',
+          error
+        );
 
-  })
-
-  .catch(error => {
-
-    console.error(
-      'Formspree error:',
-      error
-    );
-
-    return false;
-
-  });
-
-}
-
-
-/* =========================================================
-   PLACE ORDER
-   ========================================================= */
-
-function placeOrder(){
-
-  const button =
-    document.getElementById(
-      'placeOrderBtn'
-    );
-
-  /* Prevent double clicking */
-
-  if(button.disabled){
-    return;
-  }
-
-  /* ================= GET VALUES ================= */
-
-  const prepTags =
-    [
-      ...document.querySelectorAll(
-        '.prep-tags .tag.active'
-      )
-    ]
-    .map(
-      tag => tag.textContent.trim()
-    )
-    .join(', ') || 'None';
-
-  const prepNotes =
-    document
-      .getElementById('prepNotes')
-      .value
-      .trim() || 'None';
-
-  const tip =
-    currentTip ||
-    (
-      parseFloat(
-        document.getElementById(
-          'customTip'
-        ).value
-      ) || 0
-    );
-
-  const dish =
-    document
-      .getElementById('dishName')
-      .value
-      .trim();
-
-  const quantity =
-    parseInt(
-      document.getElementById(
-        'quantity'
-      ).value
-    ) || 1;
-
-  const date =
-    document
-      .getElementById('deliveryDate')
-      .value || 'ASAP';
-
-  const time =
-    document
-      .getElementById('deliveryTime')
-      .value || 'ASAP';
-
-  const first =
-    document
-      .getElementById('firstName')
-      .value
-      .trim();
-
-  const last =
-    document
-      .getElementById('lastName')
-      .value
-      .trim();
-
-  const phone =
-    document
-      .getElementById('phone')
-      .value
-      .trim();
-
-  const email =
-    document
-      .getElementById('email')
-      .value
-      .trim();
-
-  const address =
-    document
-      .getElementById('address')
-      .value
-      .trim();
-
-  const city =
-    document
-      .getElementById('city')
-      .value
-      .trim();
-
-  const zip =
-    document
-      .getElementById('zip')
-      .value
-      .trim();
-
-  const gate =
-    document
-      .getElementById('gate')
-      .value
-      .trim() || '—';
-
-  const payment =
-    document
-      .getElementById('payment')
-      .value;
-
-  /* ================= VALIDATION ================= */
-
-  if(!dish){
-
-    showToast(
-      '👑 Please choose a dish.'
-    );
-
-    return;
-  }
-
-  if(!first){
-
-    showToast(
-      '👑 Please enter your first name.'
-    );
-
-    return;
-  }
-
-  if(!phone){
-
-    showToast(
-      '👑 Please enter your phone number.'
-    );
-
-    return;
-  }
-
-  if(!address){
-
-    showToast(
-      '👑 Please enter your delivery address.'
-    );
-
-    return;
-  }
-
-  if(
-    payment === 'Choose payment…'
-  ){
-
-    showToast(
-      '👑 Please choose a payment method.'
-    );
-
-    return;
-  }
-
-  /* ================= ORDER ID ================= */
-
-  const orderId =
-    '#UK-' +
-    Date.now()
-      .toString()
-      .slice(-6);
-
-  const customerName =
-    (
-      first +
-      ' ' +
-      last
-    ).trim() || 'Guest';
-
-  const fullAddress =
-    [
-      address,
-      city,
-      zip
-    ]
-    .filter(Boolean)
-    .join(', ') || '—';
-
-
-  /* ================= SAVE STATE ================= */
-
-  Object.assign(
-    orderState,
-    {
-
-      id:orderId,
-
-      first,
-      last,
-
-      phone,
-      email,
-
-      address,
-      city,
-      zip,
-
-      gate,
-
-      payment,
-
-      dish,
-      quantity,
-
-      prepTags,
-      prepNotes,
-
-      date,
-      time,
-
-      tip,
-
-      customerName,
-
-      fullAddress
-
-    }
-  );
-
-
-  /* ================= EMAIL CONTENT ================= */
-
-  const orderText =
-`👑 NEW ROYAL ORDER ${orderId}
-
-━━━━━━━━━━━━━━━━━━━━
-
-📞 CUSTOMER
-
-Name: ${customerName}
-Phone: ${phone || '—'}
-Email: ${email || '—'}
-
-🏠 DELIVER TO
-
-${fullAddress}
-
-Gate / Entry:
-${gate}
-
-━━━━━━━━━━━━━━━━━━━━
-
-🍳 ORDER
-
-Dish:
-${dish}
-
-Quantity:
-${quantity}
-
-Preparation:
-${prepTags}
-
-Additional notes:
-${prepNotes}
-
-━━━━━━━━━━━━━━━━━━━━
-
-⏰ ARRIVAL
-
-Date:
-${date}
-
-Time:
-${time}
-
-━━━━━━━━━━━━━━━━━━━━
-
-💳 PAYMENT
-
-Method:
-${payment}
-
-━━━━━━━━━━━━━━━━━━━━
-
-👑 TIP FOR CHEF
-
-$${tip.toFixed(2)}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Cook it well, your majesty. 👑`;
-
-
-  /* ================= DISABLE BUTTON ================= */
-
-  button.disabled = true;
-
-  button.textContent =
-    '👑 Sending Order...';
-
-
-  showToast(
-    '✨ Sending your royal order...'
-  );
-
-
-  /* ================= SEND TO FORMSPREE ================= */
-
-  sendEmail(orderText)
-
-    .then(success => {
-
-      if(!success){
-
-        button.disabled = false;
+        const button =
+          document.getElementById(
+            'placeOrderBtn'
+          );
 
         button.textContent =
           '👑 Place Royal Order';
@@ -2182,87 +1953,794 @@ Cook it well, your majesty. 👑`;
           '❌ Could not send order. Please try again.'
         );
 
-        return;
       }
 
+    }
+  );
 
-      /* ================= SUCCESS ================= */
+</script>
 
-      document
-        .querySelectorAll('.order-section')
-        .forEach(section =>
-          section.classList.remove('show')
-        );
+<script
+  src="https://unpkg.com/@formspree/ajax@1"
+  defer
+></script>
 
-      document
-        .getElementById('confirmation')
-        .classList.add('show');
+<!-- =========================================================
+     MAIN JAVASCRIPT
+     ========================================================= -->
 
-      document
-        .getElementById('orderId')
-        .textContent = orderId;
+<script>
 
-      document
-        .getElementById('cartBtn')
-        .textContent =
-          '👑 1 item';
+  /* ================= SPLASH ================= */
+
+  const splash =
+    document.getElementById(
+      'crownSplash'
+    );
+
+  let splashDismissed = false;
+
+  function dismissSplash(){
+
+    if(splashDismissed){
+      return;
+    }
+
+    splashDismissed = true;
+
+    splash.classList.add('hide');
+
+    setTimeout(
+      ()=>{
+        splash.style.display='none';
+      },
+      900
+    );
+
+  }
+
+  splash.addEventListener(
+    'click',
+    dismissSplash
+  );
+
+  setTimeout(
+    dismissSplash,
+    3800
+  );
 
 
-      window.scrollTo({
+  /* ================= ORDER STATE ================= */
 
-        top:
-          document
-            .getElementById('confirmation')
-            .offsetTop - 60,
+  let currentTip = 0;
 
-        behavior:'smooth'
-
-      });
+  const orderState = {};
 
 
-      showToast(
-        '✨ Order sent to the kitchen!'
+  /* ================= DISH ================= */
+
+  function addDish(name){
+
+    document.getElementById(
+      'dishName'
+    ).value = name;
+
+  }
+
+
+  /* ================= PREP TAGS ================= */
+
+  function toggleTag(el){
+
+    el.classList.toggle(
+      'active'
+    );
+
+  }
+
+
+  /* ================= TIP ================= */
+
+  function setTip(
+    btn,
+    amount
+  ){
+
+    document
+      .querySelectorAll(
+        '.tip-options button'
+      )
+      .forEach(
+        b =>
+          b.classList.remove(
+            'active'
+          )
       );
+
+    btn.classList.add(
+      'active'
+    );
+
+    currentTip = amount;
+
+    document.getElementById(
+      'customTip'
+    ).value = '';
+
+  }
+
+
+  document
+    .getElementById('customTip')
+    .addEventListener(
+      'input',
+      function(){
+
+        if(this.value){
+
+          document
+            .querySelectorAll(
+              '.tip-options button'
+            )
+            .forEach(
+              b =>
+                b.classList.remove(
+                  'active'
+                )
+            );
+
+          currentTip =
+            parseFloat(this.value)
+            || 0;
+
+        }
+
+      }
+    );
+
+
+  /* ================= PROMO ================= */
+
+  function applyPromo(){
+
+    const code =
+      document
+        .getElementById('promo')
+        .value
+        .trim();
+
+    if(code){
+
+      alert(
+        '👑 Promo "' +
+        code +
+        '" applied!'
+      );
+
+    }
+
+  }
+
+
+  /* ================= STEPS ================= */
+
+  function goToStep(step){
+
+    document
+      .querySelectorAll(
+        '.order-section'
+      )
+      .forEach(
+        s =>
+          s.classList.remove(
+            'show'
+          )
+      );
+
+    const map = {
+
+      dish:'stepDish',
+
+      prep:'stepPrep',
+
+      time:'stepTime',
+
+      details:'order-form'
+
+    };
+
+    const target =
+      document.getElementById(
+        map[step]
+      );
+
+    if(!target){
+      return;
+    }
+
+    target.classList.add(
+      'show'
+    );
+
+    window.scrollTo({
+
+      top:
+        target.offsetTop - 80,
+
+      behavior:'smooth'
 
     });
 
-}
+  }
 
 
-/* =========================================================
-   DEFAULT DATE
-   ========================================================= */
+  /* ================= TOAST ================= */
 
-(function setDefaultDate(){
+  function showToast(msg){
 
-  const dateInput =
+    const toast =
+      document.getElementById(
+        'toast'
+      );
+
     document.getElementById(
-      'deliveryDate'
+      'toastMsg'
+    ).textContent = msg;
+
+    toast.classList.add(
+      'show'
     );
 
-  const today =
-    new Date();
+    setTimeout(
+      ()=>{
+        toast.classList.remove(
+          'show'
+        );
+      },
+      3500
+    );
 
-  const year =
-    today.getFullYear();
+  }
 
-  const month =
-    String(
-      today.getMonth() + 1
-    ).padStart(2,'0');
 
-  const day =
-    String(
-      today.getDate()
-    ).padStart(2,'0');
+  /* ================= ORDER ID ================= */
 
-  dateInput.value =
-    `${year}-${month}-${day}`;
+  function createOrderId(){
 
-})();
+    return (
+      '#UK-' +
+      Date.now()
+        .toString()
+        .slice(-6)
+    );
+
+  }
+
+
+  /* ================= PREP DATA ================= */
+
+  function getPrepTags(){
+
+    return [
+      ...document.querySelectorAll(
+        '.prep-tags .tag.active'
+      )
+    ]
+    .map(
+      tag =>
+        tag.textContent.trim()
+    )
+    .join(', ') || 'None';
+
+  }
+
+
+  /* ================= VALIDATE BEFORE SUBMIT ================= */
+
+  function validateOrder(){
+
+    const dish =
+      document
+        .getElementById('dishName')
+        .value
+        .trim();
+
+    const quantity =
+      parseInt(
+        document
+          .getElementById('quantity')
+          .value,
+        10
+      ) || 0;
+
+    const first =
+      document
+        .getElementById('firstName')
+        .value
+        .trim();
+
+    const last =
+      document
+        .getElementById('lastName')
+        .value
+        .trim();
+
+    const phone =
+      document
+        .getElementById('phone')
+        .value
+        .trim();
+
+    const email =
+      document
+        .getElementById('email')
+        .value
+        .trim();
+
+    const address =
+      document
+        .getElementById('address')
+        .value
+        .trim();
+
+    const city =
+      document
+        .getElementById('city')
+        .value
+        .trim();
+
+    const zip =
+      document
+        .getElementById('zip')
+        .value
+        .trim();
+
+    const payment =
+      document
+        .getElementById('payment')
+        .value;
+
+    if(!dish){
+
+      showToast(
+        '👑 Please enter a dish.'
+      );
+
+      goToStep('dish');
+
+      return false;
+
+    }
+
+    if(quantity < 1){
+
+      showToast(
+        '👑 Please enter a quantity.'
+      );
+
+      goToStep('prep');
+
+      return false;
+
+    }
+
+    if(!first ||
+       !last ||
+       !phone ||
+       !email ||
+       !address ||
+       !city ||
+       !zip){
+
+      showToast(
+        '👑 Please complete your details.'
+      );
+
+      return false;
+
+    }
+
+    if(!payment){
+
+      showToast(
+        '👑 Please choose a payment method.'
+      );
+
+      return false;
+
+    }
+
+    return true;
+
+  }
+
+
+  /* ================= PREPARE FORMSPREE DATA ================= */
+
+  function prepareFormspreeData(){
+
+    const orderId =
+      createOrderId();
+
+    const dish =
+      document
+        .getElementById('dishName')
+        .value
+        .trim();
+
+    const quantity =
+      document
+        .getElementById('quantity')
+        .value;
+
+    const prepTags =
+      getPrepTags();
+
+    const notes =
+      document
+        .getElementById('specialNotes')
+        .value
+        .trim() || 'None';
+
+    const date =
+      document
+        .getElementById('deliveryDate')
+        .value || 'ASAP';
+
+    const time =
+      document
+        .getElementById('deliveryTime')
+        .value || 'ASAP';
+
+    const first =
+      document
+        .getElementById('firstName')
+        .value
+        .trim();
+
+    const last =
+      document
+        .getElementById('lastName')
+        .value
+        .trim();
+
+    const phone =
+      document
+        .getElementById('phone')
+        .value
+        .trim();
+
+    const email =
+      document
+        .getElementById('email')
+        .value
+        .trim();
+
+    const address =
+      document
+        .getElementById('address')
+        .value
+        .trim();
+
+    const city =
+      document
+        .getElementById('city')
+        .value
+        .trim();
+
+    const zip =
+      document
+        .getElementById('zip')
+        .value
+        .trim();
+
+    const gate =
+      document
+        .getElementById('gate')
+        .value
+        .trim() || 'None';
+
+    const payment =
+      document
+        .getElementById('payment')
+        .value;
+
+    const tip =
+      currentTip ||
+      (
+        parseFloat(
+          document
+            .getElementById('customTip')
+            .value
+        ) || 0
+      );
+
+    const customerName =
+      (
+        first +
+        ' ' +
+        last
+      ).trim();
+
+    const fullAddress =
+      [
+        address,
+        city,
+        zip
+      ]
+      .filter(Boolean)
+      .join(', ');
+
+    const summary =
+
+`👑 NEW ROYAL ORDER
+━━━━━━━━━━━━━━━━━━━━
+
+ORDER ID:
+${orderId}
+
+CUSTOMER
+Name: ${customerName}
+Phone: ${phone}
+Email: ${email}
+
+DELIVERY
+Address: ${fullAddress}
+Gate / Entry: ${gate}
+
+ORDER
+Dish: ${dish}
+Quantity: ${quantity}
+
+Preparation:
+${prepTags}
+
+Special notes:
+${notes}
+
+ARRIVAL
+Date: ${date}
+Time: ${time}
+
+PAYMENT
+${payment}
+
+TIP FOR CHEF
+$${tip.toFixed(2)}
+
+━━━━━━━━━━━━━━━━━━━━
+Uki Kooking 👑`;
+
+    /*
+      Put everything into hidden Formspree fields.
+    */
+
+    document.getElementById(
+      'fsOrderId'
+    ).value = orderId;
+
+    document.getElementById(
+      'fsDish'
+    ).value = dish;
+
+    document.getElementById(
+      'fsQuantity'
+    ).value = quantity;
+
+    document.getElementById(
+      'fsPrep'
+    ).value = prepTags;
+
+    document.getElementById(
+      'fsNotes'
+    ).value = notes;
+
+    document.getElementById(
+      'fsDate'
+    ).value = date;
+
+    document.getElementById(
+      'fsTime'
+    ).value = time;
+
+    document.getElementById(
+      'fsFullAddress'
+    ).value = fullAddress;
+
+    document.getElementById(
+      'fsPayment'
+    ).value = payment;
+
+    document.getElementById(
+      'fsTip'
+    ).value =
+      '$' + tip.toFixed(2);
+
+    document.getElementById(
+      'fsSummary'
+    ).value = summary;
+
+    /*
+      Save order state.
+    */
+
+    Object.assign(
+      orderState,
+      {
+        id:orderId,
+        dish,
+        quantity,
+        prepTags,
+        notes,
+        date,
+        time,
+        first,
+        last,
+        phone,
+        email,
+        address,
+        city,
+        zip,
+        gate,
+        payment,
+        tip,
+        customerName,
+        fullAddress,
+        summary
+      }
+    );
+
+  }
+
+
+  /* ================= FORM SUBMIT ================= */
+
+  document
+    .getElementById('order-form')
+    .addEventListener(
+      'submit',
+      function(event){
+
+        /*
+          Stop normal browser navigation.
+          Formspree AJAX will handle it.
+        */
+
+        event.preventDefault();
+
+        if(!validateOrder()){
+          return;
+        }
+
+        /*
+          Fill all hidden fields BEFORE
+          Formspree submits the form.
+        */
+
+        prepareFormspreeData();
+
+        console.log(
+          '👑 Order prepared:',
+          orderState
+        );
+
+        /*
+          The Formspree AJAX library listens
+          for this form submission.
+        */
+
+        const form =
+          document.getElementById(
+            'order-form'
+          );
+
+        /*
+          Dispatch a second event is NOT needed.
+          The library has already attached
+          its submit handler.
+
+          We simply allow the event to continue
+          after preparing the fields.
+        */
+
+      },
+      true
+    );
+
+
+  /* ================= SUCCESS ================= */
+
+  function finishOrder(){
+
+    const orderId =
+      orderState.id ||
+      createOrderId();
+
+    document
+      .querySelectorAll(
+        '.order-section'
+      )
+      .forEach(
+        section =>
+          section.classList.remove(
+            'show'
+          )
+      );
+
+    const confirmation =
+      document.getElementById(
+        'confirmation'
+      );
+
+    confirmation.classList.add(
+      'show'
+    );
+
+    document.getElementById(
+      'orderId'
+    ).textContent =
+      orderId;
+
+    document.getElementById(
+      'cartBtn'
+    ).textContent =
+      '👑 1 item';
+
+    window.scrollTo({
+
+      top:
+        confirmation.offsetTop - 60,
+
+      behavior:'smooth'
+
+    });
+
+    showToast(
+      '✨ Royal order sent!'
+    );
+
+  }
+
+
+  /* ================= DEFAULT DATE ================= */
+
+  function setDefaultDate(){
+
+    const input =
+      document.getElementById(
+        'deliveryDate'
+      );
+
+    const today =
+      new Date();
+
+    const year =
+      today.getFullYear();
+
+    const month =
+      String(
+        today.getMonth() + 1
+      ).padStart(2,'0');
+
+    const day =
+      String(
+        today.getDate()
+      ).padStart(2,'0');
+
+    input.min =
+      `${year}-${month}-${day}`;
+
+    input.value =
+      `${year}-${month}-${day}`;
+
+  }
+
+
+  setDefaultDate();
 
 </script>
 
 </body>
 </html>
+
 
