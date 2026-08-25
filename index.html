@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Uki Kooking</title>
@@ -47,15 +49,18 @@ header {
 
 main {
   flex: 1;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   padding: 30px 15px;
 }
 
 .card {
   width: 100%;
   max-width: 650px;
+
   padding: 45px;
 
   background: rgba(255,255,255,.055);
@@ -66,18 +71,23 @@ main {
 
   backdrop-filter: blur(20px);
 
-  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35);
 }
 
 .icon {
   text-align: center;
+
   font-size: 65px;
+
   margin-bottom: 15px;
 }
 
 h1 {
   text-align: center;
+
   font-size: 50px;
+
   margin-bottom: 12px;
 }
 
@@ -87,20 +97,27 @@ h1 span {
 
 .subtitle {
   text-align: center;
+
   color: #9aa8c2;
+
   line-height: 1.6;
+
   margin-bottom: 35px;
 }
 
 form {
   display: flex;
+
   flex-direction: column;
+
   gap: 15px;
 }
 
 label {
   color: #bdc9dd;
+
   font-size: 14px;
+
   margin-top: 5px;
 }
 
@@ -108,15 +125,19 @@ input,
 select,
 textarea {
   width: 100%;
+
   padding: 16px;
 
   border: none;
+
   border-radius: 14px;
 
   background: #12192d;
+
   color: white;
 
   font-size: 16px;
+
   outline: none;
 }
 
@@ -128,7 +149,8 @@ textarea::placeholder {
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow: 0 0 0 3px rgba(127,179,255,.25);
+  box-shadow:
+    0 0 0 3px rgba(127,179,255,.25);
 }
 
 select {
@@ -137,11 +159,14 @@ select {
 
 textarea {
   min-height: 100px;
+
   resize: vertical;
 }
 
 
-/* SURPRISE ME */
+/* =========================
+   SURPRISE ME
+========================= */
 
 .surpriseButton {
   width: auto;
@@ -155,9 +180,11 @@ textarea {
 
   font-size: 14px;
 
-  background: rgba(94,162,255,0.35);
+  background:
+    rgba(94,162,255,0.35);
 
-  border: 1px solid rgba(255,255,255,0.12);
+  border:
+    1px solid rgba(255,255,255,0.12);
 
   box-shadow: none;
 
@@ -173,11 +200,14 @@ textarea {
 .surpriseButton:hover {
   transform: translateY(-2px);
 
-  background: rgba(94,162,255,0.5);
+  background:
+    rgba(94,162,255,0.5);
 }
 
 
-/* SUBMIT BUTTON */
+/* =========================
+   REQUEST ORDER BUTTON
+========================= */
 
 .submitButton {
   width: 100%;
@@ -214,12 +244,16 @@ textarea {
 
 .submitButton:disabled {
   opacity: .6;
+
   cursor: not-allowed;
+
   transform: none;
 }
 
 
-/* CUSTOM TIP */
+/* =========================
+   CUSTOM AMOUNT
+========================= */
 
 #customAmountContainer {
   display: none;
@@ -227,12 +261,16 @@ textarea {
 
 #customAmountContainer.visible {
   display: flex;
+
   flex-direction: column;
+
   gap: 8px;
 }
 
 
-/* SUCCESS */
+/* =========================
+   SUCCESS
+========================= */
 
 #confirmation {
   display: none;
@@ -259,9 +297,11 @@ textarea {
 
   border-radius: 14px;
 
-  background: rgba(255,255,255,.06);
+  background:
+    rgba(255,255,255,.06);
 
-  border: 1px solid rgba(255,255,255,.08);
+  border:
+    1px solid rgba(255,255,255,.08);
 }
 
 .requestIDLabel {
@@ -289,7 +329,9 @@ textarea {
 }
 
 
-/* ERROR */
+/* =========================
+   ERROR
+========================= */
 
 #errorMessage {
   display: none;
@@ -300,9 +342,11 @@ textarea {
 
   border-radius: 14px;
 
-  background: rgba(255,70,70,.15);
+  background:
+    rgba(255,70,70,.15);
 
-  border: 1px solid rgba(255,70,70,.3);
+  border:
+    1px solid rgba(255,70,70,.3);
 
   color: #ff9a9a;
 
@@ -311,6 +355,10 @@ textarea {
   font-weight: bold;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
   padding: 22px;
@@ -322,6 +370,10 @@ footer {
   font-size: 14px;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
@@ -361,7 +413,12 @@ footer {
 <div class="card">
 
 
+<!-- =========================
+     FORM AREA
+========================= -->
+
 <div id="formArea">
+
 
   <div class="icon">
     🍽️
@@ -526,42 +583,4 @@ footer {
         No tip
       </option>
 
-      <option value="€1">
-        €1
-      </option>
-
-      <option value="€2">
-        €2
-      </option>
-
-      <option value="€5">
-        €5
-      </option>
-
-      <option value="€10">
-        €10
-      </option>
-
-      <option value="€15">
-        €15
-      </option>
-
-      <option value="custom">
-        Custom Amount
-      </option>
-
-    </select>
-
-
-    <!-- CUSTOM TIP -->
-
-    <div id="customAmountContainer">
-
-      <label for="customAmount">
-        💰 Custom Amount
-      </label>
-
-      <input
-        id="customAmount"
-        name="custom_amount"
-        type
+      <option
