@@ -4,11 +4,18 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Uki Kooking</title>
 
+
 <style>
+
+/* =========================
+   BASIC
+========================= */
 
 * {
   box-sizing: border-box;
@@ -17,149 +24,246 @@
 }
 
 body {
+
   font-family: Arial, sans-serif;
+
   min-height: 100vh;
+
   color: white;
 
   background:
-    radial-gradient(circle at 10% 10%, #294d7a, transparent 35%),
-    radial-gradient(circle at 90% 90%, #44366e, transparent 35%),
+    radial-gradient(
+      circle at 10% 10%,
+      #294d7a,
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 90% 90%,
+      #44366e,
+      transparent 35%
+    ),
+
     #0b1020;
 
   display: flex;
+
   flex-direction: column;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header {
+
   padding: 22px 8%;
-  background: rgba(8,13,27,.75);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(8,13,27,.75);
+
+  backdrop-filter:
+    blur(18px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
 }
 
 .logo {
+
   font-size: 24px;
+
   font-weight: bold;
 }
 
 .logo span {
+
   color: #7fb3ff;
 }
 
+
+/* =========================
+   MAIN
+========================= */
+
 main {
+
   flex: 1;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
   padding: 30px 15px;
 }
 
+
+/* =========================
+   CARD
+========================= */
+
 .card {
+
   width: 100%;
+
   max-width: 650px;
+
   padding: 45px;
 
-  background: rgba(255,255,255,.055);
+  background:
+    rgba(255,255,255,.055);
 
-  border: 1px solid rgba(255,255,255,.09);
+  border:
+    1px solid rgba(255,255,255,.09);
 
   border-radius: 30px;
 
-  backdrop-filter: blur(20px);
+  backdrop-filter:
+    blur(20px);
 
-  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35);
 }
 
+
+/* =========================
+   TITLE
+========================= */
+
 .icon {
+
   text-align: center;
+
   font-size: 65px;
+
   margin-bottom: 15px;
 }
 
 h1 {
+
   text-align: center;
+
   font-size: 50px;
+
   margin-bottom: 12px;
 }
 
 h1 span {
+
   color: #7fb3ff;
 }
 
 .subtitle {
+
   text-align: center;
+
   color: #9aa8c2;
+
   line-height: 1.6;
+
   margin-bottom: 35px;
 }
 
+
+/* =========================
+   FORM
+========================= */
+
 form {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 15px;
 }
 
 label {
+
   color: #bdc9dd;
+
   font-size: 14px;
+
   margin-top: 5px;
 }
 
 input,
 select,
 textarea {
+
   width: 100%;
+
   padding: 16px;
 
   border: none;
+
   border-radius: 14px;
 
   background: #12192d;
+
   color: white;
 
   font-size: 16px;
+
   outline: none;
 }
 
 input::placeholder,
 textarea::placeholder {
+
   color: #66738b;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow: 0 0 0 3px rgba(127,179,255,.25);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(127,179,255,.25);
 }
 
 select {
+
   cursor: pointer;
 }
 
 textarea {
+
   min-height: 100px;
+
   resize: vertical;
 }
 
 
-/* SURPRISE ME */
+/* =========================
+   SURPRISE BUTTON
+========================= */
 
 .surpriseButton {
+
   width: fit-content;
 
-  align-self: flex-start;
-
-  padding: 10px 18px;
+  padding:
+    10px 18px;
 
   margin-left: -5px;
 
-  background: rgba(94,162,255,0.35);
-
-  border: 1px solid rgba(255,255,255,0.12);
-
-  color: white;
+  border: none;
 
   border-radius: 12px;
+
+  background:
+    rgba(94,162,255,.35);
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  color: white;
 
   font-size: 14px;
 
@@ -169,38 +273,181 @@ textarea {
 }
 
 .surpriseButton:hover {
-  background: rgba(94,162,255,0.5);
+
+  transform:
+    translateY(-2px);
+
+  background:
+    rgba(94,162,255,.5);
 }
 
 
-/* TIP */
-
-.tip-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-
-/* CUSTOM TIP */
+/* =========================
+   CUSTOM TIP
+========================= */
 
 #customAmountContainer {
+
   display: none;
+
   flex-direction: column;
+
   gap: 8px;
 }
 
 #customAmountContainer.show {
+
   display: flex;
 }
 
 
-/* REQUEST ORDER */
+/* =========================
+   REQUEST ORDER
+========================= */
 
-.requestOrderButton {
+#requestOrderButton {
+
+  display: block;
+
   width: 100%;
 
-  margin-top: 10px;
+  margin-top: 12px;
+
+  padding: 18px;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5ea2ff,
+      #7a6cff
+    );
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+#requestOrderButton:hover {
+
+  transform:
+    translateY(-2px);
+}
+
+#requestOrderButton:disabled {
+
+  opacity: .6;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+#errorMessage {
+
+  display: none;
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,70,70,.15);
+
+  border:
+    1px solid
+    rgba(255,70,70,.3);
+
+  color: #ff9a9a;
+
+  text-align: center;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+#confirmation {
+
+  display: none;
+
+  text-align: center;
+}
+
+#confirmation h2 {
+
+  color: #8ff0b0;
+
+  font-size: 30px;
+
+  margin-bottom: 12px;
+}
+
+.requestIDBox {
+
+  margin-top: 20px;
+
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.requestIDLabel {
+
+  color: #9aa8c2;
+
+  font-size: 14px;
+
+  margin-bottom: 7px;
+}
+
+.requestID {
+
+  color: #7fb3ff;
+
+  font-size: 28px;
+
+  font-weight: bold;
+}
+
+.confirmationText {
+
+  margin-top: 15px;
+
+  color: #9aa8c2;
+
+  line-height: 1.5;
+}
+
+.newOrderButton {
+
+  width: 100%;
+
+  margin-top: 25px;
 
   padding: 17px;
 
@@ -222,86 +469,15 @@ textarea {
   font-weight: bold;
 
   cursor: pointer;
-
-  transition: .2s;
-}
-
-.requestOrderButton:hover {
-  transform: translateY(-2px);
-}
-
-.requestOrderButton:disabled {
-  opacity: .6;
-  cursor: not-allowed;
-  transform: none;
 }
 
 
-/* SUCCESS */
-
-#confirmation {
-  display: none;
-  text-align: center;
-}
-
-#confirmation h2 {
-  color: #8ff0b0;
-  margin-bottom: 12px;
-  font-size: 28px;
-}
-
-.requestIDBox {
-  margin-top: 20px;
-  padding: 16px;
-
-  border-radius: 14px;
-
-  background: rgba(255,255,255,.06);
-
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.requestIDLabel {
-  color: #9aa8c2;
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-.requestID {
-  color: #7fb3ff;
-  font-size: 26px;
-  font-weight: bold;
-}
-
-.confirmationText {
-  margin-top: 15px;
-  color: #9aa8c2;
-  line-height: 1.5;
-}
-
-
-/* ERROR */
-
-#errorMessage {
-  display: none;
-
-  margin-top: 20px;
-
-  padding: 15px;
-
-  border-radius: 14px;
-
-  background: rgba(255,70,70,.15);
-
-  border: 1px solid rgba(255,70,70,.3);
-
-  color: #ff9a9a;
-
-  text-align: center;
-}
-
+/* =========================
+   FOOTER
+========================= */
 
 footer {
+
   padding: 22px;
 
   text-align: center;
@@ -312,14 +488,26 @@ footer {
 }
 
 
+/* =========================
+   PHONE
+========================= */
+
 @media (max-width: 600px) {
 
   .card {
-    padding: 30px 22px;
+
+    padding:
+      30px 22px;
   }
 
   h1 {
+
     font-size: 40px;
+  }
+
+  .icon {
+
+    font-size: 55px;
   }
 
 }
@@ -332,45 +520,68 @@ footer {
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
   <div class="logo">
+
     🍳 Uki <span>Kooking</span>
+
   </div>
 
 </header>
 
 
+<!-- =========================
+     MAIN
+========================= -->
+
 <main>
+
 
 <div class="card">
 
 
-<!-- FORM -->
+<!-- =========================
+     ORDER FORM
+========================= -->
 
 <div id="formArea">
+
 
   <div class="icon">
     🍽️
   </div>
 
+
   <h1>
+
     Uki <span>Kooking</span>
+
   </h1>
 
+
   <p class="subtitle">
-    Request a meal and choose when you'd like it.
+
+    Request a meal and choose
+    when you'd like it.
+
   </p>
 
 
   <form
     id="foodForm"
+
     action="https://formspree.io/f/xvkpjaly"
+
     method="POST"
   >
 
 
-    <!-- REQUEST NUMBER -->
+    <!-- REQUEST ID -->
 
     <input
       type="hidden"
@@ -382,7 +593,9 @@ footer {
     <!-- NAME -->
 
     <label for="name">
+
       👤 Your Name
+
     </label>
 
     <input
@@ -397,7 +610,9 @@ footer {
     <!-- EMAIL -->
 
     <label for="email">
+
       📧 Your Email
+
     </label>
 
     <input
@@ -412,7 +627,9 @@ footer {
     <!-- FOOD -->
 
     <label for="food">
+
       🍔 Food
+
     </label>
 
     <input
@@ -431,125 +648,20 @@ footer {
       class="surpriseButton"
       onclick="surpriseMe()"
     >
+
       🎲 Surprise Me
+
     </button>
 
 
     <!-- QUANTITY -->
 
     <label for="quantity">
+
       🔢 Quantity
+
     </label>
 
     <input
       id="quantity"
-      name="quantity"
-      type="number"
-      min="1"
-      max="99"
-      value="1"
-      required
-    >
-
-
-    <!-- DESCRIPTION -->
-
-    <label for="description">
-      📝 Food Description
-    </label>
-
-    <textarea
-      id="description"
-      name="description"
-      placeholder="Extra cheese, no onions, special requests..."
-    ></textarea>
-
-
-    <!-- DATE -->
-
-    <label for="date">
-      📅 Date
-    </label>
-
-    <input
-      id="date"
-      name="date"
-      type="date"
-      required
-    >
-
-
-    <!-- TIME -->
-
-    <label for="time">
-      ⏰ Time
-    </label>
-
-    <input
-      id="time"
-      name="time"
-      type="time"
-      required
-    >
-
-
-    <!-- TIP -->
-
-    <div class="tip-section">
-
-      <label for="tip">
-        💸 Tip
-      </label>
-
-      <select
-        id="tip"
-        name="tip"
-      >
-
-        <option value="€0">
-          No tip
-        </option>
-
-        <option value="€1">
-          €1
-        </option>
-
-        <option value="€2">
-          €2
-        </option>
-
-        <option value="€5">
-          €5
-        </option>
-
-        <option value="€10">
-          €10
-        </option>
-
-        <option value="€15">
-          €15
-        </option>
-
-        <option value="custom">
-          Custom Amount
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <!-- CUSTOM AMOUNT -->
-
-    <div id="customAmountContainer">
-
-      <label for="customAmount">
-        💰 Custom Amount
-      </label>
-
-      <input
-        id="customAmount"
-        name="custom_amount"
-        type="number"
-        min="0"
-        step="0.01"
+      name
