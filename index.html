@@ -5,10 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Uki Kooking</title>
 
@@ -21,7 +18,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   min-height: 100vh;
   color: white;
 
@@ -36,13 +33,9 @@ body {
 
 header {
   padding: 22px 8%;
-
-  background: rgba(8, 13, 27, 0.75);
-
+  background: rgba(8,13,27,.75);
   backdrop-filter: blur(18px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .logo {
@@ -56,60 +49,37 @@ header {
 
 main {
   flex: 1;
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
-  padding: 35px 20px;
+  padding: 30px 15px;
 }
 
 .card {
   width: 100%;
   max-width: 650px;
-
   padding: 45px;
 
-  text-align: center;
+  background: rgba(255,255,255,.055);
 
-  background:
-    rgba(255,255,255,0.055);
-
-  border:
-    1px solid rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,.09);
 
   border-radius: 30px;
 
   backdrop-filter: blur(20px);
 
-  box-shadow:
-    0 25px 70px rgba(0,0,0,0.35);
+  box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
 .icon {
-  font-size: 70px;
+  text-align: center;
+  font-size: 65px;
   margin-bottom: 15px;
-
-  animation:
-    floating 3s ease-in-out infinite;
-}
-
-@keyframes floating {
-
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-
 }
 
 h1 {
-  font-size: 52px;
+  text-align: center;
+  font-size: 50px;
   margin-bottom: 12px;
 }
 
@@ -118,52 +88,37 @@ h1 span {
 }
 
 .subtitle {
+  text-align: center;
   color: #9aa8c2;
-
-  font-size: 16px;
-
   line-height: 1.6;
-
   margin-bottom: 35px;
 }
 
 form {
   display: flex;
-
   flex-direction: column;
-
   gap: 15px;
 }
 
 label {
-  text-align: left;
-
   color: #bdc9dd;
-
   font-size: 14px;
-
   margin-top: 5px;
 }
 
 input,
 select {
   width: 100%;
-
   padding: 16px;
 
   border: none;
-
   border-radius: 14px;
 
   background: #12192d;
-
   color: white;
 
   font-size: 16px;
-
   outline: none;
-
-  transition: 0.2s ease;
 }
 
 input::placeholder {
@@ -172,32 +127,26 @@ input::placeholder {
 
 input:focus,
 select:focus {
-  background: #151e35;
-
-  box-shadow:
-    0 0 0 3px
-    rgba(127,179,255,0.25);
+  box-shadow: 0 0 0 3px rgba(127,179,255,.25);
 }
 
 select {
   cursor: pointer;
 }
 
-/* CUSTOM TIP BOX */
 
-#customTipBox {
+/* CUSTOM AMOUNT */
+
+#customAmountContainer {
   display: none;
-
-  width: 100%;
 }
 
-#customTipBox.show {
-  display: block;
+#customAmountContainer.visible {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-#customTip {
-  width: 100%;
-}
 
 /* BUTTON */
 
@@ -207,7 +156,6 @@ button {
   padding: 17px;
 
   border: none;
-
   border-radius: 15px;
 
   background:
@@ -220,54 +168,30 @@ button {
   color: white;
 
   font-size: 17px;
-
   font-weight: bold;
 
   cursor: pointer;
-
-  transition: 0.25s ease;
 }
 
 button:hover {
   transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 30px
-    rgba(94,162,255,0.3);
-}
-
-button:active {
-  transform: scale(0.98);
 }
 
 footer {
   padding: 22px;
-
   text-align: center;
-
   color: #66738b;
-
   font-size: 14px;
 }
 
 @media (max-width: 600px) {
 
-  main {
-    padding: 20px 15px;
-  }
-
   .card {
     padding: 30px 22px;
-
-    border-radius: 24px;
   }
 
   h1 {
     font-size: 40px;
-  }
-
-  .icon {
-    font-size: 60px;
   }
 
 }
@@ -279,12 +203,11 @@ footer {
 
 <body>
 
+
 <header>
 
   <div class="logo">
-
     🍳 Uki <span>Kooking</span>
-
   </div>
 
 </header>
@@ -303,8 +226,7 @@ footer {
   </h1>
 
   <p class="subtitle">
-    Request a meal and choose
-    when you'd like it.
+    Request a meal and choose when you'd like it.
   </p>
 
 
@@ -320,10 +242,9 @@ footer {
 
     <input
       id="name"
-      type="text"
       name="name"
+      type="text"
       placeholder="Enter your name"
-      maxlength="50"
       required
     >
 
@@ -334,10 +255,9 @@ footer {
 
     <input
       id="food"
-      type="text"
       name="food"
+      type="text"
       placeholder="What would you like?"
-      maxlength="100"
       required
     >
 
@@ -348,8 +268,8 @@ footer {
 
     <input
       id="date"
-      type="date"
       name="date"
+      type="date"
       required
     >
 
@@ -360,8 +280,8 @@ footer {
 
     <input
       id="time"
-      type="time"
       name="time"
+      type="time"
       required
     >
 
@@ -373,6 +293,7 @@ footer {
     <select
       id="tip"
       name="tip"
+      onchange="handleTipChange(this)"
     >
 
       <option value="€0">
@@ -406,15 +327,21 @@ footer {
     </select>
 
 
-    <div id="customTipBox">
+    <!-- THIS ONLY APPEARS FOR CUSTOM AMOUNT -->
+
+    <div id="customAmountContainer">
+
+      <label for="customAmount">
+        💰 Custom Amount
+      </label>
 
       <input
-        id="customTip"
+        id="customAmount"
+        name="custom_amount"
         type="number"
-        name="custom_tip"
-        placeholder="Enter custom amount (€)"
         min="0"
         step="0.01"
+        placeholder="Enter amount in €"
       >
 
     </div>
@@ -433,35 +360,34 @@ footer {
 
 
 <footer>
-
   © 2026 Uki Kooking
-
 </footer>
 
 
 <script>
 
-const tip =
-  document.getElementById("tip");
+function handleTipChange(select) {
 
-const customBox =
-  document.getElementById("customTipBox");
+  const container =
+    document.getElementById(
+      "customAmountContainer"
+    );
 
-const customInput =
-  document.getElementById("customTip");
+  const input =
+    document.getElementById(
+      "customAmount"
+    );
 
 
-tip.addEventListener("change", function() {
+  if (select.value === "custom") {
 
-  if (this.value === "custom") {
+    container.classList.add("visible");
 
-    customBox.classList.add("show");
-
-    customInput.required = true;
+    input.required = true;
 
     setTimeout(function() {
 
-      customInput.focus();
+      input.focus();
 
     }, 100);
 
@@ -469,15 +395,15 @@ tip.addEventListener("change", function() {
 
   else {
 
-    customBox.classList.remove("show");
+    container.classList.remove("visible");
 
-    customInput.required = false;
+    input.required = false;
 
-    customInput.value = "";
+    input.value = "";
 
   }
 
-});
+}
 
 </script>
 
