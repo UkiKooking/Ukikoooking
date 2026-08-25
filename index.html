@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Uki Kooking</title>
 
 <style>
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,20 +16,26 @@
 
 body {
   font-family: Arial, sans-serif;
+
   background:
     radial-gradient(circle at top left, #274472, transparent 40%),
     radial-gradient(circle at bottom right, #3a2d67, transparent 40%),
     #0b1020;
+
   color: white;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
 }
 
 header {
   padding: 22px 8%;
+
   background: rgba(8,13,27,.7);
+
   backdrop-filter: blur(18px);
+
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
@@ -42,34 +50,46 @@ header {
 
 main {
   flex: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 30px;
 }
 
 .card {
   width: 100%;
   max-width: 700px;
+
   background: rgba(255,255,255,.05);
+
   border: 1px solid rgba(255,255,255,.08);
+
   border-radius: 28px;
+
   padding: 45px;
+
   text-align: center;
+
   backdrop-filter: blur(18px);
+
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
 
 .icon {
   font-size: 70px;
   margin-bottom: 18px;
+
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
+
   50% {
     transform: translateY(-8px);
   }
+
 }
 
 h1 {
@@ -83,7 +103,9 @@ h1 span {
 
 .subtitle {
   color: #9aa8c2;
+
   line-height: 1.6;
+
   margin-bottom: 35px;
 }
 
@@ -95,40 +117,67 @@ form {
 
 label {
   text-align: left;
+
   color: #b9c6dd;
+
   font-size: 14px;
 }
 
 input {
   width: 100%;
+
   padding: 16px;
+
   border: none;
+
   border-radius: 14px;
+
   background: #12192d;
+
   color: white;
+
   font-size: 16px;
+
   outline: none;
 }
 
 input:focus {
-  box-shadow: 0 0 0 3px rgba(127,179,255,.3);
+  box-shadow:
+    0 0 0 3px
+    rgba(127,179,255,.3);
 }
 
 button {
   padding: 16px;
+
   border: none;
+
   border-radius: 14px;
-  background: linear-gradient(135deg,#5ea2ff,#7a6cff);
+
+  background:
+    linear-gradient(
+      135deg,
+      #5ea2ff,
+      #7a6cff
+    );
+
   color: white;
+
   font-size: 16px;
+
   font-weight: bold;
+
   cursor: pointer;
+
   transition: .25s;
 }
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(94,162,255,.35);
+
+  box-shadow:
+    0 10px 25px
+    rgba(94,162,255,.35);
 }
 
 button:disabled {
@@ -138,19 +187,26 @@ button:disabled {
 
 #result {
   margin-top: 18px;
+
   font-weight: bold;
+
   color: #8ee89c;
+
   min-height: 22px;
 }
 
 footer {
   padding: 22px;
+
   text-align: center;
+
   color: #66738b;
+
   font-size: 14px;
 }
 
 @media(max-width:600px) {
+
   .card {
     padding: 28px 22px;
   }
@@ -158,34 +214,56 @@ footer {
   h1 {
     font-size: 40px;
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <header>
-  <div class="logo">🍳 Uki <span>Kooking</span></div>
+
+  <div class="logo">
+    🍳 Uki <span>Kooking</span>
+  </div>
+
 </header>
+
 
 <main>
 
 <div class="card">
 
-  <div class="icon">🍽️</div>
+  <div class="icon">
+    🍽️
+  </div>
 
-  <h1>Uki <span>Kooking</span></h1>
+
+  <h1>
+    Uki <span>Kooking</span>
+  </h1>
+
 
   <p class="subtitle">
     Request a meal and choose when you'd like it.
   </p>
 
-  <form id="foodForm">
 
-    <label for="name">👤 Your Name</label>
+  <form
+    id="foodForm"
+    action="YOUR_FORMSPREE_URL"
+    method="POST"
+  >
+
+
+    <label>
+      👤 Your Name
+    </label>
 
     <input
-      id="name"
       type="text"
       name="name"
       placeholder="Enter your name"
@@ -193,10 +271,12 @@ footer {
       required
     >
 
-    <label for="food">🍔 Food</label>
+
+    <label>
+      🍔 Food
+    </label>
 
     <input
-      id="food"
       type="text"
       name="food"
       placeholder="What would you like?"
@@ -204,47 +284,54 @@ footer {
       required
     >
 
-    <label for="date">📅 Date</label>
+
+    <label>
+      📅 Date
+    </label>
 
     <input
-      id="date"
       type="date"
       name="date"
       required
     >
 
-    <label for="time">⏰ Time</label>
+
+    <label>
+      ⏰ Time
+    </label>
 
     <input
-      id="time"
       type="time"
       name="time"
       required
     >
 
-    <button type="submit" id="submitButton">
+
+    <button
+      type="submit"
+      id="submitButton"
+    >
       Request Meal
     </button>
 
+
   </form>
 
+
   <p id="result"></p>
+
 
 </div>
 
 </main>
 
+
 <footer>
   © 2026 Uki Kooking
 </footer>
 
+
 <script>
-
-const SUPABASE_URL =
-  "PUT_YOUR_API_URL_HERE";
-
-const SUPABASE_KEY =
-  "PUT_YOUR_PUBLISHABLE_KEY_HERE";
 
 const form =
   document.getElementById("foodForm");
@@ -252,88 +339,81 @@ const form =
 const result =
   document.getElementById("result");
 
-const submitButton =
+const button =
   document.getElementById("submitButton");
 
-form.addEventListener("submit", async function(event) {
 
-  event.preventDefault();
+form.addEventListener(
+  "submit",
+  async function(event) {
 
-  submitButton.disabled = true;
-  submitButton.textContent = "Sending...";
+    event.preventDefault();
 
-  result.textContent = "";
+    button.disabled = true;
 
-  const name =
-    document.getElementById("name").value.trim();
+    button.textContent =
+      "Sending...";
 
-  const food =
-    document.getElementById("food").value.trim();
+    result.textContent = "";
 
-  const date =
-    document.getElementById("date").value;
 
-  const time =
-    document.getElementById("time").value;
+    try {
 
-  const requestData = {
-    name: name,
-    food: food,
-    date: date,
-    time: time,
-    status: "pending"
-  };
+      const response =
+        await fetch(
+          form.action,
+          {
+            method: "POST",
 
-  try {
+            body:
+              new FormData(form),
 
-    const response = await fetch(
-      SUPABASE_URL + "/rest/v1/requests",
-      {
-        method: "POST",
+            headers: {
+              "Accept":
+                "application/json"
+            }
+          }
+        );
 
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": SUPABASE_KEY,
-          "Authorization": "Bearer " + SUPABASE_KEY,
-          "Prefer": "return=minimal"
-        },
 
-        body: JSON.stringify(requestData)
+      if (response.ok) {
+
+        result.textContent =
+          "✅ Request sent!";
+
+        form.reset();
+
       }
-    );
 
-    if (response.ok) {
+      else {
 
-      result.textContent =
-        "✅ Request sent!";
+        result.textContent =
+          "❌ Couldn't send request.";
 
-      form.reset();
+      }
 
-    } else {
 
-      const errorText =
-        await response.text();
-
-      console.log(errorText);
-
-      result.textContent =
-        "❌ Couldn't send request.";
     }
 
-  } catch (error) {
+    catch {
 
-    console.log(error);
+      result.textContent =
+        "❌ Connection failed.";
 
-    result.textContent =
-      "❌ Connection failed.";
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Request Meal";
+
   }
 
-  submitButton.disabled = false;
-  submitButton.textContent = "Request Meal";
-
-});
+);
 
 </script>
+
 
 </body>
 </html>
