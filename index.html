@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Uki Kooking</title>
@@ -33,13 +31,9 @@ body {
 
 header {
   padding: 22px 8%;
-
   background: rgba(8,13,27,.75);
-
   backdrop-filter: blur(18px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .logo {
@@ -53,49 +47,37 @@ header {
 
 main {
   flex: 1;
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   padding: 30px 15px;
 }
 
 .card {
   width: 100%;
   max-width: 650px;
-
   padding: 45px;
 
-  background:
-    rgba(255,255,255,.055);
+  background: rgba(255,255,255,.055);
 
-  border:
-    1px solid rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.09);
 
   border-radius: 30px;
 
   backdrop-filter: blur(20px);
 
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.35);
+  box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
 .icon {
   text-align: center;
-
   font-size: 65px;
-
   margin-bottom: 15px;
 }
 
 h1 {
   text-align: center;
-
   font-size: 50px;
-
   margin-bottom: 12px;
 }
 
@@ -105,27 +87,20 @@ h1 span {
 
 .subtitle {
   text-align: center;
-
   color: #9aa8c2;
-
   line-height: 1.6;
-
   margin-bottom: 35px;
 }
 
 form {
   display: flex;
-
   flex-direction: column;
-
   gap: 15px;
 }
 
 label {
   color: #bdc9dd;
-
   font-size: 14px;
-
   margin-top: 5px;
 }
 
@@ -133,19 +108,15 @@ input,
 select,
 textarea {
   width: 100%;
-
   padding: 16px;
 
   border: none;
-
   border-radius: 14px;
 
   background: #12192d;
-
   color: white;
 
   font-size: 16px;
-
   outline: none;
 }
 
@@ -157,8 +128,7 @@ textarea::placeholder {
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow:
-    0 0 0 3px rgba(127,179,255,.25);
+  box-shadow: 0 0 0 3px rgba(127,179,255,.25);
 }
 
 select {
@@ -167,12 +137,11 @@ select {
 
 textarea {
   min-height: 100px;
-
   resize: vertical;
 }
 
 
-/* SURPRISE BUTTON */
+/* SURPRISE ME */
 
 .surpriseButton {
   width: auto;
@@ -182,14 +151,13 @@ textarea {
   padding: 10px 18px;
 
   margin-top: 2px;
+  margin-left: -5px;
 
   font-size: 14px;
 
-  background:
-    rgba(94,162,255,0.35);
+  background: rgba(94,162,255,0.35);
 
-  border:
-    1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.12);
 
   box-shadow: none;
 
@@ -205,12 +173,11 @@ textarea {
 .surpriseButton:hover {
   transform: translateY(-2px);
 
-  background:
-    rgba(94,162,255,0.5);
+  background: rgba(94,162,255,0.5);
 }
 
 
-/* NORMAL BUTTON */
+/* SUBMIT BUTTON */
 
 .submitButton {
   width: 100%;
@@ -247,9 +214,7 @@ textarea {
 
 .submitButton:disabled {
   opacity: .6;
-
   cursor: not-allowed;
-
   transform: none;
 }
 
@@ -262,58 +227,61 @@ textarea {
 
 #customAmountContainer.visible {
   display: flex;
-
   flex-direction: column;
-
   gap: 8px;
 }
 
 
-/* CONFIRMATION */
+/* SUCCESS */
 
 #confirmation {
   display: none;
 
   text-align: center;
 
-  margin-top: 25px;
+  margin-top: 5px;
 
-  padding: 25px;
-
-  border-radius: 18px;
-
-  background:
-    rgba(80,180,120,.10);
-
-  border:
-    1px solid rgba(100,220,140,.25);
+  padding: 10px;
 }
 
 #confirmation h2 {
   color: #8ff0b0;
 
   margin-bottom: 12px;
+
+  font-size: 28px;
+}
+
+.requestIDBox {
+  margin-top: 18px;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,.06);
+
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.requestIDLabel {
+  color: #9aa8c2;
+
+  font-size: 14px;
+
+  margin-bottom: 6px;
 }
 
 .requestID {
-  margin-top: 12px;
+  color: #7fb3ff;
 
-  padding: 12px;
-
-  border-radius: 10px;
-
-  background:
-    rgba(255,255,255,.06);
-
-  font-size: 20px;
+  font-size: 26px;
 
   font-weight: bold;
-
-  color: #7fb3ff;
 }
 
 .confirmationText {
-  margin-top: 12px;
+  margin-top: 15px;
 
   color: #9aa8c2;
 
@@ -332,11 +300,9 @@ textarea {
 
   border-radius: 14px;
 
-  background:
-    rgba(255,70,70,.15);
+  background: rgba(255,70,70,.15);
 
-  border:
-    1px solid rgba(255,70,70,.3);
+  border: 1px solid rgba(255,70,70,.3);
 
   color: #ff9a9a;
 
@@ -395,187 +361,207 @@ footer {
 <div class="card">
 
 
-  <div id="formArea">
+<div id="formArea">
 
-    <div class="icon">
-      🍽️
-    </div>
-
-    <h1>
-      Uki <span>Kooking</span>
-    </h1>
-
-    <p class="subtitle">
-      Request a meal and choose when you'd like it.
-    </p>
+  <div class="icon">
+    🍽️
+  </div>
 
 
-    <form
-      id="foodForm"
-      action="https://formspree.io/f/xvkpjaly"
-      method="POST"
+  <h1>
+    Uki <span>Kooking</span>
+  </h1>
+
+
+  <p class="subtitle">
+    Request a meal and choose when you'd like it.
+  </p>
+
+
+  <form
+    id="foodForm"
+    action="https://formspree.io/f/xvkpjaly"
+    method="POST"
+  >
+
+
+    <!-- REQUEST ID -->
+
+    <input
+      id="hiddenRequestID"
+      name="request_id"
+      type="hidden"
     >
 
 
-      <!-- NAME -->
+    <!-- NAME -->
 
-      <label for="name">
-        👤 Your Name
+    <label for="name">
+      👤 Your Name
+    </label>
+
+    <input
+      id="name"
+      name="name"
+      type="text"
+      placeholder="Enter your name"
+      autocomplete="name"
+      required
+    >
+
+
+    <!-- EMAIL -->
+
+    <label for="email">
+      📧 Your Email
+    </label>
+
+    <input
+      id="email"
+      name="email"
+      type="email"
+      placeholder="Enter your email"
+      autocomplete="email"
+      required
+    >
+
+
+    <!-- FOOD -->
+
+    <label for="food">
+      🍔 Food
+    </label>
+
+    <input
+      id="food"
+      name="food"
+      type="text"
+      placeholder="What would you like?"
+      required
+    >
+
+
+    <!-- SURPRISE ME -->
+
+    <button
+      type="button"
+      class="surpriseButton"
+      onclick="surpriseMe()"
+    >
+      🎲 Surprise Me
+    </button>
+
+
+    <!-- QUANTITY -->
+
+    <label for="quantity">
+      🔢 Quantity
+    </label>
+
+    <input
+      id="quantity"
+      name="quantity"
+      type="number"
+      min="1"
+      max="99"
+      value="1"
+      required
+    >
+
+
+    <!-- DESCRIPTION -->
+
+    <label for="description">
+      📝 Food Description
+    </label>
+
+    <textarea
+      id="description"
+      name="description"
+      placeholder="Extra cheese, no onions, special requests..."
+    ></textarea>
+
+
+    <!-- DATE -->
+
+    <label for="date">
+      📅 Date
+    </label>
+
+    <input
+      id="date"
+      name="date"
+      type="date"
+      required
+    >
+
+
+    <!-- TIME -->
+
+    <label for="time">
+      ⏰ Time
+    </label>
+
+    <input
+      id="time"
+      name="time"
+      type="time"
+      required
+    >
+
+
+    <!-- TIP -->
+
+    <label for="tip">
+      💸 Tip
+    </label>
+
+    <select
+      id="tip"
+      name="tip"
+      onchange="handleTipChange(this)"
+    >
+
+      <option value="€0">
+        No tip
+      </option>
+
+      <option value="€1">
+        €1
+      </option>
+
+      <option value="€2">
+        €2
+      </option>
+
+      <option value="€5">
+        €5
+      </option>
+
+      <option value="€10">
+        €10
+      </option>
+
+      <option value="€15">
+        €15
+      </option>
+
+      <option value="custom">
+        Custom Amount
+      </option>
+
+    </select>
+
+
+    <!-- CUSTOM TIP -->
+
+    <div id="customAmountContainer">
+
+      <label for="customAmount">
+        💰 Custom Amount
       </label>
 
       <input
-        id="name"
-        name="name"
-        type="text"
-        placeholder="Enter your name"
-        autocomplete="name"
-        required
-      >
-
-
-      <!-- EMAIL -->
-
-      <label for="email">
-        📧 Your Email
-      </label>
-
-      <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Enter your email"
-        autocomplete="email"
-        required
-      >
-
-
-      <!-- FOOD -->
-
-      <label for="food">
-        🍔 Food
-      </label>
-
-      <input
-        id="food"
-        name="food"
-        type="text"
-        placeholder="What would you like?"
-        required
-      >
-
-
-      <!-- SURPRISE -->
-
-      <button
-        type="button"
-        class="surpriseButton"
-        onclick="surpriseMe()"
-      >
-        🎲 Surprise Me
-      </button>
-
-
-      <!-- QUANTITY -->
-
-      <label for="quantity">
-        🔢 Quantity
-      </label>
-
-      <input
-        id="quantity"
-        name="quantity"
-        type="number"
-        min="1"
-        max="99"
-        value="1"
-        required
-      >
-
-
-      <!-- DESCRIPTION -->
-
-      <label for="description">
-        📝 Food Description
-      </label>
-
-      <textarea
-        id="description"
-        name="description"
-        placeholder="Extra cheese, no onions, special requests..."
-      ></textarea>
-
-
-      <!-- DATE -->
-
-      <label for="date">
-        📅 Date
-      </label>
-
-      <input
-        id="date"
-        name="date"
-        type="date"
-        required
-      >
-
-
-      <!-- TIME -->
-
-      <label for="time">
-        ⏰ Time
-      </label>
-
-      <input
-        id="time"
-        name="time"
-        type="time"
-        required
-      >
-
-
-      <!-- TIP -->
-
-      <label for="tip">
-        💸 Tip
-      </label>
-
-      <select
-        id="tip"
-        name="tip"
-        onchange="handleTipChange(this)"
-      >
-
-        <option value="€0">
-          No tip
-        </option>
-
-        <option value="€1">
-          €1
-        </option>
-
-        <option value="€2">
-          €2
-        </option>
-
-        <option value="€5">
-          €5
-        </option>
-
-        <option value="€10">
-          €10
-        </option>
-
-        <option value="€15">
-          €15
-        </option>
-
-        <option value="custom">
-          Custom Amount
-        </option>
-
-      </select>
-
-
-      <!-- CUSTOM TIP -->
-
-      <div id="customAmountContainer
+        id="customAmount"
+        name="custom_amount"
+        type
