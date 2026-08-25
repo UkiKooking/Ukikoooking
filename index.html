@@ -1,567 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Uki Kooking</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+body{
+font-family:Arial,sans-serif;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+background:
+radial-gradient(circle at 10% 10%,#294d7a,transparent 35%),
+radial-gradient(circle at 90% 90%,#44366e,transparent 35%),
+#0b1020;
+color:white;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  color: white;
-
-  background:
-    radial-gradient(circle at 10% 10%, #294d7a, transparent 35%),
-    radial-gradient(circle at 90% 90%, #44366e, transparent 35%),
-    #0b1020;
-
-  display: flex;
-  flex-direction: column;
+header{
+padding:22px 8%;
+background:rgba(8,13,27,.75);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-header {
-  padding: 22px 8%;
-  background: rgba(8,13,27,.75);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+.logo{font-size:24px;font-weight:bold;}
+.logo span{color:#7fb3ff;}
+
+main{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px 15px;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.card{
+width:100%;
+max-width:650px;
+padding:40px;
+background:rgba(255,255,255,.055);
+border:1px solid rgba(255,255,255,.09);
+border-radius:30px;
+backdrop-filter:blur(20px);
+box-shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
-.logo span {
-  color: #7fb3ff;
+.icon{
+text-align:center;
+font-size:60px;
+margin-bottom:15px;
 }
 
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 15px;
+h1{
+text-align:center;
+font-size:48px;
+margin-bottom:10px;
 }
 
-.card {
-  width: 100%;
-  max-width: 650px;
-  padding: 45px;
+h1 span{color:#7fb3ff;}
 
-  background: rgba(255,255,255,.055);
-
-  border: 1px solid rgba(255,255,255,.09);
-
-  border-radius: 30px;
-
-  backdrop-filter: blur(20px);
-
-  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+.subtitle{
+text-align:center;
+color:#9aa8c2;
+margin-bottom:30px;
 }
 
-.icon {
-  text-align: center;
-  font-size: 65px;
-  margin-bottom: 15px;
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-h1 {
-  text-align: center;
-  font-size: 50px;
-  margin-bottom: 12px;
+label{
+color:#bdc9dd;
+font-size:14px;
 }
 
-h1 span {
-  color: #7fb3ff;
-}
-
-.subtitle {
-  text-align: center;
-  color: #9aa8c2;
-  line-height: 1.6;
-  margin-bottom: 35px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  color: #bdc9dd;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 16px;
-
-  border: none;
-  border-radius: 14px;
-
-  background: #12192d;
-  color: white;
-
-  font-size: 16px;
-  outline: none;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #66738b;
+input,select,textarea{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:#12192d;
+color:white;
+font-size:16px;
 }
 
 input:focus,
 select:focus,
-textarea:focus {
-  box-shadow: 0 0 0 3px rgba(127,179,255,.25);
+textarea:focus{
+outline:none;
+box-shadow:0 0 0 3px rgba(127,179,255,.25);
 }
 
-select {
-  cursor: pointer;
+textarea{
+min-height:90px;
+resize:vertical;
 }
 
-textarea {
-  min-height: 100px;
-  resize: vertical;
+#customTip{
+display:none;
+flex-direction:column;
+gap:8px;
 }
 
-
-/* SURPRISE ME */
-
-.surpriseButton {
-  width: auto;
-
-  align-self: flex-start;
-
-  padding: 10px 18px;
-
-  margin-top: 2px;
-  margin-left: -5px;
-
-  font-size: 14px;
-
-  background: rgba(94,162,255,0.35);
-
-  border: 1px solid rgba(255,255,255,0.12);
-
-  box-shadow: none;
-
-  color: white;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-
-  transition: .2s;
+#requestBtn{
+padding:18px;
+border:none;
+border-radius:15px;
+background:linear-gradient(135deg,#5ea2ff,#7a6cff);
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.2s;
 }
 
-.surpriseButton:hover {
-  transform: translateY(-2px);
-
-  background: rgba(94,162,255,0.5);
+#requestBtn:hover{
+transform:translateY(-2px);
 }
 
-
-/* SUBMIT BUTTON */
-
-.submitButton {
-  width: 100%;
-
-  margin-top: 10px;
-
-  padding: 17px;
-
-  border: none;
-
-  border-radius: 15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #5ea2ff,
-      #7a6cff
-    );
-
-  color: white;
-
-  font-size: 17px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition: .2s;
+#requestBtn:disabled{
+opacity:.6;
+cursor:not-allowed;
 }
 
-.submitButton:hover {
-  transform: translateY(-2px);
+#error{
+display:none;
+margin-top:15px;
+padding:12px;
+background:rgba(255,70,70,.15);
+border-radius:12px;
+text-align:center;
+color:#ffb3b3;
 }
 
-.submitButton:disabled {
-  opacity: .6;
-  cursor: not-allowed;
-  transform: none;
+#success{
+display:none;
+text-align:center;
 }
 
-
-/* CUSTOM TIP */
-
-#customAmountContainer {
-  display: none;
+.requestBox{
+margin-top:18px;
+padding:16px;
+background:rgba(255,255,255,.06);
+border-radius:14px;
 }
 
-#customAmountContainer.visible {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.requestID{
+font-size:28px;
+font-weight:bold;
+color:#7fb3ff;
+margin-top:6px;
 }
 
-
-/* SUCCESS */
-
-#confirmation {
-  display: none;
-
-  text-align: center;
-
-  margin-top: 5px;
-
-  padding: 10px;
+.newOrderBtn{
+margin-top:20px;
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+background:linear-gradient(135deg,#5ea2ff,#7a6cff);
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
 }
 
-#confirmation h2 {
-  color: #8ff0b0;
-
-  margin-bottom: 12px;
-
-  font-size: 28px;
+footer{
+padding:20px;
+text-align:center;
+color:#66738b;
 }
 
-.requestIDBox {
-  margin-top: 18px;
-
-  padding: 15px;
-
-  border-radius: 14px;
-
-  background: rgba(255,255,255,.06);
-
-  border: 1px solid rgba(255,255,255,.08);
+@media(max-width:600px){
+.card{padding:28px 22px;}
+h1{font-size:38px;}
 }
-
-.requestIDLabel {
-  color: #9aa8c2;
-
-  font-size: 14px;
-
-  margin-bottom: 6px;
-}
-
-.requestID {
-  color: #7fb3ff;
-
-  font-size: 26px;
-
-  font-weight: bold;
-}
-
-.confirmationText {
-  margin-top: 15px;
-
-  color: #9aa8c2;
-
-  line-height: 1.5;
-}
-
-
-/* ERROR */
-
-#errorMessage {
-  display: none;
-
-  margin-top: 20px;
-
-  padding: 15px;
-
-  border-radius: 14px;
-
-  background: rgba(255,70,70,.15);
-
-  border: 1px solid rgba(255,70,70,.3);
-
-  color: #ff9a9a;
-
-  text-align: center;
-
-  font-weight: bold;
-}
-
-
-footer {
-  padding: 22px;
-
-  text-align: center;
-
-  color: #66738b;
-
-  font-size: 14px;
-}
-
-
-@media (max-width: 600px) {
-
-  .card {
-    padding: 30px 22px;
-  }
-
-  h1 {
-    font-size: 40px;
-  }
-
-  .icon {
-    font-size: 55px;
-  }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
-  <div class="logo">
-    🍳 Uki <span>Kooking</span>
-  </div>
-
+<div class="logo">🍳 Uki <span>Kooking</span></div>
 </header>
-
 
 <main>
 
 <div class="card">
 
-
 <div id="formArea">
 
-  <div class="icon">
-    🍽️
-  </div>
+<div class="icon">🍽️</div>
 
+<h1>Uki <span>Kooking</span></h1>
 
-  <h1>
-    Uki <span>Kooking</span>
-  </h1>
+<p class="subtitle">Request a meal and choose when you'd like it.</p>
 
+<form id="foodForm" action="https://formspree.io/f/xvkpjaly" method="POST">
 
-  <p class="subtitle">
-    Request a meal and choose when you'd like it.
-  </p>
+<input type="hidden" id="requestID" name="request_id">
 
+<label>👤 Your Name</label>
+<input name="name" type="text" placeholder="Enter your name" required>
 
-  <form
-    id="foodForm"
-    action="https://formspree.io/f/xvkpjaly"
-    method="POST"
-  >
+<label>📧 Your Email</label>
+<input name="email" type="email" placeholder="Enter your email" required>
 
+<label>🍔 Food</label>
+<input name="food" type="text" placeholder="What would you like?" required>
 
-    <!-- REQUEST ID -->
+<label>🔢 Quantity</label>
+<input name="quantity" type="number" value="1" min="1" required>
 
-    <input
-      id="hiddenRequestID"
-      name="request_id"
-      type="hidden"
-    >
+<label>📝 Food Description</label>
+<textarea name="description" placeholder="Extra cheese, no onions, special requests..."></textarea>
 
+<label>📅 Date</label>
+<input name="date" type="date" required>
 
-    <!-- NAME -->
+<label>⏰ Time</label>
+<input name="time" type="time" required>
 
-    <label for="name">
-      👤 Your Name
-    </label>
+<label>💸 Tip</label>
 
-    <input
-      id="name"
-      name="name"
-      type="text"
-      placeholder="Enter your name"
-      autocomplete="name"
-      required
-    >
+<select id="tip" name="tip">
+<option value="€0">No tip</option>
+<option value="€1">€1</option>
+<option value="€2">€2</option>
+<option value="€5">€5</option>
+<option value="€10">€10</option>
+<option value="€15">€15</option>
+<option value="custom">Custom Amount</option>
+</select>
 
+<div id="customTip">
 
-    <!-- EMAIL -->
+<label>💰 Custom Amount</label>
 
-    <label for="email">
-      📧 Your Email
-    </label>
+<input
+id="customAmount"
+name="custom_amount"
+type="number"
+min="0"
+step="0.01"
+placeholder="Enter amount in €">
 
-    <input
-      id="email"
-      name="email"
-      type="email"
-      placeholder="Enter your email"
-      autocomplete="email"
-      required
-    >
+</div>
 
+<button id="requestBtn" type="submit">🍽️ Request Order</button>
 
-    <!-- FOOD -->
+</form>
 
-    <label for="food">
-      🍔 Food
-    </label>
+<div id="error">
+Couldn't send your request.
+</div>
 
-    <input
-      id="food"
-      name="food"
-      type="text"
-      placeholder="What would you like?"
-      required
-    >
+</div>
 
+<div id="success">
 
-    <!-- SURPRISE ME -->
+<div class="icon">✅</div>
 
-    <button
-      type="button"
-      class="surpriseButton"
-      onclick="surpriseMe()"
-    >
-      🎲 Surprise Me
-    </button>
+<h2>Request Sent!</h2>
 
+<div class="requestBox">
+<div>Your Request Number</div>
+<div id="showID" class="requestID"></div>
+</div>
 
-    <!-- QUANTITY -->
+<button class="newOrderBtn" id="newOrderBtn">
+Make Another Order
+</button>
 
-    <label for="quantity">
-      🔢 Quantity
-    </label>
+</div>
 
-    <input
-      id="quantity"
-      name="quantity"
-      type="number"
-      min="1"
-      max="99"
-      value="1"
-      required
-    >
+</div>
 
+</main>
 
-    <!-- DESCRIPTION -->
+<footer>© 2026 Uki Kooking</footer>
 
-    <label for="description">
-      📝 Food Description
-    </label>
+<script>
+const tip=document.getElementById("tip");
+const customTip=document.getElementById("customTip");
+const customAmount=document.getElementById("customAmount");
 
-    <textarea
-      id="description"
-      name="description"
-      placeholder="Extra cheese, no onions, special requests..."
-    ></textarea>
+tip.addEventListener("change",function(){
 
+if(this.value==="custom"){
+customTip.style.display="flex";
+customAmount.required=true;
+}else{
+customTip.style.display="none";
+customAmount.required=false;
+customAmount.value="";
+}
 
-    <!-- DATE -->
+});
 
-    <label for="date">
-      📅 Date
-    </label>
+function requestNumber(){
+return "#"+Math.floor(100000+Math.random()*900000);
+}
 
-    <input
-      id="date"
-      name="date"
-      type="date"
-      required
-    >
+const form=document.getElementById("foodForm");
+const formArea=document.getElementById("formArea");
+const success=document.getElementById("success");
+const showID=document.getElementById("showID");
+const hiddenID=document.getElementById("requestID");
+const requestBtn=document.getElementById("requestBtn");
+const error=document.getElementById("error");
+const newOrderBtn=document.getElementById("newOrderBtn");
 
+form.addEventListener("submit",async function(e){
 
-    <!-- TIME -->
+e.preventDefault();
 
-    <label for="time">
-      ⏰ Time
-    </label>
+error.style.display="none";
 
-    <input
-      id="time"
-      name="time"
-      type="time"
-      required
-    >
+const id=requestNumber();
+hiddenID.value=id;
 
+requestBtn.disabled=true;
+requestBtn.textContent="Sending...";
 
-    <!-- TIP -->
+try{
 
-    <label for="tip">
-      💸 Tip
-    </label>
+const res=await fetch(form.action,{
+method:"POST",
+body:new FormData(form),
+headers:{Accept:"application/json"}
+});
 
-    <select
-      id="tip"
-      name="tip"
-      onchange="handleTipChange(this)"
-    >
+if(!res.ok) throw new Error();
 
-      <option value="€0">
-        No tip
-      </option>
+showID.textContent=id;
 
-      <option value="€1">
-        €1
-      </option>
+formArea.style.display="none";
+success.style.display="block";
 
-      <option value="€2">
-        €2
-      </option>
+}catch{
 
-      <option value="€5">
-        €5
-      </option>
+error.style.display="block";
+requestBtn.disabled=false;
+requestBtn.textContent="🍽️ Request Order";
 
-      <option value="€10">
-        €10
-      </option>
+}
 
-      <option value="€15">
-        €15
-      </option>
+});
 
-      <option value="custom">
-        Custom Amount
-      </option>
+newOrderBtn.addEventListener("click",function(){
 
-    </select>
+success.style.display="none";
+formArea.style.display="block";
+form.reset();
 
+customTip.style.display="none";
+customAmount.required=false;
 
-    <!-- CUSTOM TIP -->
+requestBtn.disabled=false;
+requestBtn.textContent="🍽️ Request Order";
 
-    <div id="customAmountContainer">
+});
+</script>
 
-      <label for="customAmount">
-        💰 Custom Amount
-      </label>
-
-      <input
-        id="customAmount"
-        name="custom_amount"
-        type
+</body>
+</html>
