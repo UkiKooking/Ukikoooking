@@ -243,7 +243,8 @@ label {
 }
 
 
-input {
+input,
+select {
 
   width: 100%;
 
@@ -275,7 +276,8 @@ input::placeholder {
 }
 
 
-input:focus {
+input:focus,
+select:focus {
 
   background:
     #151e35;
@@ -283,6 +285,26 @@ input:focus {
   box-shadow:
     0 0 0 3px
     rgba(127,179,255,0.25);
+
+}
+
+
+select {
+
+  cursor: pointer;
+
+}
+
+
+/* =========================
+   CUSTOM TIP
+========================= */
+
+#customTipBox {
+
+  display: none;
+
+  width: 100%;
 
 }
 
@@ -464,7 +486,7 @@ footer {
     ========================= -->
 
     <form
-      action="https://formspree.io/f/xvkpjaly"
+      action="http://formspree.io/f/xvkpjaly"
       method="POST"
     >
 
@@ -545,6 +567,70 @@ footer {
 
 
 
+      <!-- TIP -->
+
+      <label for="tip">
+
+        💸 Tip
+
+      </label>
+
+
+      <select
+        id="tip"
+        name="tip"
+        onchange="showCustomTip()"
+      >
+
+        <option value="€0">
+          No tip
+        </option>
+
+        <option value="€1">
+          €1
+        </option>
+
+        <option value="€2">
+          €2
+        </option>
+
+        <option value="€5">
+          €5
+        </option>
+
+        <option value="€10">
+          €10
+        </option>
+
+        <option value="€15">
+          €15
+        </option>
+
+        <option value="custom">
+          Custom Amount
+        </option>
+
+      </select>
+
+
+
+      <!-- CUSTOM TIP -->
+
+      <div id="customTipBox">
+
+        <input
+          id="customTip"
+          type="number"
+          name="custom_tip"
+          placeholder="Enter custom amount (€)"
+          min="0"
+          step="0.01"
+        >
+
+      </div>
+
+
+
       <!-- BUTTON -->
 
       <button type="submit">
@@ -574,7 +660,38 @@ footer {
 </footer>
 
 
-</body>
 
-</html>
+<script>
 
+/* =========================
+   CUSTOM TIP FUNCTION
+========================= */
+
+function showCustomTip() {
+
+  const tip =
+    document.getElementById("tip");
+
+  const box =
+    document.getElementById("customTipBox");
+
+  const custom =
+    document.getElementById("customTip");
+
+
+  if (tip.value === "custom") {
+
+    box.style.display =
+      "block";
+
+    custom.required =
+      true;
+
+  }
+
+  else {
+
+    box.style.display =
+      "none";
+
+    custom.required =
