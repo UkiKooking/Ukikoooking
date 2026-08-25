@@ -1,558 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Uki Kooking</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-
-      font-family: Arial, sans-serif;
-
-      color: white;
-
-      background:
-        radial-gradient(
-          circle at top left,
-          #263f68,
-          transparent 40%
-        ),
-        radial-gradient(
-          circle at bottom right,
-          #302450,
-          transparent 40%
-        ),
-        #090e1c;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-
-    /* HEADER */
-
-    header {
-      padding: 25px 7%;
-
-      background: rgba(8, 13, 27, 0.65);
-
-      border-bottom:
-        1px solid rgba(255,255,255,0.08);
-
-      backdrop-filter: blur(18px);
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #79a9ff;
-    }
-
-
-    /* MAIN */
-
-    main {
-      flex: 1;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 40px 20px;
-    }
-
-
-    .container {
-      width: 100%;
-      max-width: 650px;
-
-      text-align: center;
-    }
-
-
-    .icon {
-      font-size: 65px;
-
-      margin-bottom: 15px;
-
-      animation: float 3s ease-in-out infinite;
-    }
-
-
-    @keyframes float {
-
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-
-    }
-
-
-    h1 {
-      font-size: 55px;
-
-      margin: 0;
-
-      letter-spacing: -2px;
-    }
-
-
-    h1 span {
-      color: #79a9ff;
-    }
-
-
-    .subtitle {
-      color: #8996ad;
-
-      font-size: 17px;
-
-      line-height: 1.6;
-
-      margin:
-        18px auto 35px;
-
-      max-width: 500px;
-    }
-
-
-    /* REQUEST CARD */
-
-    .request-card {
-      padding: 30px;
-
-      border-radius: 25px;
-
-      background:
-        rgba(255,255,255,0.055);
-
-      border:
-        1px solid rgba(255,255,255,0.1);
-
-      box-shadow:
-        0 25px 70px rgba(0,0,0,0.25);
-
-      backdrop-filter: blur(20px);
-    }
-
-
-    .request-card h2 {
-      margin-top: 0;
-
-      font-size: 24px;
-    }
-
-
-    .request-card p {
-      color: #7f8ba2;
-
-      font-size: 14px;
-
-      margin-bottom: 22px;
-    }
-
-
-    .input-area {
-      display: flex;
-
-      gap: 10px;
-    }
-
-
-    input {
-      flex: 1;
-
-      min-width: 0;
-
-      padding: 17px;
-
-      border-radius: 13px;
-
-      border:
-        1px solid rgba(255,255,255,0.1);
-
-      background:
-        rgba(0,0,0,0.25);
-
-      color: white;
-
-      font-size: 16px;
-
-      outline: none;
-
-      transition:
-        border 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-
-    input::placeholder {
-      color: #66738b;
-    }
-
-
-    input:focus {
-      border-color: #79a9ff;
-
-      box-shadow:
-        0 0 0 4px rgba(121,169,255,0.1);
-    }
-
-
-    button {
-      border: none;
-
-      border-radius: 13px;
-
-      padding: 0 25px;
-
-      background: #79a9ff;
-
-      color: #07101d;
-
-      font-size: 15px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-
-    button:hover {
-      background: #9abfff;
-
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 8px 25px rgba(121,169,255,0.2);
-    }
-
-
-    button:active {
-      transform: scale(0.96);
-    }
-
-
-    /* POPUP */
-
-    #popup {
-
-      position: fixed;
-
-      left: 50%;
-
-      bottom: 25px;
-
-      transform:
-        translate(-50%, 100px)
-        scale(0.9);
-
-      opacity: 0;
-
-      background:
-        rgba(20,27,45,0.96);
-
-      border:
-        1px solid rgba(255,255,255,0.1);
-
-      padding:
-        16px 22px;
-
-      border-radius: 14px;
-
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.35);
-
-      transition:
-        all 0.4s cubic-bezier(.2,.8,.2,1);
-
-      z-index: 100;
-
-      min-width: 250px;
-    }
-
-
-    #popup.show {
-
-      transform:
-        translate(-50%, 0)
-        scale(1);
-
-      opacity: 1;
-    }
-
-
-    /* FOOTER */
-
-    footer {
-
-      text-align: center;
-
-      padding: 25px;
-
-      color: #505c73;
-
-      font-size: 13px;
-    }
-
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      h1 {
-        font-size: 43px;
-      }
-
-      .request-card {
-        padding: 23px 18px;
-      }
-
-      .input-area {
-        flex-direction: column;
-      }
-
-      input {
-        width: 100%;
-      }
-
-      button {
-        padding: 16px;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uki Kooking</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left,#274472,transparent 40%),
+    radial-gradient(circle at bottom right,#3a2d67,transparent 40%),
+    #0b1020;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+header{
+  padding:22px 8%;
+  background:rgba(8,13,27,.7);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#7fb3ff;
+}
+
+main{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+}
+
+.card{
+  width:100%;
+  max-width:700px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:28px;
+  padding:45px;
+  text-align:center;
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.icon{
+  font-size:70px;
+  margin-bottom:18px;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-8px);}
+}
+
+h1{
+  font-size:52px;
+  margin-bottom:12px;
+}
+
+h1 span{
+  color:#7fb3ff;
+}
+
+.subtitle{
+  color:#9aa8c2;
+  line-height:1.6;
+  margin-bottom:35px;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+input{
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:#12192d;
+  color:white;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus{
+  box-shadow:0 0 0 3px rgba(127,179,255,.3);
+}
+
+label{
+  text-align:left;
+  color:#b9c6dd;
+  font-size:14px;
+}
+
+button{
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5ea2ff,#7a6cff);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(94,162,255,.35);
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+#result{
+  margin-top:18px;
+  font-weight:bold;
+  color:#8ee89c;
+  min-height:22px;
+}
+
+footer{
+  padding:22px;
+  text-align:center;
+  color:#66738b;
+  font-size:14px;
+}
+
+@media(max-width:600px){
+
+  .card{
+    padding:28px 22px;
+  }
+
+  h1{
+    font-size:40px;
+  }
+
+}
+</style>
 </head>
-
 
 <body>
 
+<header>
+  <div class="logo">🍳 Uki <span>Kooking</span></div>
+</header>
 
-  <header>
+<main>
 
-    <div class="logo">
-      🍳 Uki <span>Kooking</span>
-    </div>
+<div class="card">
 
-  </header>
+  <div class="icon">🍽️</div>
 
+  <h1>Uki <span>Kooking</span></h1>
 
-  <main>
+  <p class="subtitle">
+    Request a meal and choose when you'd like it.
+  </p>
 
-    <div class="container">
+  <form id="foodForm" action="YOUR_FORMSPREE_URL" method="POST">
 
-      <div class="icon">
-        🍽️
-      </div>
+    <label>🍔 Food</label>
 
+    <input
+      type="text"
+      name="food"
+      placeholder="What would you like?"
+      maxlength="100"
+      required>
 
-      <h1>
-        Uki <span>Kooking</span>
-      </h1>
+    <label>📅 Date</label>
 
+    <input
+      type="date"
+      name="date"
+      required>
 
-      <p class="subtitle">
-        Got something you'd like to see cooked?
-        Send us a request and we'll see what we can make.
-      </p>
+    <label>⏰ Time</label>
 
+    <input
+      type="time"
+      name="time"
+      required>
 
-      <div class="request">
-
-  <div class="request">
-
-  <h2>Can't find your food?</h2>
-
-  <p>Request something you'd like to see.</p>
-
-  <form
-    action="https://formspree.io/f/xvkpjaly"
-    method="POST"
-    id="foodForm"
-  >
-
-    <div class="request-form">
-
-      <input
-        type="text"
-        name="food"
-        id="foodRequest"
-        maxlength="100"
-        placeholder="Type a food..."
-        required
-      >
-
-      <button type="submit">
-        Request
-      </button>
-
-    </div>
+    <button type="submit">
+      Request Meal
+    </button>
 
   </form>
 
   <p id="result"></p>
 
-</div>     
+</div>
 
-  <script>
+</main>
 
-    /*
-      PUT YOUR PHONE NUMBER HERE.
+<footer>
+  © 2026 Uki Kooking
+</footer>
 
-      Example:
+<script>
 
-      const phoneNumber = "+381604885883";
+const form=document.getElementById("foodForm");
+const result=document.getElementById("result");
 
-      Keep your real number in your own copy.
-      Don't send it to me.
-    */
+form.addEventListener("submit",async(e)=>{
 
-    const phoneNumber =
-      "+38160488588";
+e.preventDefault();
 
+const button=form.querySelector("button");
 
-    function showPopup(text) {
+button.disabled=true;
+button.textContent="Scheduling...";
 
-      const popup =
-        document.getElementById("popup");
+try{
 
-      popup.textContent = text;
+const response=await fetch(form.action,{
+method:"POST",
+body:new FormData(form),
+headers:{
+Accept:"application/json"
+}
+});
 
-      popup.classList.add("show");
+if(response.ok){
 
+result.textContent="✅ Meal request scheduled!";
+form.reset();
 
-      setTimeout(function() {
+}else{
 
-        popup.classList.remove("show");
+result.textContent="Couldn't send the request.";
 
-      }, 2500);
+}
 
-    }
+}catch{
 
+result.textContent="Connection failed.";
 
-const form = document.getElementById("foodForm");
-const result = document.getElementById("result");
+}
 
-form.addEventListener("submit", async function(event) {
-
-  event.preventDefault();
-
-  const button = form.querySelector("button");
-
-  button.textContent = "Sending...";
-  button.disabled = true;
-
-  try {
-
-    const response = await fetch(
-      form.action,
-      {
-        method: "POST",
-        body: new FormData(form),
-        headers: {
-          "Accept": "application/json"
-        }
-      }
-    );
-
-    if (response.ok) {
-
-      result.textContent =
-        "✓ Request sent!";
-
-      form.reset();
-
-    } else {
-
-      result.textContent =
-        "Something went wrong.";
-
-    }
-
-  } catch (error) {
-
-    result.textContent =
-      "Couldn't send the request.";
-
-  }
-
-  button.textContent = "Request";
-  button.disabled = false;
+button.disabled=false;
+button.textContent="Request Meal";
 
 });
-      const input =
-        document.getElementById("foodInput");
 
-      const food =
-        input.value.trim();
-
-
-      if (food === "") {
-
-        showPopup(
-          "Please enter a food first!"
-        );
-
-        return;
-
-      }
-
-
-      const message =
-        "New Uki Kooking request: " +
-        food;
-
-
-      showPopup(
-        "📨 Request ready!"
-      );
-
-
-      /*
-        Opens the visitor's Messages app
-        with your number and the request
-        already filled in.
-      */
-
-      setTimeout(function() {
-
-        window.location.href =
-          "sms:" +
-          phoneNumber +
-          "?body=" +
-          encodeURIComponent(message);
-
-      }, 600);
-
-    }
-
-  </script>
-
+</script>
 
 </body>
 </html>
